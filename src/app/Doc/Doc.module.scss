@@ -1,0 +1,15 @@
+.docContainer {
+  @apply p-5;
+    font-family: Arial, sans-serif;
+  }
+  
+  .title {
+    @apply text-f-20 text-primary-darkBlue font-poppins-bold;
+    font-size: 2rem;
+  }
+  
+  .description {
+    @apply font-poppins-medium text-primary-darkBlue font-black;
+    font-size: 1rem;
+  }
+  

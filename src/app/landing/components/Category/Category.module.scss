@@ -1,0 +1,23 @@
+.category-container{
+    @apply bg-primary-rzaGrey10 rounded-t-[20px] relative top-[-20px];
+    @screen lg {@apply rounded-t-[64px] top-[-60px]}
+    .group{
+        @apply pt-8 pb-6 rounded-t-[20px];
+        @screen lg {@apply rounded-t-[64px]}
+        .item{
+            @apply px-4 w-auto;
+            display: flex !important;
+            flex-direction: column;
+            align-items: center;
+            border-right: 1px solid #EBEEEF; 
+            .item-icon{
+                @apply w-8;
+                @screen lg {@apply w-16 pl-3}
+            }
+            .item-name{
+                @apply text-f-10 font-poppins-regular text-primary-darkBlue text-center mt-2;
+                @screen lg {@apply text-f-18}
+            }
+        }
+    }
+}   

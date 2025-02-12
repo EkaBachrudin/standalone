@@ -1,0 +1,78 @@
+.hero-baner-container{
+    @screen lg {
+        @apply bg-cover pb-28;
+    }
+    .main-title{
+        @apply text-f-24 text-primary-rzaWhite font-poppins-bold pt-[54px] text-left mx-6;
+        @screen lg {
+            @apply mx-[100px] pt-[64px] text-f-32;
+        }
+    }
+    .main-desc{
+        @apply text-f-13 font-poppins-regular text-primary-rzaWhite mt-4 text-left mx-6;
+        @screen lg {
+            @apply mx-[100px] mt-2;
+        }
+    }
+
+    .slider{
+        @screen lg {
+            @apply mx-[70px];
+        }
+        .banner-items{
+            @apply h-[236px] rounded-[20px] mt-4 mb-10 mx-6 shadow-lg;
+            @screen lg {
+                @apply mt-8 h-[360px] mb-6;
+            }
+        }
+    
+        .banner-items-inner{
+            @apply h-[237px] rounded-[20px];
+            
+           
+            background: linear-gradient(98.85deg, #001A41 0.2%, rgba(0, 0, 0, 0) 69.4%),
+            linear-gradient(78.18deg, #001A41 2.21%, rgba(0, 0, 0, 0) 72.6%);
+    
+            .item-content{
+                @apply max-w-[221.6px] max-h-[106.48px] pt-8 pl-6;
+                @screen lg{
+                    @apply max-w-[330px] max-h-[216px];
+                }
+                .banner-title{
+                    @apply text-f-18 font-poppins-bold text-primary-rzaWhite text-left;
+                    @screen lg{
+                        @apply text-f-24;
+                    }
+                }
+                .banner-desc{
+                    @apply text-f-12 font-poppins-regular text-primary-rzaGrey40 mt-1 text-left;
+                    @screen lg{
+                        @apply text-f-16;
+                    }
+                }
+                .banner-button{
+                    @apply rounded-[56px] text-primary-rzaWhite text-f-12 font-poppins-bold py-[6px] w-[120px] mt-8 block;
+                    border: 2px solid #FFFFFF;
+                }
+            }
+            
+        }
+
+        @screen lg { 
+            .banner-items-inner{
+                @apply h-[361px];
+            }   
+          }
+    }
+}
+
+.slick-dots{
+    .slick-active{
+        width: auto !important;
+
+        button:before {
+            content: none !important;
+        }
+    }
+}
+  

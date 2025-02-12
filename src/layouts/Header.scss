@@ -1,0 +1,12 @@
+.header-container {
+  @apply bg-primary-rzaWhite px-6;
+  .header{
+    @apply flex justify-between items-center;
+    .App-logo{
+      @apply w-16 h-16;
+    }
+    .hamburger{
+      @apply w-6 h-6;
+    }
+  }
+}
