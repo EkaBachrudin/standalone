@@ -1,4 +1,4 @@
 export interface CategoryModel {
-    icon: string | React.ElementType;
+    icon: string;
     name: string;
 }

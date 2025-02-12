@@ -1,5 +1,5 @@
 import React from 'react';
-
+import styles from './CustomDot.module.scss'
 interface CustomDotProps {
   isActive: boolean;
   onClick: () => void;
@@ -8,6 +8,7 @@ interface CustomDotProps {
 const CustomDot: React.FC<CustomDotProps> = ({ isActive, onClick }) => {
   return (
     <button
+      className={styles.customButton}
       onClick={onClick}
       style={{
         width: isActive ? '44px' : '16px',
@@ -17,6 +18,7 @@ const CustomDot: React.FC<CustomDotProps> = ({ isActive, onClick }) => {
         marginRight: '10px',
         cursor: 'pointer',
         transition: 'all 0.5s ease',
+        content: 'none'
       }}
     />
   );

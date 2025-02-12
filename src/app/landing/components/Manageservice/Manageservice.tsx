@@ -73,7 +73,9 @@ const Manageservice: React.FC<ManageservicePorps> = ({manageServiceData}) => {
                 <div className={styles.top}>
                     {manageServiceData?.top.map((item) => (
                         <div key={item.name} className={styles.topItem}>
-                            {/* <div><item.icon className='w-6 lg:w-10' /></div> */}
+                            <div>
+                                <img src={item.icon} alt={item.name} />
+                            </div>
                             <div>{item.name}</div>
                         </div>
                     ))}

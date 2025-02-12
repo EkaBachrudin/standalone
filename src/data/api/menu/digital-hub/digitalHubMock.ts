@@ -87,6 +87,16 @@ const manageServiceData: ManageServiceModel = {
                 title: 'Vidoe',
                 desc: 'Langganan mulai dari Rp54.000/bulan'
             },
+            {
+                imageUrl: 'https://picsum.photos/1920/1083',
+                title: 'Vidoe',
+                desc: 'Langganan mulai dari Rp54.000/bulan'
+            },
+            {
+                imageUrl: 'https://picsum.photos/1920/1086',
+                title: 'Vidoe',
+                desc: 'Langganan mulai dari Rp54.000/bulan'
+            },
         ]
     }
 }
@@ -119,6 +129,16 @@ const productDetailData: ProductListModel = {
         {
             imageUrl: 'https://picsum.photos/1280/724',
             title: 'Tonton film karya anak muda Indonesia di MAXstream',
+            desc: 'Langganan mulai dari Rp54.000/bulan'
+        },
+        {
+            imageUrl: 'https://picsum.photos/1280/720',
+            title: 'Tonton film karya anak muda Indonesia di MAXstream',
+            desc: 'Langganan mulai dari Rp54.000/bulan'
+        },
+        {
+            imageUrl: 'https://picsum.photos/1280/721',
+            title: 'Kembangkan karir dengan belajar standar internasional',
             desc: 'Langganan mulai dari Rp54.000/bulan'
         },
     ]

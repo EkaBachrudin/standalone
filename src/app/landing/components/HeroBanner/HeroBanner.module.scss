@@ -58,6 +58,14 @@
             
         }
 
+        .slick-dots{
+            @apply ml-5;
+        }
+
+        li{
+            width: auto !important;
+        }
+
         @screen lg { 
             .banner-items-inner{
                 @apply h-[361px];
@@ -66,13 +74,4 @@
     }
 }
 
-.slick-dots{
-    .slick-active{
-        width: auto !important;
-
-        button:before {
-            content: none !important;
-        }
-    }
-}
   

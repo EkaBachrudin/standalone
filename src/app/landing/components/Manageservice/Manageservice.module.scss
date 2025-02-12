@@ -31,7 +31,7 @@
             @apply mt-4;
             @screen lg {@apply px-[75px] mt-6}
             .item{
-                @apply pl-6;
+                @apply pl-6 pb-2;
                 // @screen lg{@apply px-5}
                 .containImage{
                     @apply h-[228.8px] rounded-t-[20px] shadow-md;

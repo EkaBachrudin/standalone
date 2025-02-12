@@ -1,9 +1,9 @@
 .category-container{
     @apply bg-primary-rzaGrey10 rounded-t-[20px] relative top-[-20px];
-    @screen lg {@apply rounded-t-[64px] top-[-60px]}
+    @screen lg {@apply rounded-t-[64px] top-[-60px] flex justify-center}
     .group{
         @apply pt-8 pb-6 rounded-t-[20px];
-        @screen lg {@apply rounded-t-[64px]}
+        @screen lg {@apply rounded-t-[64px] w-[95%]}
         .item{
             @apply px-4 w-auto;
             display: flex !important;

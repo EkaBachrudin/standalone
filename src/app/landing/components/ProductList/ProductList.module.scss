@@ -3,6 +3,7 @@
 
     .productListContainerTop{
         @apply flex justify-between items-center flex-wrap px-6;
+        @screen lg {@apply px-[100px]}
 
         .productListContainerTopTitle{
             @apply text-f-24 text-primary-rzaWhite font-poppins-bold;
@@ -15,6 +16,7 @@
 
     .productListContainerDesc{
         @apply text-f-14 font-poppins-regular text-primary-rzaWhite w-[234px] text-left mt-1 px-6;
+        @screen lg {@apply px-[100px] w-full}
             
     }
 
@@ -24,10 +26,10 @@
         .item{
             @apply pl-6;
             .containImage{
-                @apply h-[228.8px] rounded-t-[20px] shadow-md;
+                @apply h-[228.8px] rounded-t-[20px];
             }
             .content{
-                @apply bg-primary-rzaWhite shadow-md text-left px-4 pt-4 pb-5 rounded-b-[20px];
+                @apply bg-primary-rzaWhite text-left px-4 pt-4 pb-5 rounded-b-[20px] h-[195px];
                 .contentTitle{
                     @apply text-f-18 font-poppins-bold text-primary-darkBlue;
                 }

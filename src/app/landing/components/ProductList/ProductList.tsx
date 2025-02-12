@@ -4,59 +4,23 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { ProductListModel } from '@/domain/models/productList';
+import useIsMobile from '@/hook/useIsMobile';
+import { useRef, useState } from 'react';
+import { getSliderProductListSettings } from './ProductListConfig';
 
 interface PoductListProps {
     productListData?: ProductListModel;
 }
 
 const ProductList: React.FC<PoductListProps> = ({productListData}) => {
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const [activeSlide, setActiveSlide] = useState(0);
+    const sliderRef = useRef<Slider>(null);
+    const isMobile = useIsMobile();
 
-    const settings = {
-        dots: false,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 5,
-        centerMode: false,
-        slidesToScroll: 1,
-        arrows: false,
-        responsive: [
-            {
-              breakpoint: 500,
-              settings: {
-                slidesToShow: 1.6,
-                slidesToScroll: 1
-              }
-            },
-            {
-                breakpoint: 868,
-                settings: {
-                  slidesToShow: 2.4,
-                  slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 1024,
-                settings: {
-                  slidesToShow: 3.4,
-                  slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 1203,
-                settings: {
-                  slidesToShow: 4.4,
-                  slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 1338,
-                settings: {
-                  slidesToShow: 4.5,
-                  slidesToScroll: 1
-                }
-            }
-          ]
-    };
+    const datalength: number | undefined = productListData?.productList?.length ? productListData?.productList?.length : 0;
+
+    const settings = getSliderProductListSettings(isMobile, currentSlide, datalength, setActiveSlide, setCurrentSlide, sliderRef);
 
     if (!productListData || !productListData.productList.length) {
         return <div>Loading...</div>;
@@ -67,7 +31,6 @@ const ProductList: React.FC<PoductListProps> = ({productListData}) => {
         <div className={styles.productListContainer} style={{backgroundImage: `url('/assets/images/bg-product.svg')`}}>
             <div className={styles.productListContainerTop}>
                 <div className={styles.productListContainerTopTitle}>{productListData?.title}</div>
-                <div className={styles.productListContainerTopSeeAll}>Lihat Semua</div>
             </div>
 
             <div className={styles.productListContainerDesc}>

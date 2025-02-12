@@ -22,7 +22,7 @@ const Category: React.FC<CategoryProps > = ({categoryData}) => {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: isMobile ? 4 : 5,
+    slidesToShow: 4,
     slidesToScroll: 1,
     arrows: isMobile ? false : true,
     nextArrow: <NextArrow 
@@ -48,7 +48,9 @@ const Category: React.FC<CategoryProps > = ({categoryData}) => {
               {categoryData?.map((item) => {
                 return(
                   <div key={item.name} className={style['item']}>
-                    {/* <div className={style['item-icon']}><item.icon /></div> */}
+                    <div className={style['item-icon']}>
+                      <img src={item.icon} alt={item.name} />
+                    </div>
                     
                     <div className={style['item-name']}>{item.name}</div>
                   </div>

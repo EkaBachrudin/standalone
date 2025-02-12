@@ -3,12 +3,11 @@
 import React, { useEffect, useState } from 'react';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-// import styles from './Landing.module.scss';
 import HeroBanner from './components/HeroBanner/HeroBanner';
 import Category from './components/Category/Category';
 import Manageservice from './components/Manageservice/Manageservice';
 import ProductList from './components/ProductList/ProductList';
+import styles from './Landing.module.scss'
 import { HeroBannerModel } from '@/domain/models/heroBanner';
 import { CategoryModel } from '@/domain/models/category';
 import { ManageServiceModel } from '@/domain/models/Manageservice';
@@ -71,7 +70,7 @@ const Landing: React.FC = () => {
 
   return (
     <>
-      <div className='mb-40'>
+      <div className={styles.landingContainer}>
         <HeroBanner bannerDataProps={bannerData} />
         <Category categoryData={categoryData} />
         <Manageservice manageServiceData={manageService} />
