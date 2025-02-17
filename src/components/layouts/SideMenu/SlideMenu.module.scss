@@ -7,15 +7,11 @@
     }
   }
 
-  button{
-      @apply p-2 focus:outline-none absolute top-4 right-4;
-  }
-
   .navigation{
-    @apply mt-16 space-y-4 p-4;
+    @apply mt-5 space-y-4 p-4;
 
     .item{
-      @apply block text-f-14 font-semibold hover:text-secondary-rzaBlue;
+      @apply text-f-18 font-semibold flex justify-between font-poppins-regular;
     }
   }
 

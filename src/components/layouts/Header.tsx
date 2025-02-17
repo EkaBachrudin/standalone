@@ -1,7 +1,5 @@
+'use client'
 import React, { useEffect, useState } from 'react';
-
-import logo from '../../logo.svg'; 
-import hamburger from '../../assets/icons/hamburger-dark.svg'
 import './Header.scss';
 import SlideMenu from './SideMenu/SlideMenu';
 import { MenuItem } from '@/domain/models/menuItem';
@@ -39,13 +37,31 @@ const Header: React.FC = () => {
   };
   
   
+  function openChildMenu(index: number): void {
+    throw new Error('Function not implemented.');
+  }
+
   return (
    <>
     <header className="header-container">
      <div className="header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <button onClick={toggleMenu}>
-        <img src={hamburger} className="hamburger" alt="hamd" />
+      <img src='/next.svg' className="App-logo" alt="logo" />
+      <div className='deksMenu'>
+        { menuItems?.map( (item, index) => (
+         <div className='items'>
+          <div>{item.name}</div>
+
+          {item.childs && (
+            <button onClick={() => openChildMenu(index)}>
+                <img src={'/assets/icons/chevron-' + (item.isChildOpen ? 'up.svg' : 'down.svg')} alt="down"/>
+            </button>
+          )}
+                                
+         </div>
+        ))}
+      </div>
+      <button onClick={toggleMenu} className='lg:hidden'>
+        <img src='/assets/icons/hamburger-dark.svg' className="hamburger" alt="hamd" />
       </button>
      </div>
     </header>

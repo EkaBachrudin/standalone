@@ -1,6 +1,6 @@
 import { DigitalHubRepositoryInterface } from "@/domain/interfaces/digHubInterface";
-import { HeroBannerApi } from "../api/menu/digital-hub/digitalHubApi";
-import { HeroBannerMock } from "../api/menu/digital-hub/digitalHubMock";
+import { HeroBannerMock } from "../api/digital-hub/digitalHubMock";
+import { HeroBannerApi } from "../api/digital-hub/digitalHubApi";
 
 
 const USE_MOCK = true;

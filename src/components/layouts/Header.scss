@@ -1,9 +1,16 @@
 .header-container {
-  @apply bg-primary-rzaWhite px-6;
+  @apply bg-primary-rzaWhite px-6 max-w-[1440px] mx-auto;
   .header{
     @apply flex justify-between items-center;
     .App-logo{
       @apply w-16 h-16;
+    }
+    .deksMenu{
+      @apply hidden lg:flex mr-10 gap-7 ;
+
+      .items{
+        @apply text-f-15 font-poppins-bold flex gap-2;
+      }
     }
     .hamburger{
       @apply w-6 h-6;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './SlideMenu.module.scss';
 import { MenuItem } from '@/domain/models/menuItem';
 
@@ -9,50 +9,72 @@ interface SideMenuProps {
 }
 
 const SlideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose, menuItems }) => {
+  const [menuItemsVar, setMenuItemsVar] = useState(menuItems);
+  
+  useEffect(() => {
+    setMenuItemsVar(menuItems);
+  }, [menuItems]);
+
+
+  const openChildMenu = (index: number) => {
+    setMenuItemsVar(prevMenuItems =>
+      prevMenuItems.map((item, i) =>
+        i === index ? { ...item, isChildOpen: !item.isChildOpen } : item
+      )
+    );
+  };
+
   return (
-    <div className={`${styles['sidemenu-mobile-container']}`}>
-     <div className={`${styles['side-menu']} ${isOpen ? styles.open : ''}`}>
-        <button
-          onClick={onClose}
-          className=""
-        >
-          <svg
-            className="size-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
+      <div className={`${styles['sidemenu-mobile-container']}`}>
+          <div
+              className={`${styles['side-menu']} ${isOpen ? styles.open : ''}`}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M6 18L18 6M6 6l12 12"
-            ></path>
-          </svg>
-        </button>
+              <div className="flex justify-between pt-4 px-4">
+                  <img src="/next.svg" className="w-20" alt="logo" />
 
-        <nav className={`${styles['navigation']}`}>
-          {
-            menuItems.map((item) => (
-              <a href="#home" className={`${styles['item']}`} key={item.name}>
-              {item.name}
-              </a>
-            ))
-          }
-        </nav>
-        
-    </div>
+                  <button onClick={onClose} className="">
+                      CLOSE
+                  </button>
+              </div>
 
-      {/* Overlay (to close the menu when clicking outside) */}
-      {isOpen && (
-        <button
-          onClick={onClose}
-          className={`${styles['overlay']}`}
-        ></button>
-      )}
-    </div>
-  );
+              <nav className={`${styles['navigation']}`}>
+                  {menuItemsVar.map((item, index) => (
+                      <div key={index}>
+                        <div className={styles.item} key={item.name}>
+                          <div> {item.name} </div>
+                          <div>
+                              {item.childs && (
+                                <button onClick={() => openChildMenu(index)}>
+                                    <img src={'/assets/icons/chevron-' + (item.isChildOpen ? 'up.svg' : 'down.svg')} alt="down"/>
+                                </button>
+                              )}
+                          </div>
+                        </div>
+                        {item.childs && item.isChildOpen && (
+                          <div>
+                            {item.childs.map((subItem, subIndex) => (
+                              <div key={subIndex}>
+                                <div className='mb-3 mt-2 ml-2'>{subItem.childName}</div>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                        
+                      </div>
+                      
+                  ))}
+              </nav>
+          </div>
+
+          {/* Overlay (to close the menu when clicking outside) */}
+          {isOpen && (
+              <button
+                  onClick={onClose}
+                  className={`${styles['overlay']}`}
+              ></button>
+          )}
+      </div>
+  )
 };
 
 export default SlideMenu;
