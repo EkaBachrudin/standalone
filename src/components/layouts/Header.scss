@@ -1,7 +1,7 @@
 .header-container {
   @apply bg-primary-rzaWhite px-6 max-w-[1440px] mx-auto;
   .header{
-    @apply flex justify-between items-center;
+    @apply flex justify-between items-center h-[64px] lg:h-[84px];
     .App-logo{
       @apply w-16 h-16;
     }

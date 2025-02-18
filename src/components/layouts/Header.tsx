@@ -38,7 +38,7 @@ const Header: React.FC = () => {
   
   
   function openChildMenu(index: number): void {
-    throw new Error('Function not implemented.');
+    console.log(index)
   }
 
   return (
@@ -48,7 +48,7 @@ const Header: React.FC = () => {
       <img src='/next.svg' className="App-logo" alt="logo" />
       <div className='deksMenu'>
         { menuItems?.map( (item, index) => (
-         <div className='items'>
+         <div className='items' key={index}>
           <div>{item.name}</div>
 
           {item.childs && (
