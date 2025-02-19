@@ -1,8 +1,9 @@
-import type { DigitalHubRepositoryInterface } from "domain/interfaces/digHubInterface";
-import type { CategoryModel } from "domain/models/category";
-import type { HeroBannerModel } from "domain/models/heroBanner";
-import type { ManageServiceModel } from "domain/models/Manageservice";
-import type { ProductListModel } from "domain/models/productList";
+import { DigitalHubRepositoryInterface } from "@/domain/interfaces/digHubInterface";
+import { CategoryModel } from "@/domain/models/category";
+import { HeroBannerModel } from "@/domain/models/heroBanner";
+import { ManageServiceModel } from "@/domain/models/Manageservice";
+import { ProductListModel } from "@/domain/models/productList";
+
 
 export class HeroBannerApi implements DigitalHubRepositoryInterface {
 

@@ -14,7 +14,7 @@ interface PoductListProps {
 
 const ProductList: React.FC<PoductListProps> = ({productListData}) => {
     const [currentSlide, setCurrentSlide] = useState(0);
-    const [activeSlide, setActiveSlide] = useState(0);
+    const [, setActiveSlide] = useState(0);
     const sliderRef = useRef<Slider>(null);
     const isMobile = useIsMobile();
 

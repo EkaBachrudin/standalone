@@ -14,7 +14,7 @@ interface HeroBannerProps {
 }
 
 const HeroBanner: React.FC<HeroBannerProps> = ({ bannerDataProps }) => {
-    const [activeSlide, setActiveSlide] = useState(0);
+    const [, setActiveSlide] = useState(0);
     const [currentSlide, setCurrentSlide] = useState(0);
     const isMobile = useIsMobile();
     const slider = useRef<Slider>(null);

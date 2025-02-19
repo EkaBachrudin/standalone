@@ -1,7 +1,8 @@
-import type { CategoryModel } from "domain/models/category";
-import type { HeroBannerModel } from "domain/models/heroBanner";
-import type { ManageServiceModel } from "domain/models/Manageservice";
-import type { ProductListModel } from "domain/models/productList";
+import { CategoryModel } from "../models/category";
+import { HeroBannerModel } from "../models/heroBanner";
+import { ManageServiceModel } from "../models/Manageservice";
+import { ProductListModel } from "../models/productList";
+
 
 export interface DigitalHubRepositoryInterface {
     getHeroBanner(): Promise<HeroBannerModel>;

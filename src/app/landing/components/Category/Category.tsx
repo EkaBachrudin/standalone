@@ -7,6 +7,7 @@ import React from 'react';
 import { CategoryModel } from '@/domain/models/category';
 import useIsMobile from '@/hook/useIsMobile';
 import Slider from 'react-slick';
+import Image from 'next/image';
 
 interface CategoryProps {
   categoryData: CategoryModel[];
@@ -49,7 +50,7 @@ const Category: React.FC<CategoryProps > = ({categoryData}) => {
                 return(
                   <div key={item.name} className={style['item']}>
                     <div className={style['item-icon']}>
-                      <img src={item.icon} alt={item.name} />
+                      <Image src={item.icon} width={40} height={40} alt={item.name} />
                     </div>
                     
                     <div className={style['item-name']}>{item.name}</div>

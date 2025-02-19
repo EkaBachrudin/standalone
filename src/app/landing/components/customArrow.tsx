@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styles from './customArrow.module.scss'
 
 interface ArrowProps {
@@ -10,7 +11,7 @@ interface ArrowProps {
 export const PrevArrow: React.FC<ArrowProps> = ({ onClick, extraStyle, isVisible }) => {
   return (
     isVisible ? <button onClick={onClick} className={styles['ar-button']}>
-      <img src='/assets/icons/arrow-slick-left.svg' className={styles['arrow-left']} alt="Left Arrow" style={extraStyle} />
+      <Image src='/assets/icons/arrow-slick-left.svg' className={styles['arrow-left']} width={40} height={40} alt="Left Arrow" style={extraStyle} />
     </button> : null
   );
 };
@@ -18,7 +19,7 @@ export const PrevArrow: React.FC<ArrowProps> = ({ onClick, extraStyle, isVisible
 export const NextArrow: React.FC<ArrowProps> = ({ onClick, extraStyle, isVisible }) => {
   return (
     isVisible ? <button onClick={onClick} className={styles['ar-button']}>
-      <img src='/assets/icons/arrow-slick-right.svg' className={styles['arrw-right']} alt="as" style={extraStyle} />
+      <Image src='/assets/icons/arrow-slick-right.svg' className={styles['arrw-right']} width={40} height={40} alt="as" style={extraStyle} />
     </button> : null
   );
 };

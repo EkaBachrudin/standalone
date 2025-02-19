@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './SlideMenu.module.scss';
 import { MenuItem } from '@/domain/models/menuItem';
+import Image from 'next/image';
 
 interface SideMenuProps {
     isOpen: boolean;
@@ -30,7 +31,7 @@ const SlideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose, menuItems }) => {
               className={`${styles['side-menu']} ${isOpen ? styles.open : ''}`}
           >
               <div className="flex justify-between pt-4 px-4">
-                  <img src="/next.svg" className="w-20" alt="logo" />
+                  <Image src="/next.svg" width={40} height={40} className="w-20" alt="logo" />
 
                   <button onClick={onClose} className="">
                       CLOSE
@@ -45,7 +46,7 @@ const SlideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose, menuItems }) => {
                           <div>
                               {item.childs && (
                                 <button onClick={() => openChildMenu(index)}>
-                                    <img src={'/assets/icons/chevron-' + (item.isChildOpen ? 'up.svg' : 'down.svg')} alt="down"/>
+                                    <Image width={40} height={40} src={'/assets/icons/chevron-' + (item.isChildOpen ? 'up.svg' : 'down.svg')} alt="down"/>
                                 </button>
                               )}
                           </div>

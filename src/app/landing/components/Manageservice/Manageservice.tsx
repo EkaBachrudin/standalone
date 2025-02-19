@@ -4,6 +4,7 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { ManageServiceModel } from '@/domain/models/Manageservice';
+import Image from 'next/image';
 
 interface ManageservicePorps {
     manageServiceData?: ManageServiceModel;
@@ -74,7 +75,7 @@ const Manageservice: React.FC<ManageservicePorps> = ({manageServiceData}) => {
                     {manageServiceData?.top.map((item) => (
                         <div key={item.name} className={styles.topItem}>
                             <div>
-                                <img src={item.icon} alt={item.name} />
+                                <Image src={item.icon} width={40} height={40} alt={item.name} />
                             </div>
                             <div>{item.name}</div>
                         </div>

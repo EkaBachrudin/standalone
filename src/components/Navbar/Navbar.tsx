@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import "./styles.scss";
 import { MenuItem } from "@/domain/models/menuItem";
+import Image from "next/image";
 
 interface DropdownMenuProps {
   options: MenuItem;
@@ -31,7 +32,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ options }) => {
       <button className="link" onClick={toggleDropdown}>
         <span>{options.name}</span>
         {options.childs && (
-           <img src={'/assets/icons/chevron-' + (isOpen ? 'up.svg' : 'down.svg')} alt="down" />
+           <Image width={20} height={20} src={'/assets/icons/chevron-' + (isOpen ? 'up.svg' : 'down.svg')} alt="down" />
         )}
       </button>
         {options.childs && (

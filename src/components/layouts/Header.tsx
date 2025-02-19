@@ -5,6 +5,7 @@ import SlideMenu from './SideMenu/SlideMenu';
 import { MenuItem } from '@/domain/models/menuItem';
 import { menuRepository } from '@/data/repositories/menuRepository';
 import DropdownMenu from '../Navbar/Navbar';
+import Image from 'next/image';
 
 const Header: React.FC = () => {
 
@@ -42,7 +43,7 @@ const Header: React.FC = () => {
       <header className="header-container">
 
         <div className="header">
-          <img src='/next.svg' className="App-logo" alt="logo" />
+          <Image src='/next.svg' className="App-logo" width={40} height={40} alt="logo" />
           <div className='deksMenu'>
             {menuItems?.map((item, index) => (
               <div className='items' key={index}>
@@ -55,7 +56,7 @@ const Header: React.FC = () => {
           </div>
 
           <button onClick={toggleMenu} className='lg:hidden'>
-            <img src='/assets/icons/hamburger-dark.svg' className="hamburger" alt="hamd" />
+            <Image src='/assets/icons/hamburger-dark.svg' width={40} height={40} className="hamburger" alt="hamd" />
           </button>
         </div>
 

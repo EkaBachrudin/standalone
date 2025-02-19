@@ -1,3 +1,4 @@
+import type Slider from 'react-slick';
 import { NextArrow, PrevArrow } from '../customArrow';
 import CustomDot from '../CustomDot/CustomDot';
 
@@ -7,7 +8,7 @@ export const getSliderSettings = (
   datalength: number,
   setActiveSlide: (index: number) => void,
   setCurrentSlide: (index: number) => void,
-  sliderRef: React.RefObject<any>
+  sliderRef: React.RefObject<Slider | null>
 ) => ({
   dots: !isMobile,
   infinite: false,
