@@ -1,5 +1,6 @@
 export interface MenuItem {
     name: string;
+    url: string;
     childs?: ChildMenu[];
     isChildOpen?: boolean;
 }

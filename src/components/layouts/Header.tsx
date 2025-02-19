@@ -4,6 +4,7 @@ import './Header.scss';
 import SlideMenu from './SideMenu/SlideMenu';
 import { MenuItem } from '@/domain/models/menuItem';
 import { menuRepository } from '@/data/repositories/menuRepository';
+import DropdownMenu from '../Navbar/Navbar';
 
 const Header: React.FC = () => {
 
@@ -35,39 +36,33 @@ const Header: React.FC = () => {
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
-  
-  
-  function openChildMenu(index: number): void {
-    console.log(index)
-  }
 
   return (
-   <>
-    <header className="header-container">
-     <div className="header">
-      <img src='/next.svg' className="App-logo" alt="logo" />
-      <div className='deksMenu'>
-        { menuItems?.map( (item, index) => (
-         <div className='items' key={index}>
-          <div>{item.name}</div>
+    <>
+      <header className="header-container">
 
-          {item.childs && (
-            <button onClick={() => openChildMenu(index)}>
-                <img src={'/assets/icons/chevron-' + (item.isChildOpen ? 'up.svg' : 'down.svg')} alt="down"/>
-            </button>
-          )}
-                                
-         </div>
-        ))}
-      </div>
-      <button onClick={toggleMenu} className='lg:hidden'>
-        <img src='/assets/icons/hamburger-dark.svg' className="hamburger" alt="hamd" />
-      </button>
-     </div>
-    </header>
-    
-    <SlideMenu isOpen={isMenuOpen} onClose={closeMenu} menuItems={menuItems}/>
-   </>
+        <div className="header">
+          <img src='/next.svg' className="App-logo" alt="logo" />
+          <div className='deksMenu'>
+            {menuItems?.map((item, index) => (
+              <div className='items' key={index}>
+                <DropdownMenu
+                  options={item}
+                />
+
+              </div>
+            ))}
+          </div>
+
+          <button onClick={toggleMenu} className='lg:hidden'>
+            <img src='/assets/icons/hamburger-dark.svg' className="hamburger" alt="hamd" />
+          </button>
+        </div>
+
+      </header>
+
+      <SlideMenu isOpen={isMenuOpen} onClose={closeMenu} menuItems={menuItems} />
+    </>
   );
 };
 
