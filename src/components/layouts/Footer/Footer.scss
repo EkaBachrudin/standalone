@@ -13,14 +13,20 @@
         }
 
         .items{
-            @apply flex gap-6 mt-4;
+            @apply flex gap-6 sm:gap-8 mt-4;
         }
     }
 
     .section-menu{
-        @apply mt-6;
+        @apply mt-6 sm:hidden;
         .title{
-            @apply font-poppins-bold text-f-17 text-primary-darkBlue flex items-center justify-between;
+            @apply font-poppins-bold text-f-17 text-primary-darkBlue flex items-center justify-between my-3;
+        }
+
+        ul{
+            li{
+                @apply font-poppins-medium text-f-15 text-primary-darkBlue my-3;
+            }
         }
     }
 }
