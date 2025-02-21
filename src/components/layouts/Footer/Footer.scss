@@ -1,0 +1,26 @@
+.footer-wrapper{
+    @apply bg-primary-rzaGrey20 pt-11 px-6;
+
+    .section-app{
+        .title{
+            @apply font-poppins-bold text-f-17 text-primary-darkBlue;
+        }
+    }
+
+    .section-social{
+        .title{
+            @apply font-poppins-bold text-f-17 text-primary-darkBlue;
+        }
+
+        .items{
+            @apply flex gap-6 mt-4;
+        }
+    }
+
+    .section-menu{
+        @apply mt-6;
+        .title{
+            @apply font-poppins-bold text-f-17 text-primary-darkBlue flex items-center justify-between;
+        }
+    }
+}
