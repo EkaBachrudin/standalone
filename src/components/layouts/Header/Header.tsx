@@ -43,7 +43,7 @@ const Header: React.FC = () => {
       <header className="header-container">
 
         <div className="header">
-          <Image src='/next.svg' className="App-logo" width={40} height={40} alt="logo" />
+          <Image src='/logoipsum.svg' className="App-logo" width={40} height={40} alt="logo" />
           <div className='deksMenu'>
             {menuItems?.map((item, index) => (
               <div className='items' key={index}>
