@@ -7,7 +7,7 @@ import HeroBanner from './components/HeroBanner/HeroBanner';
 import Category from './components/Category/Category';
 import Manageservice from './components/Manageservice/Manageservice';
 import ProductList from './components/ProductList/ProductList';
-import styles from './Landing.module.scss'
+import './landing.scss';
 import { HeroBannerModel } from '@/domain/models/heroBanner';
 import { CategoryModel } from '@/domain/models/category';
 import { ManageServiceModel } from '@/domain/models/Manageservice';
@@ -70,9 +70,11 @@ const Landing: React.FC = () => {
 
   return (
     <>
-      <div className={styles.landingContainer}>
+      <div className='landing-container'>
         <HeroBanner bannerDataProps={bannerData} />
-        <Category categoryData={categoryData} />
+        <section className='section-category'>
+          <Category categoryData={categoryData} />
+        </section>
         <Manageservice manageServiceData={manageService} />
         <ProductList productListData={productList} />
       </div>

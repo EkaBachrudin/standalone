@@ -4,7 +4,7 @@ import './Header.scss';
 import SlideMenu from '../SideMenu/SlideMenu';
 import { MenuItem } from '@/domain/models/menuItem';
 import { menuRepository } from '@/data/repositories/menuRepository';
-import DropdownMenu from '../../Navbar/Navbar';
+import DropdownMenu from '../Navbar/Navbar';
 import Image from 'next/image';
 
 const Header: React.FC = () => {

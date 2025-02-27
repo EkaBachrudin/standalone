@@ -1,0 +1,22 @@
+.breadcrumbList {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumbItem + .breadcrumbItem::before {
+    content: '/';
+    margin: 0 8px;
+}
+
+.breadcrumbItem a {
+    @apply font-poppins-regular text-f-12;
+    text-decoration: none;
+}
+
+.active {
+    @apply font-poppins-regular text-f-12;
+    font-weight: bold;
+    color: black;
+}

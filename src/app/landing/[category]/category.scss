@@ -1,0 +1,13 @@
+.category-page-container{
+    @apply mx-auto max-w-[1440px];
+
+    .breadcrumb{
+        @apply p-6;
+    }
+
+    .section-title{
+        @apply text-f-24 font-poppins-bold text-center;
+    }
+
+    .section-category{}
+}

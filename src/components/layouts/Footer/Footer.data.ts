@@ -3,12 +3,12 @@ import { FooterMenu, SocialContent } from "./Footer.type";
 export const socialStaticContent: SocialContent = {
     title: 'Keep in touch with us',
     items: [
-        {imageUrl: 'assets/icons/Facebook.svg', url: '#'},
-        {imageUrl: 'assets/icons/Twitter.svg', url: '#'},
-        {imageUrl: 'assets/icons/Youtube.svg', url: '#'},
-        {imageUrl: 'assets/icons/Telegram.svg', url: '#'},
-        {imageUrl: 'assets/icons/LinkedIn.svg', url: '#'},
-        {imageUrl: 'assets/icons/Telegram.svg', url: '#'}
+        {imageUrl: '/assets/icons/Facebook.svg', url: '#'},
+        {imageUrl: '/assets/icons/Twitter.svg', url: '#'},
+        {imageUrl: '/assets/icons/Youtube.svg', url: '#'},
+        {imageUrl: '/assets/icons/Telegram.svg', url: '#'},
+        {imageUrl: '/assets/icons/LinkedIn.svg', url: '#'},
+        {imageUrl: '/assets/icons/Telegram.svg', url: '#'}
     ]
 }
 

@@ -45,16 +45,16 @@ const FooterComponent = () => {
                       <div>
                           <div className="title">Gain more with MyTelkomsel App</div>
                           <div className='lg:flex lg:gap-12 lg:items-start'>
-                              <Image src="logoipsumnoword.svg" width={70} height={70} alt="tselapp" className='mt-4' />
+                              <Image src="/logoipsumnoword.svg" width={70} height={70} alt="tselapp" className='mt-4' />
                               <div>
                                   <div className='flex gap-2 mt-4'>
-                                      <Image src="assets/images/download-playstore.svg" width={144} height={40} alt="Google Play" />
-                                      <Image src="assets/images/download-playstore.svg" width={144} height={40} alt="Google Play" />
+                                      <Image src="/assets/images/download-playstore.svg" width={144} height={40} alt="Google Play" />
+                                      <Image src="/assets/images/download-playstore.svg" width={144} height={40} alt="Google Play" />
                                   </div>
 
                                   <div className='flex gap-2 mt-4'>
-                                      <Image src="assets/images/download-playstore.svg" width={144} height={40} alt="Google Play" />
-                                      <Image src="assets/images/download-playstore.svg" width={144} height={40} alt="Google Play" />
+                                      <Image src="/assets/images/download-playstore.svg" width={144} height={40} alt="Google Play" />
+                                      <Image src="/assets/images/download-playstore.svg" width={144} height={40} alt="Google Play" />
                                   </div>
                               </div>
                           </div>
