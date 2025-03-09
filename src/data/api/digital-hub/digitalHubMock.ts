@@ -1,5 +1,6 @@
 import { DigitalHubRepositoryInterface } from "@/domain/interfaces/digHubInterface";
 import { CategoryModel } from "@/domain/models/category";
+import { GetTrandingCategoryModel } from "@/domain/models/getTrandingCategory";
 import { HeroBannerModel } from "@/domain/models/heroBanner";
 import { ManageServiceModel } from "@/domain/models/Manageservice";
 import { ProductListModel } from "@/domain/models/productList";
@@ -144,6 +145,53 @@ const productDetailData: ProductListModel = {
     ]
 }
 
+const trandingCategoryMock: GetTrandingCategoryModel = {
+    title: 'Kumpulan Film yang lagi Trending!',
+    desc: 'Yuk berlangganan dengan Telkomsel dan jangan lewatkan film-film trending berikut',
+    productList: [
+        {
+            imageUrl: 'https://picsum.photos/1280/720',
+            title: 'Pertaruhan',
+            desc: 'Tayang di Vidio'
+        },
+        {
+            imageUrl: 'https://picsum.photos/1280/721',
+            title: 'Upon Entry',
+            desc: 'Tayang di Klik Film'
+        },
+        {
+            imageUrl: 'https://picsum.photos/1280/722',
+            title: 'Believer',
+            desc: 'Tayang di Netflix'
+        },
+        {
+            imageUrl: 'https://picsum.photos/1280/723',
+            title: 'Wedding Aggreement 2',
+            desc: 'Tayang di Disney+ Hotstar'
+        },
+        {
+            imageUrl: 'https://picsum.photos/1280/720',
+            title: 'Pertaruhan',
+            desc: 'Tayang di Vidio'
+        },
+        {
+            imageUrl: 'https://picsum.photos/1280/721',
+            title: 'Upon Entry',
+            desc: 'Tayang di Klik Film'
+        },
+        {
+            imageUrl: 'https://picsum.photos/1280/722',
+            title: 'Believer',
+            desc: 'Tayang di Netflix'
+        },
+        {
+            imageUrl: 'https://picsum.photos/1280/723',
+            title: 'Wedding Aggreement 2',
+            desc: 'Tayang di Disney+ Hotstar'
+        }
+    ]
+}
+
 export class HeroBannerMock implements DigitalHubRepositoryInterface {
     async getCategory(): Promise<CategoryModel[]> {
         return categoryData;
@@ -156,5 +204,8 @@ export class HeroBannerMock implements DigitalHubRepositoryInterface {
     }
     async getProductList(): Promise<ProductListModel> {
         return productDetailData;
+    }
+    async GetTrandingCategory(): Promise<GetTrandingCategoryModel> {
+        return trandingCategoryMock;
     }
 }
