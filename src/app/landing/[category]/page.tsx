@@ -9,6 +9,7 @@ import { digitalHubRepository } from '@/data/repositories/DigitalHubRepository';
 import { GetTrandingCategoryModel } from '@/domain/models/getTrandingCategory';
 import Breadcrumb from '@/components/lib/breadcrumb/breadcrumb';
 import CategoryComponent from '@/app/landing/components/Category/Category';
+import CategoryTranding from './components/category-tranding';
 
  
 export default function Category({
@@ -65,6 +66,8 @@ export default function Category({
     
           <section className='section-category'>
             <CategoryComponent categoryData={categoryData} />
+
+            <CategoryTranding trandingList={categoryTrandingData}></CategoryTranding>
           </section>
         </div>
       );

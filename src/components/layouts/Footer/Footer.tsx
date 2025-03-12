@@ -8,25 +8,26 @@ import Image from 'next/image';
 
 const FooterComponent = () => {
   const [footerData, setfooterData] = useState(footerStaticData);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(0);
   const socialData: SocialContent = socialStaticContent;
 
   useEffect(() => {
     setfooterData(footerData);
 
-    const handleResize = () => {
-        setWindowWidth(window.innerWidth);
-    };
-  
-    window.addEventListener('resize', handleResize);
-    handleResize();
-
-    return () => {
-        window.removeEventListener('resize', handleResize);
-
-        setfooterData(footerData);
-    };
-
+    if (typeof window !== 'undefined') {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+      
+        window.addEventListener('resize', handleResize);
+        handleResize();
+    
+        return () => {
+            window.removeEventListener('resize', handleResize);
+    
+            setfooterData(footerData);
+        };
+    }
   }, [footerData]);
 
   const openMobileDropdown = (index: number) => {
