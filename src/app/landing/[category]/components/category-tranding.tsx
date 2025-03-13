@@ -3,8 +3,8 @@ import './category-tranding.scss'
 import useIsMobile from "@/hook/useIsMobile";
 import { useState, useRef } from "react";
 import Slider from "react-slick";
-import { getSliderProductListSettings } from "../../components/ProductList/ProductListConfig";
 import { GetTrandingCategoryModel } from "@/domain/models/getTrandingCategory";
+import { TrandingSliderConfig } from './tranding.config';
 
 interface TrandingListProps {
     trandingList?: GetTrandingCategoryModel;
@@ -18,7 +18,7 @@ const CategoryTranding: React.FC<TrandingListProps> = ({trandingList}) => {
 
     const datalength: number | undefined = trandingList?.productList?.length ? trandingList?.productList?.length : 0;
 
-    const settings = getSliderProductListSettings(isMobile, currentSlide, datalength, setActiveSlide, setCurrentSlide, sliderRef);
+    const settings = TrandingSliderConfig(isMobile, currentSlide, datalength, setActiveSlide, setCurrentSlide, sliderRef);
 
     if (!trandingList || !trandingList.productList.length) {
         return <div>Loading...</div>;
@@ -38,7 +38,7 @@ const CategoryTranding: React.FC<TrandingListProps> = ({trandingList}) => {
             <div className='category-tranding-Item'>
                 <Slider {...settings}>
                     {trandingList?.productList.map((item) => (
-                        <div key={item.title} className='item' >
+                        <div key={item.title} className='item'>
                             <div className='containImage' style={{ backgroundImage: `url(${item.imageUrl})`, backgroundSize: "cover" }}></div>
                             <div className='content'>
                                 <div className='contentTitle'>{item.title}</div>
