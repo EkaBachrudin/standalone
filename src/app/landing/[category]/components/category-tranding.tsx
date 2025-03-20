@@ -27,15 +27,17 @@ const CategoryTranding: React.FC<TrandingListProps> = ({trandingList}) => {
     return (
         <>
         <div className='category-tranding-Container' style={{backgroundImage: `url('/assets/images/bg-tranding.svg')`}}>
+           <div className={`responsive-title ${currentSlide !== 0 ? 'blur-effect' : ''}`}>
             <div className='category-tranding-ContainerTop'>
-                <div className='category-tranding-ContainerTopTitle'>{trandingList?.title}</div>
-            </div>
+                    <div className='category-tranding-ContainerTopTitle'>{trandingList?.title}</div>
+                </div>
 
-            <div className='category-tranding-ContainerDesc'>
-                {trandingList?.desc}
-            </div>
+                <div className='category-tranding-ContainerDesc'>
+                    {trandingList?.desc}
+                </div>
+           </div>
 
-            <div className='category-tranding-Item'>
+            <div className={`category-tranding-Item ${currentSlide === 0 ? 'scroll-behav1' : 'scroll-behav2'}`}>
                 <Slider {...settings}>
                     {trandingList?.productList.map((item) => (
                         <div key={item.title} className='item'>

@@ -1,28 +1,43 @@
 .category-tranding-Container{
-      @apply py-6 mt-6 bg-cover;
-  
-      .category-tranding-ContainerTop{
-          @apply flex justify-between items-center flex-wrap px-6;
-          @screen lg {@apply px-[100px]}
-  
-          .category-tranding-ContainerTopTitle{
-              @apply text-f-24 text-primary-darkBlue font-poppins-bold;
-          }
-  
-          .category-tranding-ContainerTopSeeAll{
-              @apply text-f-14 font-poppins-bold text-primary-darkBlue cursor-pointer;
-          }
+      @apply py-6 mt-6 bg-cover relative;
+
+
+      .blur-effect {
+        @screen lg{filter: blur(5px);}
+        
       }
-  
-      .category-tranding-ContainerDesc{
-          @apply text-f-14 font-poppins-regular text-primary-darkBlue text-left mt-1 px-6;
-          @screen lg {@apply px-[100px] w-full}
-              
+
+      .responsive-title{
+        @screen lg{
+            height: 100%;
+            position: absolute;
+            max-width: 440px;
+            top: 25%;
+            transition: filter 0.5s ease;
+        }
+        .category-tranding-ContainerTop{
+            @apply flex justify-between items-center flex-wrap px-6;
+            @screen lg {@apply px-[100px]}
+    
+            .category-tranding-ContainerTopTitle{
+                @apply text-f-24 text-primary-darkBlue font-poppins-bold;
+            }
+    
+            .category-tranding-ContainerTopSeeAll{
+                @apply text-f-14 font-poppins-bold text-primary-darkBlue cursor-pointer;
+            }
+        }
+    
+        .category-tranding-ContainerDesc{
+            @apply text-f-14 font-poppins-regular text-primary-darkBlue text-left mt-1 px-6;
+            @screen lg {@apply px-[100px] w-full}
+                
+        }
       }
   
       .category-tranding-Item{
           @apply mt-4;
-          @screen lg {@apply px-[75px] mt-6}
+          @screen lg {@apply px-[75px] mt-6};
           .item{
               @apply pl-6;
               .containImage{
@@ -42,4 +57,27 @@
               }
           }
       }
+
+      .scroll-behav1{
+        .slick-list{
+            @apply pl-0;
+            transition: padding 0.5s ease;
+            @screen lg{
+                @apply pl-[300px];
+            }
+         } 
+      }
+
+      .scroll-behav2{
+        .slick-list{
+            @apply pl-0;
+            transition: padding 0.5s ease;
+            @screen lg{
+                @apply pl-0;
+            }
+         } 
+      }
+
+     
   }
+  

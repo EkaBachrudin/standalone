@@ -13,7 +13,7 @@ export const TrandingSliderConfig = (
   dots: false,
   infinite: false,
   speed: 300,
-  slidesToShow: 1,
+  slidesToShow: 5,
   slidesToScroll: 1,
   variableWidth: false,
   arrows: !isMobile,
