@@ -2,6 +2,21 @@ import Slider from 'react-slick';
 import { NextArrow, PrevArrow } from '../../components/customArrow';
 import CustomDot from '../../components/CustomDot/CustomDot';
 
+let setSlidesToShow: number = 5;
+const responsive = [
+  { breakpoint: 400, settings: { slidesToShow: 1.4 } },
+  { breakpoint: 500, settings: { slidesToShow: 1.7 } },
+  { breakpoint: 600, settings: { slidesToShow: 2.2 } },
+  { breakpoint: 700, settings: { slidesToShow: 2.3 } },
+  { breakpoint: 800, settings: { slidesToShow: 2.6 } },
+  { breakpoint: 900, settings: { slidesToShow: 3.1 } },
+  { breakpoint: 1100, settings: { slidesToShow: 3.4 } },
+  { breakpoint: 1200, settings: { slidesToShow: 3.7 } },
+  { breakpoint: 1300, settings: { slidesToShow: 3.9 } },
+  { breakpoint: 1400, settings: { slidesToShow: 4.4 } },
+  { breakpoint: 1500, settings: { slidesToShow: 4.7 } },
+];
+
 export const TrandingSliderConfig = (
   isMobile: boolean,
   currentSlide: number,
@@ -13,93 +28,15 @@ export const TrandingSliderConfig = (
   dots: false,
   infinite: false,
   speed: 300,
-  slidesToShow: 5,
+  slidesToShow: setSlidesToShow,
   slidesToScroll: 1,
   variableWidth: false,
   arrows: !isMobile,
-  responsive: [
-    {
-      breakpoint: 400,
-      settings: {
-        slidesToShow: 1.4,
-        slidesToScroll: 1
-      }
-    },
-    {
-      breakpoint: 500,
-      settings: {
-        slidesToShow: 1.7,
-        slidesToScroll: 1
-      }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2.2,
-        slidesToScroll: 1
-      }
-    },
-    {
-      breakpoint: 700,
-      settings: {
-        slidesToShow: 2.3,
-        slidesToScroll: 1
-      }
-    },
-    {
-      breakpoint: 800,
-      settings: {
-        slidesToShow: 2.6,
-        slidesToScroll: 1
-      }
-    },
-    {
-      breakpoint: 900,
-      settings: {
-        slidesToShow: 3.1,
-        slidesToScroll: 1
-      }
-    },
-    {
-      breakpoint: 1100,
-      settings: {
-        slidesToShow: 3.4,
-        slidesToScroll: 1
-      }
-    },
-    {
-      breakpoint: 1200,
-      settings: {
-        slidesToShow: 3.7,
-        slidesToScroll: 1
-      }
-    },
-    {
-      breakpoint: 1300,
-      settings: {
-        slidesToShow: 3.9,
-        slidesToScroll: 1
-      }
-    },
-    {
-      breakpoint: 1400,
-      settings: {
-        slidesToShow: 4.4,
-        slidesToScroll: 1
-      }
-    },
-    {
-      breakpoint: 1500,
-      settings: {
-        slidesToShow: 4.7,
-        slidesToScroll: 1
-      }
-    }
-  ],
+  responsive: responsive,
   nextArrow: (
     <NextArrow
       onClick={() => sliderRef.current?.slickNext()}
-      isVisible={currentSlide < (datalength ? datalength - 5 : 0)}
+      isVisible={currentSlide < (datalength ? datalength - setSlidesToShow : 0)}
       extraStyle={{ position: "absolute", right: "0", top: "50%" }}
     />
   ),
@@ -111,7 +48,10 @@ export const TrandingSliderConfig = (
     />
   ),
   beforeChange: (_: number, next: number) => setActiveSlide(next),
-  afterChange: (current: number) => setCurrentSlide(current),
+  afterChange: (current: number) => {
+    setCurrentSlide(current);
+    updateSlidesToShow();
+  },
   customPaging: (i: number) => (
     <CustomDot isActive={i === currentSlide} onClick={() => setActiveSlide(i)} />
   ),
@@ -119,3 +59,14 @@ export const TrandingSliderConfig = (
     <div style={{ display: "flex", justifyContent: "left" }}>{dots}</div>
   ),
 });
+
+const updateSlidesToShow = () => {
+  const screenWidth = window.innerWidth;
+
+  const activeBreakpoint = responsive
+    .find((bp) => screenWidth < bp.breakpoint);
+
+    if (activeBreakpoint) {
+      setSlidesToShow = activeBreakpoint.settings.slidesToShow;
+    }
+};
