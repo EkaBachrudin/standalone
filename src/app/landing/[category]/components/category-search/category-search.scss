@@ -1,0 +1,12 @@
+.search-feat{
+    @apply relative;
+    label{@apply block text-f-14 font-poppins-medium}
+
+    input{
+        @apply border border-primary-rzaGrey40 rounded-lg w-full h-10 pl-10 mt-[10px];
+    }
+
+    img{
+        @apply absolute bottom-2 left-[10px];
+    }
+}

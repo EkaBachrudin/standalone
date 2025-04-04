@@ -10,4 +10,33 @@
     }
 
     .section-category{}
+
+    .section-filter{
+        .filter-category{
+            @apply px-6;
+            .mobile-filter{
+               button{
+                @apply flex w-full py-3 px-4 mt-4 items-center gap-1 border border-secondary-rzaLightGrey rounded-lg font-poppins-regular text-f-14;
+               }
+
+               .counting-product {
+                @apply text-f-12 font-poppins-regular text-secondary-rzaCoolGrey mt-4;
+               }
+            }
+
+
+        }
+    }
+
+    .mobile-filter-bottomsheet{
+        @apply p-7;
+        .head{
+            @apply flex justify-between items-center text-f-19 font-poppins-bold text-primary-darkBlue;
+        }
+
+        .content{
+            @apply mt-4;
+            
+        }
+    }
 }

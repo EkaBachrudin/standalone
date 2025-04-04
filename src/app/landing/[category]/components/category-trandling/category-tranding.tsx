@@ -6,6 +6,7 @@ import Slider from "react-slick";
 import { GetTrandingCategoryModel } from "@/domain/models/getTrandingCategory";
 import { TrandingSliderConfig } from './tranding.config';
 
+
 interface TrandingListProps {
     trandingList?: GetTrandingCategoryModel;
 }
