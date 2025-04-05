@@ -1,15 +1,10 @@
 import { DigitalHubRepositoryInterface } from "@/domain/interfaces/digHubInterface";
 import { CategoryModel } from "@/domain/models/category";
+import { GetMerchantDataModel } from "@/domain/models/getMerchant.model";
 import { GetTrandingCategoryModel } from "@/domain/models/getTrandingCategory";
 import { HeroBannerModel } from "@/domain/models/heroBanner";
 import { ManageServiceModel } from "@/domain/models/Manageservice";
 import { ProductListModel } from "@/domain/models/productList";
-
-// import MoveIcon  from '/assets/icons/move.svg';
-// import ChatIcon  from '/assets/icons/chat.svg';
-// import GamesIcon from '/assets/icons/games.svg';
-// import MusicIcon from '/assets/icons/music.svg';
-
 
 const heroBannerData: HeroBannerModel = {
     title: 'Telkomsel Digital Hub',
@@ -192,6 +187,16 @@ const trandingCategoryMock: GetTrandingCategoryModel = {
     ]
 }
 
+const getMerchantDataMock: GetMerchantDataModel[] = [
+    { "id": "maxstream", "name": "MAXStream" },
+    { "id": "vidio", "name": "Vidio" },
+    { "id": "netflix", "name": "Netflix" },
+    { "id": "disney_hotstar", "name": "Disney+ Hotstar" },
+    { "id": "prime_video", "name": "Prime Video" },
+    { "id": "prabayar", "name": "Prabayar" },
+    { "id": "halo", "name": "Halo" }
+  ]
+
 export class HeroBannerMock implements DigitalHubRepositoryInterface {
     async getCategory(): Promise<CategoryModel[]> {
         return categoryData;
@@ -207,5 +212,9 @@ export class HeroBannerMock implements DigitalHubRepositoryInterface {
     }
     async GetTrandingCategory(): Promise<GetTrandingCategoryModel> {
         return trandingCategoryMock;
+    }
+
+    async GetMerchant(): Promise<GetMerchantDataModel[]> {
+        return getMerchantDataMock;
     }
 }

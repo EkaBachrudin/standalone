@@ -12,6 +12,7 @@ import CategoryComponent from '@/app/landing/components/Category/Category';
 import CategoryTranding from './components/category-trandling/category-tranding';
 import BottomSheet from '@/components/lib/bottomsheet/BottomSheet';
 import CategorySearch from './components/category-search/category-search';
+import { GetMerchantDataModel } from '@/domain/models/getMerchant.model';
 
  
 export default function Category({
@@ -26,6 +27,7 @@ export default function Category({
 
   const [categoryData, setCategoryData] = useState<CategoryModel[]>([]);
   const [categoryTrandingData, setCategoryTrandingData] = useState<GetTrandingCategoryModel>();
+  const [getMerchant, setGetmerchant] = useState<GetMerchantDataModel[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -33,7 +35,8 @@ export default function Category({
   useEffect(() => {
       fetchCategory();
       fetchCategoryTranding();
-  }, [category, categoryData, categoryTrandingData]);
+      featchMerchant();
+  }, [category, categoryData, categoryTrandingData, getMerchant]);
 
   const fetchCategory = async () => {
     try {
@@ -44,9 +47,18 @@ export default function Category({
     }
   };
 
+  const featchMerchant = async () => {
+    try {
+      const items = await digitalHubRepository.GetMerchant();
+      setGetmerchant(items);
+    } catch {
+
+    }
+  }
+
   const fetchCategoryTranding = async () => {
     try {
-      const items = await digitalHubRepository.GetTrandingCategory();
+      const items = await digitalHubRepository.GetTrandingCategory(category);
       setCategoryTrandingData(items);
     } catch {
       setError("Failed to hero banner data");

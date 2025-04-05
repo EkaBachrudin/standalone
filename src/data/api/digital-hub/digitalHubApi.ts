@@ -1,12 +1,13 @@
 import { DigitalHubRepositoryInterface } from "@/domain/interfaces/digHubInterface";
 import { CategoryModel } from "@/domain/models/category";
+import { GetMerchantDataModel } from "@/domain/models/getMerchant.model";
+import { GetTrandingCategoryModel } from "@/domain/models/getTrandingCategory";
 import { HeroBannerModel } from "@/domain/models/heroBanner";
 import { ManageServiceModel } from "@/domain/models/Manageservice";
 import { ProductListModel } from "@/domain/models/productList";
 
 
 export class HeroBannerApi implements DigitalHubRepositoryInterface {
-
     async getHeroBanner(): Promise<HeroBannerModel> {
         const response = await fetch('https://api.example.com/getHeroBanner');
         
@@ -42,6 +43,28 @@ export class HeroBannerApi implements DigitalHubRepositoryInterface {
 
     async getProductList(): Promise<ProductListModel> {
         const response = await fetch('https://api.example.com/productList');
+        
+        if (!response.ok) {
+            throw new Error("Failed to fetch product list");
+        }
+
+        const data = await response.json();
+        return data;
+    }
+
+    async GetTrandingCategory(param: string): Promise<GetTrandingCategoryModel> {
+        const response = await fetch(`https://api.example.com/category/tranding/${param}`);
+        
+        if (!response.ok) {
+            throw new Error("Failed to fetch product list");
+        }
+
+        const data = await response.json();
+        return data;
+    }
+
+    async GetMerchant(): Promise<GetMerchantDataModel[]> {
+        const response = await fetch(`https://api.example.com/v1/merchant`);
         
         if (!response.ok) {
             throw new Error("Failed to fetch product list");
