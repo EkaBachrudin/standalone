@@ -40,7 +40,8 @@ const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, children }) 
           position: relative;
           width: 100%;
           max-width: 500px;
-          height: 300px;
+          min-height: 300px;
+          max-height: 80vh;
           background-color: white;
           border-top-left-radius: 20px;
           border-top-right-radius: 20px;

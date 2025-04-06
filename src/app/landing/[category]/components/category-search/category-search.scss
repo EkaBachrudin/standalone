@@ -10,3 +10,14 @@
         @apply absolute bottom-2 left-[10px];
     }
 }
+
+.checkbox-filter{
+    @apply mt-[10px];
+    .group{
+        @apply flex items-center py-[10px];
+
+        .label{
+            @apply ml-2;
+        }
+    }
+}

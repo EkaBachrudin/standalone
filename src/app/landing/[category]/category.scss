@@ -35,8 +35,21 @@
         }
 
         .content{
-            @apply mt-4;
-            
+            @apply mt-4 overflow-y-scroll max-h-[80vh];
+        }
+
+         /* For Chrome, Safari, and Edge */
+        .content {
+            overflow-y: auto;
+        }
+        
+        .content::-webkit-scrollbar {
+            display: none; /* This will hide the scrollbar in WebKit browsers */
+        }
+        
+        /* For Firefox */
+        .content {
+            scrollbar-width: none; /* This will hide the scrollbar in Firefox */
         }
     }
 }

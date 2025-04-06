@@ -27,7 +27,6 @@ export default function Category({
 
   const [categoryData, setCategoryData] = useState<CategoryModel[]>([]);
   const [categoryTrandingData, setCategoryTrandingData] = useState<GetTrandingCategoryModel>();
-  const [getMerchant, setGetmerchant] = useState<GetMerchantDataModel[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -35,8 +34,7 @@ export default function Category({
   useEffect(() => {
       fetchCategory();
       fetchCategoryTranding();
-      featchMerchant();
-  }, [category, categoryData, categoryTrandingData, getMerchant]);
+  }, [category, categoryData, categoryTrandingData]);
 
   const fetchCategory = async () => {
     try {
@@ -46,15 +44,6 @@ export default function Category({
       setError("Failed to fetch category data");
     }
   };
-
-  const featchMerchant = async () => {
-    try {
-      const items = await digitalHubRepository.GetMerchant();
-      setGetmerchant(items);
-    } catch {
-
-    }
-  }
 
   const fetchCategoryTranding = async () => {
     try {
