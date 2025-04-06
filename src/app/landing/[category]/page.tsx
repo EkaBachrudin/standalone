@@ -12,7 +12,6 @@ import CategoryComponent from '@/app/landing/components/Category/Category';
 import CategoryTranding from './components/category-trandling/category-tranding';
 import BottomSheet from '@/components/lib/bottomsheet/BottomSheet';
 import CategorySearch from './components/category-search/category-search';
-import { GetMerchantDataModel } from '@/domain/models/getMerchant.model';
 
  
 export default function Category({
