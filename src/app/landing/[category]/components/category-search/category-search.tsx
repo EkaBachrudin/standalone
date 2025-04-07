@@ -4,6 +4,7 @@ import CustomCheckbox from "@/components/lib/checkbox/checkbox";
 import { GetMerchantDataModel, CheckedState } from "@/domain/models/getMerchant.model";
 import { digitalHubRepository } from "@/data/repositories/DigitalHubRepository";
 import useCurrencyInput from "@/hook/useCurrencyInput";
+import RadioButton from "@/components/lib/radiobutton/RadioButton";
 
 const CategorySearch = () => {
     const { values, handleChange } = useCurrencyInput({
@@ -16,6 +17,7 @@ const CategorySearch = () => {
     const [getMerchant, setGetmerchant] = useState<GetMerchantDataModel[]>([]);
     const [checkedState, setCheckedState] = useState<CheckedState>({});
     const [getChakedId, setGetChakedId] = useState<string[]>([]);
+    const [selectedOrdering, setSelectedOrdering] = useState('option2');
     
     useEffect(() => {
           featchMerchant();
@@ -64,6 +66,15 @@ const CategorySearch = () => {
         setGetChakedId(collection);
     }
 
+    const clearPriceFilter = () => {
+        handleChange('price1', '');
+        handleChange('price2', '');
+    }
+
+    const handleRadioChange = (value: string) => {
+        setSelectedOrdering(value);
+    };
+
     return(
         <>
             <div className="search-feat">
@@ -91,7 +102,7 @@ const CategorySearch = () => {
             <div className="price-filter">
                 <div className="price-filter-head">
                     <div className="title"> Harga </div>
-                    <button className="clear"> Hapus </button>
+                    <button className="clear" onClick={clearPriceFilter}> Hapus </button>
                 </div>
 
                 <div className="input-group-price">
@@ -115,6 +126,33 @@ const CategorySearch = () => {
                         placeholder="RP | Harga"
                         onChange={e => handleChange('price2', e.target.value)}
                         autoComplete="off"
+                    />
+                </div>
+            </div>
+
+            <div className="ordering-filter">
+                <div className="ordering-filter-title">
+                    Urutan
+                </div>
+            
+                <div className="ordering-filter-radio">
+                    <RadioButton
+                        label="Option 1"
+                        name="exampleGroup"
+                        checked={selectedOrdering === 'option1'}
+                        onChange={() => handleRadioChange('option1')}
+                    />
+                    <RadioButton
+                        label="Option 2"
+                        name="exampleGroup"
+                        checked={selectedOrdering === 'option2'}
+                        onChange={() => handleRadioChange('option2')}
+                    />
+                    <RadioButton
+                        label="Option 3"
+                        name="exampleGroup"
+                        checked={selectedOrdering === 'option3'}
+                        onChange={() => handleRadioChange('option3')}
                     />
                 </div>
             </div>

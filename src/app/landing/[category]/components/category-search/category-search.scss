@@ -45,3 +45,12 @@
         }
     }
 }
+
+.ordering-filter{
+    .ordering-filter-title{
+        @apply text-f-16 font-poppins-medium font-black mt-6;
+    }
+   .ordering-filter-radio{
+    @apply mt-4;
+   } 
+}

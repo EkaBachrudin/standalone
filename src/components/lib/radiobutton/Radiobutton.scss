@@ -1,0 +1,57 @@
+.custom-radiobutton {
+    @apply flex items-center;
+    position: relative;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    user-select: none;
+
+    .label{
+      @apply text-f-14 font-poppins-medium ml-2;
+    }
+  }
+  
+  /* Hide the browser's default radio button */
+  .custom-radiobutton input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom checkmark/indicator */
+  .checkmark {
+    height: 24px;
+    width: 24px;
+    background-color: #eee;
+    border-radius: 50%;
+    border: 2px solid black;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .custom-radiobutton input:checked ~ .checkmark {
+    background-color: #ffffff;
+    border: 2px solid #0050AE;
+  }
+  
+  /* Create the checkmark/indicator (the dot inside the circle) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the dot only when checked */
+  .custom-radiobutton input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the dot/indicator */
+  .custom-radiobutton .checkmark:after {
+    top: 4px;
+    left: 4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #0050AE;
+  }
+  
