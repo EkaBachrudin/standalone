@@ -1,4 +1,5 @@
 import { CategoryModel } from "../models/category";
+import { GetCategoryProductListModel } from "../models/getCategoryProductList";
 import { GetMerchantDataModel } from "../models/getMerchant.model";
 import { GetTrandingCategoryModel } from "../models/getTrandingCategory";
 import { HeroBannerModel } from "../models/heroBanner";
@@ -13,4 +14,5 @@ export interface DigitalHubRepositoryInterface {
     getProductList(): Promise<ProductListModel>;
     GetTrandingCategory(param: string): Promise<GetTrandingCategoryModel>;
     GetMerchant(): Promise<GetMerchantDataModel[]>;
+    GetCategoryProductList() : Promise<GetCategoryProductListModel[]>
 }
