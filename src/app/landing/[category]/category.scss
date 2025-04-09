@@ -15,6 +15,7 @@
         .filter-category{
             @apply px-6;
             .mobile-filter{
+               @apply lg:hidden;
                button{
                 @apply flex w-full py-3 px-4 mt-4 items-center gap-1 border border-secondary-rzaLightGrey rounded-lg font-poppins-regular text-f-14;
                }
@@ -24,18 +25,22 @@
                }
             }
 
+            .dekstop-filter{
+                @apply hidden lg:block;
+            }
+
 
         }
     }
 
     .mobile-filter-bottomsheet{
-        @apply p-7;
+        @apply p-7 lg:hidden;
         .head{
             @apply flex justify-between items-center text-f-19 font-poppins-bold text-primary-darkBlue;
         }
 
         .content{
-            @apply mt-4 overflow-y-scroll max-h-[80vh] pb-[100px];
+            @apply mt-4 overflow-y-scroll max-h-[80vh] pb-[200px];
         }
 
          /* For Chrome, Safari, and Edge */

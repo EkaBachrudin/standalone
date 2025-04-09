@@ -31,3 +31,7 @@ const useCurrencyInput = (initialValues: CurrencyInputState) => {
 };
 
 export default useCurrencyInput;
+
+export const cleanCurrency = (value: string): string => {
+    return value.replace(/Rp|\s|\,/g, '').replace(/\./g, '').replace(/\,/g, '');
+};

@@ -1,56 +1,71 @@
-.search-feat{
-    @apply relative;
-    label{@apply block text-f-14 font-poppins-medium font-black}
-
-    input{
-        @apply border border-primary-rzaGrey40 rounded-lg w-full h-10 pl-10 mt-[10px];
-    }
-
-    img{
-        @apply absolute bottom-2 left-[10px];
-    }
-}
-
-.checkbox-filter{
-    @apply mt-[10px];
-    .group{
-        @apply flex items-center py-[10px];
-
-        .label{
-            @apply ml-2;
-        }
-    }
-}
-
-.price-filter{
-    @apply mt-5;
-    .price-filter-head{
-        @apply flex justify-between items-center;
-
-        .title{
-            @apply text-f-14 font-poppins-medium font-black;
-        }
-
-        .clear{
-            @apply text-f-14 font-poppins-regular text-secondary-rzaOtherLightBlue;
-        }
-    }
-
-    .input-group-price{
-        @apply mt-4;
-        label{@apply block text-f-12 font-poppins-medium}
-
+.reusable-filters{
+    .search-feat{
+        @apply relative;
+        label{@apply block text-f-14 font-poppins-medium font-black}
+    
         input{
-            @apply border border-primary-rzaGrey40 rounded-lg w-full h-10 px-3 mt-2;
+            @apply border border-primary-rzaGrey40 rounded-lg w-full h-10 pl-10 mt-[10px];
+        }
+    
+        img{
+            @apply absolute bottom-2 left-[10px];
         }
     }
-}
-
-.ordering-filter{
-    .ordering-filter-title{
-        @apply text-f-16 font-poppins-medium font-black mt-6;
+    
+    .checkbox-filter{
+        @apply mt-[10px];
+        .group{
+            @apply flex items-center py-[10px];
+    
+            .label{
+                @apply ml-2;
+            }
+        }
     }
-   .ordering-filter-radio{
-    @apply mt-4;
-   } 
+    
+    .price-filter{
+        @apply mt-5;
+        .price-filter-head{
+            @apply flex justify-between items-center;
+    
+            .title{
+                @apply text-f-14 font-poppins-medium font-black;
+            }
+    
+            .clear{
+                @apply text-f-14 font-poppins-regular text-secondary-rzaOtherLightBlue;
+            }
+        }
+    
+        .input-group-price{
+            @apply mt-4;
+            label{@apply block text-f-12 font-poppins-medium}
+    
+            input{
+                @apply border border-primary-rzaGrey40 rounded-lg w-full h-10 px-3 mt-2;
+            }
+        }
+    }
+    
+    .ordering-filter{
+        .ordering-filter-title{
+            @apply text-f-16 font-poppins-medium font-black mt-6;
+        }
+       .ordering-filter-radio{
+        @apply mt-4;
+       } 
+    }
+
+    .submit-area{
+        @apply absolute bottom-0 bg-primary-rzaWhite w-full left-0 p-4 lg:hidden;
+        box-shadow: 0px -2px 4px 0px #9E9E9E33;
+
+        .btn-primary-submit{
+            @apply bg-primary-rzaRed text-primary-rzaWhite text-f-14 font-poppins-medium font-black w-full h-10 flex items-center justify-center rounded-[56px];
+        }
+
+        .btn-secondary-submit{
+            @apply mt-2 bg-primary-rzaWhite text-primary-rzaRed text-f-14 font-poppins-medium font-black w-full h-10 flex items-center justify-center rounded-[56px] border-2 border-primary-rzaRed;
+        }
+    }
 }

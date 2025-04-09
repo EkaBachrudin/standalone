@@ -3,21 +3,25 @@ import './category-search.scss';
 import CustomCheckbox from "@/components/lib/checkbox/checkbox";
 import { GetMerchantDataModel, CheckedState } from "@/domain/models/getMerchant.model";
 import { digitalHubRepository } from "@/data/repositories/DigitalHubRepository";
-import useCurrencyInput from "@/hook/useCurrencyInput";
+import useCurrencyInput, { cleanCurrency } from "@/hook/useCurrencyInput";
 import RadioButton from "@/components/lib/radiobutton/RadioButton";
+import { GetProductByCategoryDto } from "@/domain/models/getProductByCategiry";
 
-const CategorySearch = () => {
+type Props = {
+    onDataReceived: (data: GetProductByCategoryDto) => void;
+};
+
+const CategorySearch: React.FC<Props> = ({ onDataReceived }) => {
     const { values, handleChange } = useCurrencyInput({
         price1: '',
         price2: ''
     });
     
     const [inputSearch, setinputSearch] = useState<string>('');
-
     const [getMerchant, setGetmerchant] = useState<GetMerchantDataModel[]>([]);
     const [checkedState, setCheckedState] = useState<CheckedState>({});
     const [getChakedId, setGetChakedId] = useState<string[]>([]);
-    const [selectedOrdering, setSelectedOrdering] = useState('option2');
+    const [selectedOrdering, setSelectedOrdering] = useState('1');
     
     useEffect(() => {
           featchMerchant();
@@ -75,8 +79,21 @@ const CategorySearch = () => {
         setSelectedOrdering(value);
     };
 
+    const sendDataToParent = () => {
+        const data: GetProductByCategoryDto = {
+            search: inputSearch,
+            merchant: getChakedId,
+            lowest: cleanCurrency(values.price1),
+            highest: cleanCurrency(values.price2),
+            ordering: selectedOrdering
+        }
+
+        onDataReceived(data);
+    };
+
     return(
-        <>
+        
+        <div className="reusable-filters">
             <div className="search-feat">
                 <label htmlFor="search-category">Cari Nama Merchant</label>
                 <input type="text" id='search-category' placeholder='Contoh: Maxtream' value={inputSearch}
@@ -137,26 +154,36 @@ const CategorySearch = () => {
             
                 <div className="ordering-filter-radio">
                     <RadioButton
-                        label="Option 1"
+                        label="Produk Terbaru"
                         name="exampleGroup"
-                        checked={selectedOrdering === 'option1'}
-                        onChange={() => handleRadioChange('option1')}
+                        checked={selectedOrdering === '1'}
+                        onChange={() => handleRadioChange('1')}
                     />
                     <RadioButton
-                        label="Option 2"
+                        label="Harga Tertinggi"
                         name="exampleGroup"
-                        checked={selectedOrdering === 'option2'}
-                        onChange={() => handleRadioChange('option2')}
+                        checked={selectedOrdering === '2'}
+                        onChange={() => handleRadioChange('2')}
                     />
                     <RadioButton
-                        label="Option 3"
+                        label="Harga Terendah"
                         name="exampleGroup"
-                        checked={selectedOrdering === 'option3'}
-                        onChange={() => handleRadioChange('option3')}
+                        checked={selectedOrdering === '3'}
+                        onChange={() => handleRadioChange('3')}
                     />
                 </div>
             </div>
-        </>
+
+            <div className="submit-area">
+                <button className="btn-primary-submit" onClick={sendDataToParent}>
+                    Terapkan
+                </button>
+                <div className="btn-secondary-submit">
+                    Nanti Saja
+                </div>
+            </div>
+        </div>
+        
     )
 }
 

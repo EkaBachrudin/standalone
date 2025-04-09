@@ -12,6 +12,7 @@ import CategoryComponent from '@/app/landing/components/Category/Category';
 import CategoryTranding from './components/category-trandling/category-tranding';
 import BottomSheet from '@/components/lib/bottomsheet/BottomSheet';
 import CategorySearch from './components/category-search/category-search';
+import type { GetProductByCategoryDto } from '@/domain/models/getProductByCategiry';
 
  
 export default function Category({
@@ -53,11 +54,15 @@ export default function Category({
     }
   };
 
-    const breadcrumbItems = [
-        { label: 'Landing', href: '/' },
-        { label: 'Digital Hub', href: '/landing' },
-        { label: category, href: `/landing/${category}` }
-    ];
+  const breadcrumbItems = [
+      { label: 'Landing', href: '/' },
+      { label: 'Digital Hub', href: '/landing' },
+      { label: category, href: `/landing/${category}` }
+  ];
+
+  const handleSearchData = (data: GetProductByCategoryDto) => {
+      console.log(data);
+  };
 
     return (
         <div className="category-page-container">
@@ -88,6 +93,10 @@ export default function Category({
                 </div>
               </div>
 
+              <div className="dekstop-filter">
+                <CategorySearch onDataReceived={handleSearchData}/>
+              </div>
+
             </div>
           </section>
 
@@ -102,7 +111,7 @@ export default function Category({
               </section>
 
               <section className='content'>
-                <CategorySearch />
+                <CategorySearch onDataReceived={handleSearchData}/>
               </section>
             </div>
           </BottomSheet>
