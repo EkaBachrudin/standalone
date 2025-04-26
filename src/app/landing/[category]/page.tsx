@@ -13,6 +13,7 @@ import CategoryTranding from './components/category-trandling/category-tranding'
 import BottomSheet from '@/components/lib/bottomsheet/BottomSheet';
 import CategorySearch from './components/category-search/category-search';
 import type { GetProductByCategoryDto } from '@/domain/models/getProductByCategiry';
+import useIsMobile from '@/hook/useIsMobile';
 
  
 export default function Category({
@@ -28,7 +29,7 @@ export default function Category({
   const [categoryData, setCategoryData] = useState<CategoryModel[]>([]);
   const [categoryTrandingData, setCategoryTrandingData] = useState<GetTrandingCategoryModel>();
   const [error, setError] = useState<string | null>(null);
-
+  const isMobile = useIsMobile();
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -94,7 +95,7 @@ export default function Category({
               </div>
 
               <div className="dekstop-filter">
-                <CategorySearch onDataReceived={handleSearchData}/>
+                {!isMobile ? <CategorySearch onDataReceived={handleSearchData}/> : null}
               </div>
 
             </div>
@@ -111,7 +112,7 @@ export default function Category({
               </section>
 
               <section className='content'>
-                <CategorySearch onDataReceived={handleSearchData}/>
+              {isMobile ? <CategorySearch onDataReceived={handleSearchData}/> : null}
               </section>
             </div>
           </BottomSheet>
