@@ -25,6 +25,58 @@
                }
             }
 
+            .product-list{
+                @apply mt-6;
+                .product-list-items{
+                    @apply w-full rounded-t-[20px] mr-1 min-w-[155.5px];
+                    .product-list-items-image{
+                        @apply w-full h-[155.5px] rounded-t-[20px];
+                    }
+                    .product-list-items-content{
+                        @apply bg-secondary-rzaCard p-2;
+                        .product-list-items-content-title{
+                            @apply text-f-14 font-poppins-bold pb-7;
+                        }
+                        .product-list-items-content-optionLabel{
+                            @apply text-f-10 font-poppins-regular border-secondary-rzaLightGrey border rounded-lg px-2 py-1;
+                            span{
+                                @apply font-poppins-bold;
+                            }
+                        }
+                        .product-list-items-content-price{
+                            @apply text-f-14 font-poppins-bold text-primary-rzaRed mt-2;
+                        }
+                    }
+                }
+
+                .slick-slide > div {
+                    margin: 0 2px;
+                  }
+                  
+                  .slick-list {
+                    margin: 0 -2px;
+                  }
+            }
+
+            .product-list {
+                margin-top: 1.5rem;
+                display: grid;
+                gap: 16px;
+                grid-template-columns: repeat(2, 1fr); /* Default minimal 2 kolom */
+              }
+              
+              @media (min-width: 768px) {
+                .product-list {
+                  grid-template-columns: repeat(3, 1fr); /* 3 kolom untuk tablet */
+                }
+              }
+              
+              @media (min-width: 1024px) {
+                .product-list {
+                  grid-template-columns: repeat(4, 1fr); /* 4 kolom untuk desktop besar */
+                }
+              }
+
             .dekstop-filter{
                 @apply hidden lg:block;
             }

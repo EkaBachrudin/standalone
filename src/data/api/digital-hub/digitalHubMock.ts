@@ -1,6 +1,6 @@
 import { DigitalHubRepositoryInterface } from "@/domain/interfaces/digHubInterface";
 import { CategoryModel } from "@/domain/models/category";
-import type { GetCategoryProductListModel } from "@/domain/models/getCategoryProductList";
+import { GetCategoryProductListModel } from "@/domain/models/getCategoryProductList";
 import { GetMerchantDataModel } from "@/domain/models/getMerchant.model";
 import { GetTrandingCategoryModel } from "@/domain/models/getTrandingCategory";
 import { HeroBannerModel } from "@/domain/models/heroBanner";
@@ -205,15 +205,19 @@ const GetCategoryProductList: GetCategoryProductListModel[] = [
             "bg": "#FF0000",
             "color": "#FFFFFF"
         },
-        "image": "maxstream_logo.png",
+        "image": "https://picsum.photos/1280/720",
         "title": "MAXStream",
         "price": 54000,
         "strikeOutPrice": 68000,
         "discount": 20,
         "optionLabel": [
             {
-                "title": "Langganan 7 Hari",
-                "value": "Rp54.000"
+                "title": "Langganan",
+                "value": "7 Hari"
+            },
+            {
+                "title": "Langganan",
+                "value": "7 Hari"
             }
         ]
     },
@@ -223,15 +227,15 @@ const GetCategoryProductList: GetCategoryProductListModel[] = [
             "bg": "#FF0000",
             "color": "#FFFFFF"
         },
-        "image": "netflix_mobile_logo.png",
+        "image": "https://picsum.photos/1280/720",
         "title": "Netflix Mobile",
         "price": 54000,
         "strikeOutPrice": 68000,
         "discount": 20,
         "optionLabel": [
             {
-                "title": "Langganan 7 Hari",
-                "value": "Rp54.000"
+                "title": "Langganan",
+                "value": "7 Hari"
             }
         ]
     },
@@ -241,15 +245,15 @@ const GetCategoryProductList: GetCategoryProductListModel[] = [
             "bg": "#FF0000",
             "color": "#FFFFFF"
         },
-        "image": "netflix_basic_logo.png",
+        "image": "https://picsum.photos/1280/720",
         "title": "Netflix Basic",
         "price": 54000,
         "strikeOutPrice": 68000,
         "discount": 20,
         "optionLabel": [
             {
-                "title": "Langganan 7 Hari",
-                "value": "Rp54.000"
+                "title": "Langganan",
+                "value": "7 Hari"
             }
         ]
     },
@@ -259,72 +263,72 @@ const GetCategoryProductList: GetCategoryProductListModel[] = [
             "bg": "#FF0000",
             "color": "#FFFFFF"
         },
-        "image": "netflix_standard_logo.png",
+        "image": "https://picsum.photos/1280/720",
         "title": "Netflix Standard",
         "price": 54000,
         "strikeOutPrice": 68000,
         "discount": 20,
         "optionLabel": [
             {
-                "title": "Langganan 7 Hari",
-                "value": "Rp54.000"
+                "title": "Langganan",
+                "value": "7 Hari"
             }
         ]
     },
-    {
-        "ribbon": {
-            "label": "PROMO",
-            "bg": "#FF0000",
-            "color": "#FFFFFF"
-        },
-        "image": "netflix_premium_logo.png",
-        "title": "Netflix Premium",
-        "price": 54000,
-        "strikeOutPrice": 68000,
-        "discount": 20,
-        "optionLabel": [
-            {
-                "title": "Langganan 7 Hari",
-                "value": "Rp54.000"
-            }
-        ]
-    },
-    {
-        "ribbon": {
-            "label": "PROMO",
-            "bg": "#1E90FF",
-            "color": "#FFFFFF"
-        },
-        "image": "vidio_platinum_logo.png",
-        "title": "Vidio Platinum",
-        "price": 54000,
-        "strikeOutPrice": 68000,
-        "discount": 20,
-        "optionLabel": [
-            {
-                "title": "Langganan 7 Hari",
-                "value": "Rp54.000"
-            }
-        ]
-    },
-    {
-        "ribbon": {
-            "label": "PROMO",
-            "bg": "#1E90FF",
-            "color": "#FFFFFF"
-        },
-        "image": "vidio_platinum_logo.png",
-        "title": "Vidio Platinum",
-        "price": 54000,
-        "strikeOutPrice": 68000,
-        "discount": 20,
-        "optionLabel": [
-            {
-                "title": "Langganan 7 Hari",
-                "value": "Rp54.000"
-            }
-        ]
-    }
+    // {
+    //     "ribbon": {
+    //         "label": "PROMO",
+    //         "bg": "#FF0000",
+    //         "color": "#FFFFFF"
+    //     },
+    //     "image": "https://picsum.photos/1280/720",
+    //     "title": "Netflix Premium",
+    //     "price": 54000,
+    //     "strikeOutPrice": 68000,
+    //     "discount": 20,
+    //     "optionLabel": [
+    //         {
+    //             "title": "Langganan",
+    //             "value": "7 Hari"
+    //         }
+    //     ]
+    // },
+    // {
+    //     "ribbon": {
+    //         "label": "PROMO",
+    //         "bg": "#1E90FF",
+    //         "color": "#FFFFFF"
+    //     },
+    //     "image": "https://picsum.photos/1280/720",
+    //     "title": "Vidio Platinum",
+    //     "price": 54000,
+    //     "strikeOutPrice": 68000,
+    //     "discount": 20,
+    //     "optionLabel": [
+    //         {
+    //             "title": "Langganan",
+    //             "value": "7 Hari"
+    //         }
+    //     ]
+    // },
+    // {
+    //     "ribbon": {
+    //         "label": "PROMO",
+    //         "bg": "#1E90FF",
+    //         "color": "#FFFFFF"
+    //     },
+    //     "image": "https://picsum.photos/1280/720",
+    //     "title": "Vidio Platinum",
+    //     "price": 54000,
+    //     "strikeOutPrice": 68000,
+    //     "discount": 20,
+    //     "optionLabel": [
+    //         {
+    //             "title": "Langganan",
+    //             "value": "7 Hari"
+    //         }
+    //     ]
+    // }
 ]
 
 

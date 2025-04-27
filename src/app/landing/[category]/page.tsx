@@ -3,7 +3,6 @@
 
 import './category.scss';
 import { use, useEffect, useState } from 'react'
-
 import { CategoryModel } from '@/domain/models/category';
 import { digitalHubRepository } from '@/data/repositories/DigitalHubRepository';
 import { GetTrandingCategoryModel } from '@/domain/models/getTrandingCategory';
@@ -12,10 +11,12 @@ import CategoryComponent from '@/app/landing/components/Category/Category';
 import CategoryTranding from './components/category-trandling/category-tranding';
 import BottomSheet from '@/components/lib/bottomsheet/BottomSheet';
 import CategorySearch from './components/category-search/category-search';
-import type { GetProductByCategoryDto } from '@/domain/models/getProductByCategiry';
+import { GetProductByCategoryDto } from '@/domain/models/getProductByCategiry';
 import useIsMobile from '@/hook/useIsMobile';
+import { GetCategoryProductListModel } from '@/domain/models/getCategoryProductList';
+import Slider from "react-slick";
+import Image from 'next/image';
 
- 
 export default function Category({
   params,
   searchParams,
@@ -24,10 +25,10 @@ export default function Category({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
   const { category } = use(params)
-  const { query } = use(searchParams)
-
+  const { query } = use(searchParams);
   const [categoryData, setCategoryData] = useState<CategoryModel[]>([]);
   const [categoryTrandingData, setCategoryTrandingData] = useState<GetTrandingCategoryModel>();
+  const [productListByCategory, setProductListByCategory] = useState<GetCategoryProductListModel[]>();
   const [error, setError] = useState<string | null>(null);
   const isMobile = useIsMobile();
   const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +36,8 @@ export default function Category({
   useEffect(() => {
       fetchCategory();
       fetchCategoryTranding();
-  }, [category, categoryData, categoryTrandingData]);
+      fetchCategoryProductList();
+  }, [category, categoryData, categoryTrandingData, productListByCategory]);
 
   const fetchCategory = async () => {
     try {
@@ -55,6 +57,15 @@ export default function Category({
     }
   };
 
+  const fetchCategoryProductList = async () => {
+    try {
+      const items = await digitalHubRepository.GetCategoryProductList();
+      setProductListByCategory(items);
+    } catch {
+      setError("Failed to hero banner data");
+    }
+  };
+
   const breadcrumbItems = [
       { label: 'Landing', href: '/' },
       { label: 'Digital Hub', href: '/landing' },
@@ -63,6 +74,16 @@ export default function Category({
 
   const handleSearchData = (data: GetProductByCategoryDto) => {
       console.log(data);
+  };
+
+  var settings = {
+    infinite: false,
+    speed: 500,
+    slidesToShow: 1.2,
+    slidesToScroll: 1,
+    arrows: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   };
 
     return (
@@ -94,8 +115,31 @@ export default function Category({
                 </div>
               </div>
 
+              <div className="product-list">
+                {productListByCategory?.map((item) => (
+                  <div className="product-list-items" key={item.title}>
+                    <div className="product-list-items-image" 
+                      style={{ backgroundImage: `url(${item.image})`, backgroundSize: "cover" }}>
+                    </div>
+                    <div className="product-list-items-content">
+                      <div className="product-list-items-content-title">{item.title}</div>
+                        <Slider {...settings}>
+                          {item.optionLabel?.map((optionLabel, index) => (
+                            <div className="product-list-items-content-optionLabel" key={index}>
+                              {optionLabel.title} <span>{optionLabel.value}</span>
+                            </div>
+                          ))}
+                        </Slider>
+                       <div className="product-list-items-content-price">
+                          Rp.{item.price}
+                       </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
               <div className="dekstop-filter">
-                {!isMobile ? <CategorySearch onDataReceived={handleSearchData}/> : null}
+                {!isMobile ? <CategorySearch onDataReceived={handleSearchData}/> : ''}
               </div>
 
             </div>
@@ -112,10 +156,44 @@ export default function Category({
               </section>
 
               <section className='content'>
-              {isMobile ? <CategorySearch onDataReceived={handleSearchData}/> : null}
+                {isMobile ? <CategorySearch onDataReceived={handleSearchData}/> : ''}
               </section>
             </div>
           </BottomSheet>
         </div>
       );
 }
+
+const NextArrow = (props: any) => {
+  const { onClick } = props;
+
+ return (
+    <div
+      style={{ ...arrowStyle, right: -5, background: 'linear-gradient(270deg, #F6F3F3 66.67%, rgba(249, 249, 250, 0) 107.29%)' }}
+      onClick={onClick}
+    >
+      <Image src="/assets/icons/chevron-right.svg" alt="Logo" width={27} height={27} />
+    </div>
+  );
+};
+
+const PrevArrow = (props: any) => {
+  const { onClick } = props;
+  if(props.currentSlide > 0) return (
+    <div
+      style={{ ...arrowStyle, left: -10 }}
+      onClick={onClick}
+    >
+      <Image src="/assets/icons/chevron-left.svg" alt="Logo" width={27} height={27} />
+    </div>
+  );
+};
+
+const arrowStyle = {
+  display: "block",
+  zIndex: 2,
+  position: "absolute",
+  top: "53%",
+  transform: "translateY(-50%)",
+  cursor: "pointer",
+} as any;
