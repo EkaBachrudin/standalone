@@ -84,6 +84,7 @@ export default function Category({
     arrows: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
+    centerMode: false
   };
 
     return (
@@ -116,8 +117,8 @@ export default function Category({
               </div>
 
               <div className="product-list">
-                {productListByCategory?.map((item) => (
-                  <div className="product-list-items" key={item.title}>
+                {productListByCategory?.map((item, index) => (
+                  <div className="product-list-items" key={index}>
                     <div className="product-list-items-image" 
                       style={{ backgroundImage: `url(${item.image})`, backgroundSize: "cover" }}>
                     </div>
@@ -132,6 +133,9 @@ export default function Category({
                         </Slider>
                        <div className="product-list-items-content-price">
                           Rp.{item.price}
+                       </div>
+                       <div className="product-list-items-content-pricestrikeout">
+                         <span className='line-through'> Rp.{item.strikeOutPrice}</span> <span className="discount">{item.discount}%</span>
                        </div>
                     </div>
                   </div>

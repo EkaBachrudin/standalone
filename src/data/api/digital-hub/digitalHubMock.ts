@@ -227,7 +227,7 @@ const GetCategoryProductList: GetCategoryProductListModel[] = [
             "bg": "#FF0000",
             "color": "#FFFFFF"
         },
-        "image": "https://picsum.photos/1280/720",
+        "image": "https://picsum.photos/1280/721",
         "title": "Netflix Mobile",
         "price": 54000,
         "strikeOutPrice": 68000,
@@ -245,7 +245,7 @@ const GetCategoryProductList: GetCategoryProductListModel[] = [
             "bg": "#FF0000",
             "color": "#FFFFFF"
         },
-        "image": "https://picsum.photos/1280/720",
+        "image": "https://picsum.photos/1280/722",
         "title": "Netflix Basic",
         "price": 54000,
         "strikeOutPrice": 68000,
@@ -263,7 +263,7 @@ const GetCategoryProductList: GetCategoryProductListModel[] = [
             "bg": "#FF0000",
             "color": "#FFFFFF"
         },
-        "image": "https://picsum.photos/1280/720",
+        "image": "https://picsum.photos/1280/723",
         "title": "Netflix Standard",
         "price": 54000,
         "strikeOutPrice": 68000,
@@ -275,60 +275,60 @@ const GetCategoryProductList: GetCategoryProductListModel[] = [
             }
         ]
     },
-    // {
-    //     "ribbon": {
-    //         "label": "PROMO",
-    //         "bg": "#FF0000",
-    //         "color": "#FFFFFF"
-    //     },
-    //     "image": "https://picsum.photos/1280/720",
-    //     "title": "Netflix Premium",
-    //     "price": 54000,
-    //     "strikeOutPrice": 68000,
-    //     "discount": 20,
-    //     "optionLabel": [
-    //         {
-    //             "title": "Langganan",
-    //             "value": "7 Hari"
-    //         }
-    //     ]
-    // },
-    // {
-    //     "ribbon": {
-    //         "label": "PROMO",
-    //         "bg": "#1E90FF",
-    //         "color": "#FFFFFF"
-    //     },
-    //     "image": "https://picsum.photos/1280/720",
-    //     "title": "Vidio Platinum",
-    //     "price": 54000,
-    //     "strikeOutPrice": 68000,
-    //     "discount": 20,
-    //     "optionLabel": [
-    //         {
-    //             "title": "Langganan",
-    //             "value": "7 Hari"
-    //         }
-    //     ]
-    // },
-    // {
-    //     "ribbon": {
-    //         "label": "PROMO",
-    //         "bg": "#1E90FF",
-    //         "color": "#FFFFFF"
-    //     },
-    //     "image": "https://picsum.photos/1280/720",
-    //     "title": "Vidio Platinum",
-    //     "price": 54000,
-    //     "strikeOutPrice": 68000,
-    //     "discount": 20,
-    //     "optionLabel": [
-    //         {
-    //             "title": "Langganan",
-    //             "value": "7 Hari"
-    //         }
-    //     ]
-    // }
+    {
+        "ribbon": {
+            "label": "PROMO",
+            "bg": "#FF0000",
+            "color": "#FFFFFF"
+        },
+        "image": "https://picsum.photos/1280/720",
+        "title": "Netflix Premium",
+        "price": 54000,
+        "strikeOutPrice": 68000,
+        "discount": 20,
+        "optionLabel": [
+            {
+                "title": "Langganan",
+                "value": "7 Hari"
+            }
+        ]
+    },
+    {
+        "ribbon": {
+            "label": "PROMO",
+            "bg": "#1E90FF",
+            "color": "#FFFFFF"
+        },
+        "image": "https://picsum.photos/1280/720",
+        "title": "Vidio Platinum",
+        "price": 54000,
+        "strikeOutPrice": 68000,
+        "discount": 20,
+        "optionLabel": [
+            {
+                "title": "Langganan",
+                "value": "7 Hari"
+            }
+        ]
+    },
+    {
+        "ribbon": {
+            "label": "PROMO",
+            "bg": "#1E90FF",
+            "color": "#FFFFFF"
+        },
+        "image": "https://picsum.photos/1280/720",
+        "title": "Vidio Platinum",
+        "price": 54000,
+        "strikeOutPrice": 68000,
+        "discount": 20,
+        "optionLabel": [
+            {
+                "title": "Langganan",
+                "value": "7 Hari"
+            }
+        ]
+    }
 ]
 
 

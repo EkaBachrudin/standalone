@@ -26,16 +26,16 @@
             }
 
             .product-list{
-                @apply mt-6;
+                @apply mt-6 pb-5;
                 .product-list-items{
                     @apply w-full rounded-t-[20px] mr-1 min-w-[155.5px];
                     .product-list-items-image{
                         @apply w-full h-[155.5px] rounded-t-[20px];
                     }
                     .product-list-items-content{
-                        @apply bg-secondary-rzaCard p-2;
+                        @apply bg-secondary-rzaCard p-2 rounded-br-[20px];
                         .product-list-items-content-title{
-                            @apply text-f-14 font-poppins-bold pb-7;
+                            @apply text-f-14 font-poppins-bold pb-8;
                         }
                         .product-list-items-content-optionLabel{
                             @apply text-f-10 font-poppins-regular border-secondary-rzaLightGrey border rounded-lg px-2 py-1;
@@ -45,6 +45,14 @@
                         }
                         .product-list-items-content-price{
                             @apply text-f-14 font-poppins-bold text-primary-rzaRed mt-2;
+                        }
+
+                        .product-list-items-content-pricestrikeout {
+                            @apply text-f-12 text-secondary-rzaCadetBlue mt-1 flex items-center;
+                            .discount{
+                                @apply text-f-10 px-2 py-[2px] rounded-md ml-2 font-poppins-bold;
+                                background: linear-gradient(75.07deg, #001A41 17.5%, #0E336C 105.9%);
+                            }
                         }
                     }
                 }
