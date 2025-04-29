@@ -13,7 +13,7 @@
 
     .section-filter{
         .filter-category{
-            @apply px-6;
+            @apply px-6 lg:px-24 lg:mt-8;
             .mobile-filter{
                @apply lg:hidden;
                button{
@@ -25,68 +25,75 @@
                }
             }
 
-            .product-list{
-                @apply mt-6 pb-5;
-                .product-list-items{
-                    @apply w-full rounded-t-[20px] mr-1 min-w-[155.5px];
-                    .product-list-items-image{
-                        @apply w-full h-[155.5px] rounded-t-[20px];
-                    }
-                    .product-list-items-content{
-                        @apply bg-secondary-rzaCard p-2 rounded-br-[20px];
-                        .product-list-items-content-title{
-                            @apply text-f-14 font-poppins-bold pb-8;
-                        }
-                        .product-list-items-content-optionLabel{
-                            @apply text-f-10 font-poppins-regular border-secondary-rzaLightGrey border rounded-lg px-2 py-1;
-                            span{
-                                @apply font-poppins-bold;
-                            }
-                        }
-                        .product-list-items-content-price{
-                            @apply text-f-14 font-poppins-bold text-primary-rzaRed mt-2;
-                        }
+            .product-end-filter{
+                @apply flex;
 
-                        .product-list-items-content-pricestrikeout {
-                            @apply text-f-12 text-secondary-rzaCadetBlue mt-1 flex items-center;
-                            .discount{
-                                @apply text-f-10 px-2 py-[2px] rounded-md ml-2 font-poppins-bold;
-                                background: linear-gradient(75.07deg, #001A41 17.5%, #0E336C 105.9%);
-                            }
-                        }
-                    }
+                .dekstop-filter{
+                    @apply hidden lg:block max-w-[260px] w-full mr-6 p-4 rounded-2xl h-fit;
+                    background: rgba(249, 249, 250, 1);
+
                 }
 
-                .slick-slide > div {
-                    margin: 0 2px;
-                  }
-                  
-                  .slick-list {
+                .product-list{
+                    @apply mt-6 pb-5;
+                    .product-list-items{
+                        @apply w-full rounded-t-[20px] mr-1 min-w-[155.5px] shadow rounded-br-[20px];
+                        .product-list-items-image{
+                            @apply w-full h-[155.5px] rounded-t-[20px] lg:w-[230px] lg:h-[230px];
+                        }
+                        .product-list-items-content{
+                            @apply bg-secondary-rzaCard p-2 lg:px-4 rounded-br-[20px] lg:w-[230px];
+                            .product-list-items-content-title{
+                                @apply text-f-14 font-poppins-bold pb-8;
+                            }
+                            .product-list-items-content-optionLabel{
+                                @apply text-f-10 font-poppins-regular border-secondary-rzaLightGrey border rounded-lg px-2 py-1;
+                                span{
+                                    @apply font-poppins-bold;
+                                }
+                            }
+                            .product-list-items-content-price{
+                                @apply text-f-14 font-poppins-bold text-primary-rzaRed mt-2;
+                            }
+    
+                            .product-list-items-content-pricestrikeout {
+                                @apply text-f-12 text-secondary-rzaCadetBlue mt-1 flex items-center;
+                                .discount{
+                                    @apply text-f-10 px-2 py-[2px] rounded-md ml-2 font-poppins-bold;
+                                    background: linear-gradient(75.07deg, #001A41 17.5%, #0E336C 105.9%);
+                                }
+                            }
+                        }
+                    }
+    
+                    .slick-slide > div {
+                        margin: 0 2px;
+                      }
+                      
+                    .slick-list {
                     margin: 0 -2px;
-                  }
-            }
-
-            .product-list {
-                margin-top: 1.5rem;
-                display: grid;
-                gap: 16px;
-                grid-template-columns: repeat(2, 1fr); /* Default minimal 2 kolom */
-              }
-              
-              @media (min-width: 768px) {
-                .product-list {
-                  grid-template-columns: repeat(3, 1fr); /* 3 kolom untuk tablet */
+                    }
+    
+                    margin-top: 1.5rem;
+                    display: grid;
+                    gap: 16px;
+                    grid-template-columns: repeat(2, 1fr);
                 }
-              }
-              
-              @media (min-width: 1024px) {
-                .product-list {
-                  grid-template-columns: repeat(4, 1fr); /* 4 kolom untuk desktop besar */
+                  
+                @media (min-width: 768px) {
+                    .product-list {
+                        grid-template-columns: repeat(3, 1fr); 
+                        gap: 20px;
+                    }
                 }
-              }
-
-            .dekstop-filter{
-                @apply hidden lg:block;
+                
+                @media (min-width: 1470px) {
+                    .product-list {
+                        @apply mt-0;
+                        grid-template-columns: repeat(4, 1fr);
+                        gap: 20px;
+                    }
+                }
             }
 
 

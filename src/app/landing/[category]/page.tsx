@@ -116,34 +116,35 @@ export default function Category({
                 </div>
               </div>
 
-              <div className="product-list">
-                {productListByCategory?.map((item, index) => (
-                  <div className="product-list-items" key={index}>
-                    <div className="product-list-items-image" 
-                      style={{ backgroundImage: `url(${item.image})`, backgroundSize: "cover" }}>
+              <div className="product-end-filter">
+                <div className="dekstop-filter">
+                    {!isMobile ? <CategorySearch onDataReceived={handleSearchData}/> : ''}
+                </div>
+                <div className="product-list">
+                  {productListByCategory?.map((item, index) => (
+                    <div className="product-list-items" key={index}>
+                      <div className="product-list-items-image" 
+                        style={{ backgroundImage: `url(${item.image})`, backgroundSize: "cover" }}>
+                      </div>
+                      <div className="product-list-items-content">
+                        <div className="product-list-items-content-title">{item.title}</div>
+                          <Slider {...settings}>
+                            {item.optionLabel?.map((optionLabel, index) => (
+                              <div className="product-list-items-content-optionLabel" key={index}>
+                                {optionLabel.title} <span>{optionLabel.value}</span>
+                              </div>
+                            ))}
+                          </Slider>
+                        <div className="product-list-items-content-price">
+                            Rp.{item.price}
+                        </div>
+                        <div className="product-list-items-content-pricestrikeout">
+                          <span className='line-through'> Rp.{item.strikeOutPrice}</span> <span className="discount">{item.discount}%</span>
+                        </div>
+                      </div>
                     </div>
-                    <div className="product-list-items-content">
-                      <div className="product-list-items-content-title">{item.title}</div>
-                        <Slider {...settings}>
-                          {item.optionLabel?.map((optionLabel, index) => (
-                            <div className="product-list-items-content-optionLabel" key={index}>
-                              {optionLabel.title} <span>{optionLabel.value}</span>
-                            </div>
-                          ))}
-                        </Slider>
-                       <div className="product-list-items-content-price">
-                          Rp.{item.price}
-                       </div>
-                       <div className="product-list-items-content-pricestrikeout">
-                         <span className='line-through'> Rp.{item.strikeOutPrice}</span> <span className="discount">{item.discount}%</span>
-                       </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="dekstop-filter">
-                {!isMobile ? <CategorySearch onDataReceived={handleSearchData}/> : ''}
+                  ))}
+                </div>
               </div>
 
             </div>
