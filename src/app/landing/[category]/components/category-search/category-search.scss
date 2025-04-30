@@ -1,59 +1,73 @@
 .reusable-filters{
-    .search-feat{
-        @apply relative;
-        label{@apply block text-f-14 font-poppins-medium font-black}
-    
-        input{
-            @apply border border-primary-rzaGrey40 rounded-lg w-full h-10 pl-10 mt-[10px];
+    .reusable-filters-first{
+        @screen lg {
+            @apply px-4 py-5 rounded-2xl;
+            background: rgba(249, 249, 250, 1);
         }
-    
-        img{
-            @apply absolute bottom-2 left-[10px];
-        }
-    }
-    
-    .checkbox-filter{
-        @apply mt-[10px];
-        .group{
-            @apply flex items-center py-[10px];
-    
-            .label{
-                @apply ml-2;
-            }
-        }
-    }
-    
-    .price-filter{
-        @apply mt-5;
-        .price-filter-head{
-            @apply flex justify-between items-center;
-    
-            .title{
-                @apply text-f-14 font-poppins-medium font-black;
-            }
-    
-            .clear{
-                @apply text-f-14 font-poppins-regular text-secondary-rzaOtherLightBlue;
-            }
-        }
-    
-        .input-group-price{
-            @apply mt-4;
-            label{@apply block text-f-12 font-poppins-medium}
-    
+
+        .search-feat{
+            @apply relative;
+            label{@apply block text-f-14 font-poppins-medium font-black}
+        
             input{
-                @apply border border-primary-rzaGrey40 rounded-lg w-full h-10 px-3 mt-2;
+                @apply border border-primary-rzaGrey40 rounded-lg w-full h-10 pl-10 mt-[10px];
+            }
+        
+            img{
+                @apply absolute bottom-2 left-[10px];
+            }
+        }
+        
+        .checkbox-filter{
+            @apply mt-[10px];
+            .group{
+                @apply flex items-center py-[10px];
+        
+                .label{
+                    @apply ml-2;
+                }
+            }
+        }
+        
+        .price-filter{
+            @apply mt-5;
+            .price-filter-head{
+                @apply flex justify-between items-center;
+        
+                .title{
+                    @apply text-f-14 font-poppins-medium font-black;
+                }
+        
+                .clear{
+                    @apply text-f-14 font-poppins-regular text-secondary-rzaOtherLightBlue;
+                }
+            }
+        
+            .input-group-price{
+                @apply mt-4;
+                label{@apply block text-f-12 font-poppins-medium}
+        
+                input{
+                    @apply border border-primary-rzaGrey40 rounded-lg w-full h-10 px-3 mt-2;
+                }
             }
         }
     }
-    
-    .ordering-filter{
-        .ordering-filter-title{
-            @apply text-f-16 font-poppins-medium font-black mt-6;
+
+    .reusable-filters-second{
+        @screen lg {
+            @apply px-4 py-5 mt-4 rounded-2xl;
+            background: rgba(249, 249, 250, 1);
         }
-       .ordering-filter-radio{
-        @apply mt-4;
-       } 
+
+        .ordering-filter{
+            .ordering-filter-title{
+                @apply text-f-16 font-poppins-medium font-black mt-6 lg:mt-0;
+            }
+           .ordering-filter-radio{
+            @apply mt-4;
+           } 
+        }
     }
 
     .submit-area{

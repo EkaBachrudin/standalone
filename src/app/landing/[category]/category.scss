@@ -29,9 +29,7 @@
                 @apply flex;
 
                 .dekstop-filter{
-                    @apply hidden lg:block max-w-[260px] w-full mr-6 p-4 rounded-2xl h-fit;
-                    background: rgba(249, 249, 250, 1);
-
+                    @apply hidden lg:block max-w-[260px] w-full mr-6 h-fit;
                 }
 
                 .product-list{
