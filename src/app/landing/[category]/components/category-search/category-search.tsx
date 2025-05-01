@@ -26,6 +26,10 @@ const CategorySearch: React.FC<Props> = ({ onDataReceived }) => {
     const [isExpanded, setIsExpanded] = useState(true);
     
     useEffect(() => {
+        sendDataToParent();
+    }, [inputSearch]);
+
+    useEffect(() => {
           featchMerchant();
           setMerchatShow(getMerchant);
     }, [getMerchant]);

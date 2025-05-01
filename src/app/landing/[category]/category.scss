@@ -35,12 +35,12 @@
                 .product-list{
                     @apply mt-6 pb-5;
                     .product-list-items{
-                        @apply w-full rounded-t-[20px] mr-1 min-w-[155.5px] shadow rounded-br-[20px];
+                        @apply w-full rounded-t-[20px] mr-1 min-w-[155.5px] rounded-br-[20px];
                         .product-list-items-image{
-                            @apply w-full h-[155.5px] rounded-t-[20px] lg:w-[230px] lg:h-[230px];
+                            @apply w-full h-[155.5px] rounded-t-[20px] lg:w-[230px] lg:h-[230px] shadow;
                         }
                         .product-list-items-content{
-                            @apply bg-secondary-rzaCard p-2 lg:px-4 rounded-br-[20px] lg:w-[230px];
+                            @apply bg-secondary-rzaCard p-2 lg:px-4 rounded-br-[20px] lg:w-[230px] shadow;
                             .product-list-items-content-title{
                                 @apply text-f-14 font-poppins-bold pb-8;
                             }
