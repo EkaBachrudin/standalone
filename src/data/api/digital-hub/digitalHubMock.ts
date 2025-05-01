@@ -2,6 +2,7 @@ import { DigitalHubRepositoryInterface } from "@/domain/interfaces/digHubInterfa
 import { CategoryModel } from "@/domain/models/category";
 import { GetCategoryProductListModel } from "@/domain/models/getCategoryProductList";
 import { GetMerchantDataModel } from "@/domain/models/getMerchant.model";
+import { GetProductByCategoryDto } from "@/domain/models/getProductByCategiry";
 import { GetTrandingCategoryModel } from "@/domain/models/getTrandingCategory";
 import { HeroBannerModel } from "@/domain/models/heroBanner";
 import { ManageServiceModel } from "@/domain/models/Manageservice";
@@ -352,7 +353,8 @@ export class HeroBannerMock implements DigitalHubRepositoryInterface {
     async GetMerchant(): Promise<GetMerchantDataModel[]> {
         return getMerchantDataMock;
     }
-    async GetCategoryProductList(): Promise<GetCategoryProductListModel[]> {
+    async GetCategoryProductList(payload: string): Promise<GetCategoryProductListModel[]> {
+        console.log('Mock GetCategoryProductList', payload)
         return GetCategoryProductList;
     }
 }

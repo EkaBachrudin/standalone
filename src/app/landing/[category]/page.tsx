@@ -1,7 +1,7 @@
 
 'use client'
 
-import './category.scss';
+import './[category].scss';
 import { use, useEffect, useState } from 'react'
 import { CategoryModel } from '@/domain/models/category';
 import { digitalHubRepository } from '@/data/repositories/DigitalHubRepository';
@@ -16,27 +16,26 @@ import useIsMobile from '@/hook/useIsMobile';
 import { GetCategoryProductListModel } from '@/domain/models/getCategoryProductList';
 import Slider from "react-slick";
 import Image from 'next/image';
+import { useParams, useSearchParams, useRouter } from 'next/navigation';
 
-export default function Category({
-  params,
-  searchParams,
-}: {
-  params: Promise<{ category: string }>
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
-}) {
-  const { category } = use(params)
-  const { query } = use(searchParams);
+export default function Category() {
+  const params = useParams();
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const category = params?.category as string;
   const [categoryData, setCategoryData] = useState<CategoryModel[]>([]);
   const [categoryTrandingData, setCategoryTrandingData] = useState<GetTrandingCategoryModel>();
   const [productListByCategory, setProductListByCategory] = useState<GetCategoryProductListModel[]>();
   const [error, setError] = useState<string | null>(null);
   const isMobile = useIsMobile();
   const [isOpen, setIsOpen] = useState(false);
+  
 
   useEffect(() => {
       fetchCategory();
       fetchCategoryTranding();
       fetchCategoryProductList();
+      console.log('productListByCategory', productListByCategory)
   }, [category, categoryData, categoryTrandingData, productListByCategory]);
 
   const fetchCategory = async () => {
@@ -57,9 +56,9 @@ export default function Category({
     }
   };
 
-  const fetchCategoryProductList = async () => {
+  const fetchCategoryProductList = async (payload?: string) => {
     try {
-      const items = await digitalHubRepository.GetCategoryProductList();
+      const items = await digitalHubRepository.GetCategoryProductList(payload);
       setProductListByCategory(items);
     } catch {
       setError("Failed to hero banner data");
@@ -74,7 +73,28 @@ export default function Category({
 
   const handleSearchData = (data: GetProductByCategoryDto) => {
       console.log(data);
+      setQueryParamFilter(data);
   };
+
+  const setQueryParamFilter = (data: GetProductByCategoryDto) =>  {
+    const params = new URLSearchParams();
+
+    Object.entries(data).forEach(([key, value]) => {
+      if (Array.isArray(value)) {
+        value.forEach((v) => {
+          if (v) params.append(key, v);
+        });
+      } else if (value !== '') {
+        params.set(key, value);
+      }
+    });
+
+    router.push(`?${params.toString()}`, {
+      scroll: false,
+    });
+
+    fetchCategoryProductList(params.toString());
+  }
 
   var settings = {
     infinite: false,

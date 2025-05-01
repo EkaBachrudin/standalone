@@ -2,6 +2,7 @@ import { DigitalHubRepositoryInterface } from "@/domain/interfaces/digHubInterfa
 import { CategoryModel } from "@/domain/models/category";
 import type { GetCategoryProductListModel } from "@/domain/models/getCategoryProductList";
 import { GetMerchantDataModel } from "@/domain/models/getMerchant.model";
+import { GetProductByCategoryDto } from "@/domain/models/getProductByCategiry";
 import { GetTrandingCategoryModel } from "@/domain/models/getTrandingCategory";
 import { HeroBannerModel } from "@/domain/models/heroBanner";
 import { ManageServiceModel } from "@/domain/models/Manageservice";
@@ -75,7 +76,8 @@ export class HeroBannerApi implements DigitalHubRepositoryInterface {
         return data;
     }
 
-    async GetCategoryProductList(): Promise<GetCategoryProductListModel[]> {
+    async GetCategoryProductList(payload: string): Promise<GetCategoryProductListModel[]> {
+        console.log('GetCategoryProductList', payload)
         const response = await fetch(`https://api.example.com/v1/category-merchant`);
         
         if (!response.ok) {

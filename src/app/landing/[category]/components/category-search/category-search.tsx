@@ -26,7 +26,7 @@ const CategorySearch: React.FC<Props> = ({ onDataReceived }) => {
     const [isExpanded, setIsExpanded] = useState(true);
     
     useEffect(() => {
-        sendDataToParent();
+        // sendDataToParent();
     }, [inputSearch]);
 
     useEffect(() => {
