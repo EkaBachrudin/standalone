@@ -1,17 +1,17 @@
 // import bgProduct from '/assets/images/bg-product.svg';
-import './category-tranding.scss'
+import './TrandingCategoryComponent.scss'
 import useIsMobile from "@/hook/useIsMobile";
 import { useState, useRef } from "react";
 import Slider from "react-slick";
 import { GetTrandingCategoryModel } from "@/domain/models/getTrandingCategory";
-import { TrandingSliderConfig } from './tranding.config';
+import { TrandingSliderConfig } from './TrandingCategoryComponent.config';
 
 
 interface TrandingListProps {
     trandingList?: GetTrandingCategoryModel;
 }
 
-const CategoryTranding: React.FC<TrandingListProps> = ({trandingList}) => {
+const TrandingCategoryComponent: React.FC<TrandingListProps> = ({trandingList}) => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [, setActiveSlide] = useState(0);
     const sliderRef = useRef<Slider>(null);
@@ -56,4 +56,4 @@ const CategoryTranding: React.FC<TrandingListProps> = ({trandingList}) => {
     )
 }
 
-export default CategoryTranding;
+export default TrandingCategoryComponent;

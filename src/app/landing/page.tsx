@@ -3,10 +3,10 @@
 import React, { useEffect, useState } from 'react';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import HeroBanner from './components/HeroBanner/HeroBanner';
-import Category from './components/Category/Category';
-import Manageservice from './components/Manageservice/Manageservice';
-import ProductList from './components/ProductList/ProductList';
+import HeroBanner from './components/HeroBannerComponent/HeroBannerComponent';
+import CategoryComponent from './components/CategoryComponent/CategoryComponent';
+import Manageservice from './components/ManageserviceComponent/ManageserviceComponent';
+import ProductList from './components/ProductListComponent/ProductListComponent';
 import './landing.scss';
 import { HeroBannerModel } from '@/domain/models/heroBanner';
 import { CategoryModel } from '@/domain/models/category';
@@ -73,7 +73,7 @@ const Landing: React.FC = () => {
       <div className='landing-container'>
         <HeroBanner bannerDataProps={bannerData} />
         <section className='section-category'>
-          <Category categoryData={categoryData} />
+          <CategoryComponent categoryData={categoryData} />
         </section>
         <Manageservice manageServiceData={manageService} />
         <ProductList productListData={productList} />

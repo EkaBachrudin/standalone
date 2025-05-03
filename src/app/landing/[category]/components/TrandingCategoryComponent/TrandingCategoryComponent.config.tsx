@@ -1,6 +1,6 @@
 import Slider from 'react-slick';
-import { NextArrow, PrevArrow } from '../../../components/customArrow';
-import CustomDot from '../../../components/CustomDot/CustomDot';
+import { NextArrow, PrevArrow } from '../../../components/CustomArrowComponent/customArrowComponent';
+import CustomDot from '../../../components/CustomDotComponent/CustomDotComponent';
 
 let setSlidesToShow: number = 5;
 const responsive = [

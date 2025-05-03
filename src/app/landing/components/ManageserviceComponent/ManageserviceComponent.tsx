@@ -1,5 +1,5 @@
 
-import styles from './Manageservice.module.scss';
+import styles from './ManageserviceComponent.module.scss';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -10,7 +10,7 @@ interface ManageservicePorps {
     manageServiceData?: ManageServiceModel;
 }
 
-const Manageservice: React.FC<ManageservicePorps> = ({manageServiceData}) => {
+const ManageserviceComponent: React.FC<ManageservicePorps> = ({manageServiceData}) => {
 
 
     const settings = {
@@ -157,4 +157,4 @@ const Manageservice: React.FC<ManageservicePorps> = ({manageServiceData}) => {
 }
 
 
-export default Manageservice;
+export default ManageserviceComponent;

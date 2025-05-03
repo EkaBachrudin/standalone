@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import styles from './customArrow.module.scss'
+import styles from './customArrowComponent.module.scss'
 
 interface ArrowProps {
   onClick: () => void,

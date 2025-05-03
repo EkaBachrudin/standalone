@@ -1,11 +1,11 @@
 import React from 'react';
-import styles from './CustomDot.module.scss'
+import styles from './CustomDotComponent.module.scss'
 interface CustomDotProps {
   isActive: boolean;
   onClick: () => void;
 }
 
-const CustomDot: React.FC<CustomDotProps> = ({ isActive, onClick }) => {
+const CustomDotComponent: React.FC<CustomDotProps> = ({ isActive, onClick }) => {
   return (
     <button
       className={styles.customButton}
@@ -24,4 +24,4 @@ const CustomDot: React.FC<CustomDotProps> = ({ isActive, onClick }) => {
   );
 };
 
-export default CustomDot;
+export default CustomDotComponent;

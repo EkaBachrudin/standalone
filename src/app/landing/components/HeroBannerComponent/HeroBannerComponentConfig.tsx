@@ -1,6 +1,6 @@
 import type Slider from 'react-slick';
-import { NextArrow, PrevArrow } from '../customArrow';
-import CustomDot from '../CustomDot/CustomDot';
+import { NextArrow, PrevArrow } from '../CustomArrowComponent/customArrowComponent';
+import CustomDot from '../CustomDotComponent/CustomDotComponent';
 
 export const getSliderSettings = (
   isMobile: boolean,

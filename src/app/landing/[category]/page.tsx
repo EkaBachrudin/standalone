@@ -7,10 +7,10 @@ import { CategoryModel } from '@/domain/models/category';
 import { digitalHubRepository } from '@/data/repositories/DigitalHubRepository';
 import { GetTrandingCategoryModel } from '@/domain/models/getTrandingCategory';
 import Breadcrumb from '@/components/lib/breadcrumb/breadcrumb';
-import CategoryComponent from '@/app/landing/components/Category/Category';
-import CategoryTranding from './components/category-trandling/category-tranding';
+import CategoryComponent from '@/app/landing/components/CategoryComponent/CategoryComponent';
+import TrandingCategoryComponent from './components/TrandingCategoryComponent/TrandingCategoryComponent';
 import BottomSheet from '@/components/lib/bottomsheet/BottomSheet';
-import CategorySearch from './components/category-search/category-search';
+import SearchCategoryComponent from './components/SearchCategoryComponent/SearchCategoryComponent';
 import { GetProductByCategoryDto } from '@/domain/models/getProductByCategiry';
 import useIsMobile from '@/hook/useIsMobile';
 import { GetCategoryProductListModel } from '@/domain/models/getCategoryProductList';
@@ -119,7 +119,7 @@ export default function Category() {
           <section className='section-category'>
             <CategoryComponent categoryData={categoryData} />
 
-            <CategoryTranding trandingList={categoryTrandingData}></CategoryTranding>
+            <TrandingCategoryComponent trandingList={categoryTrandingData}></TrandingCategoryComponent>
           </section>
 
           <section className='section-filter'>
@@ -138,7 +138,7 @@ export default function Category() {
 
               <div className="product-end-filter">
                 <div className="dekstop-filter">
-                    {!isMobile ? <CategorySearch onDataReceived={handleSearchData}/> : ''}
+                    {!isMobile ? <SearchCategoryComponent onDataReceived={handleSearchData}/> : ''}
                 </div>
                 <div className="product-list">
                   {productListByCategory?.map((item, index) => (
@@ -181,7 +181,7 @@ export default function Category() {
               </section>
 
               <section className='content'>
-                {isMobile ? <CategorySearch onDataReceived={handleSearchData}/> : ''}
+                {isMobile ? <SearchCategoryComponent onDataReceived={handleSearchData}/> : ''}
               </section>
             </div>
           </BottomSheet>

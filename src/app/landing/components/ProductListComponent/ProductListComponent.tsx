@@ -1,5 +1,5 @@
 // import bgProduct from '/assets/images/bg-product.svg';
-import  './productList.scss'
+import  './productListComponent.scss'
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -12,7 +12,7 @@ interface PoductListProps {
     productListData?: ProductListModel;
 }
 
-const ProductList: React.FC<PoductListProps> = ({productListData}) => {
+const ProductListComponent: React.FC<PoductListProps> = ({productListData}) => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [, setActiveSlide] = useState(0);
     const sliderRef = useRef<Slider>(null);
@@ -55,4 +55,4 @@ const ProductList: React.FC<PoductListProps> = ({productListData}) => {
     )
 }
 
-export default ProductList;
+export default ProductListComponent;

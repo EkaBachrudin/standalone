@@ -2,18 +2,18 @@ import React, { useRef, useState } from 'react';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import styles from './HeroBanner.module.scss';
+import styles from './HeroBannerComponent.module.scss';
 
 import { HeroBannerModel } from '@/domain/models/heroBanner';
 import useIsMobile from '@/hook/useIsMobile';
 import Link from 'next/link';
-import { getSliderSettings } from './HeroBannerConfig';
+import { getSliderSettings } from './HeroBannerComponentConfig';
 
 interface HeroBannerProps {
     bannerDataProps: HeroBannerModel | undefined;
 }
 
-const HeroBanner: React.FC<HeroBannerProps> = ({ bannerDataProps }) => {
+const HeroBannerComponent: React.FC<HeroBannerProps> = ({ bannerDataProps }) => {
     const [, setActiveSlide] = useState(0);
     const [currentSlide, setCurrentSlide] = useState(0);
     const isMobile = useIsMobile();
@@ -53,4 +53,4 @@ const HeroBanner: React.FC<HeroBannerProps> = ({ bannerDataProps }) => {
     )
 }
 
-export default HeroBanner;
+export default HeroBannerComponent;

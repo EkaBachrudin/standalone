@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import './category-search.scss';
+import './SearchCategoryComponent.scss';
 import CustomCheckbox from "@/components/lib/checkbox/checkbox";
 import { GetMerchantDataModel, CheckedState } from "@/domain/models/getMerchant.model";
 import { digitalHubRepository } from "@/data/repositories/DigitalHubRepository";
@@ -11,7 +11,7 @@ type Props = {
     onDataReceived: (data: GetProductByCategoryDto) => void;
 };
 
-const CategorySearch: React.FC<Props> = ({ onDataReceived }) => {
+const SearchCategoryComponent: React.FC<Props> = ({ onDataReceived }) => {
     const { values, handleChange } = useCurrencyInput({
         price1: '',
         price2: ''
@@ -213,4 +213,4 @@ const CategorySearch: React.FC<Props> = ({ onDataReceived }) => {
     )
 }
 
-export default CategorySearch;
+export default SearchCategoryComponent;

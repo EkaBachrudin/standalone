@@ -1,7 +1,7 @@
-import style from './Category.module.scss';
+import style from './CategoryComponent.module.scss';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css"
-import { NextArrow, PrevArrow } from '../customArrow';
+import { NextArrow, PrevArrow } from '../CustomArrowComponent/customArrowComponent';
 import { useRef, useState } from 'react';
 import React from 'react';
 import { CategoryModel } from '@/domain/models/category';
@@ -14,7 +14,7 @@ interface CategoryProps {
 }
 
 
-const Category: React.FC<CategoryProps > = ({categoryData}) => {
+const CategoryComponent: React.FC<CategoryProps > = ({categoryData}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const isMobile = useIsMobile();
   const slider = useRef<Slider>(null);
@@ -65,4 +65,4 @@ const Category: React.FC<CategoryProps > = ({categoryData}) => {
     );
 }
 
-export default Category;
+export default CategoryComponent;
