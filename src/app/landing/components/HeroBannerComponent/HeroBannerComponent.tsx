@@ -26,7 +26,7 @@ const HeroBannerComponent: React.FC<HeroBannerProps> = ({ bannerDataProps }) => 
 
     return (
         <>
-            <div className={styles['hero-baner-container']} style={{ backgroundImage: `url('assets/images/bg-hero-banner.svg')` }}>
+            <div className={styles['hero-baner-container']} style={{ backgroundImage: `url('/assets/images/bg-hero-banner.svg')` }}>
                 <div className={styles['main-title']}>{bannerDataProps?.title}</div>
                 <div className={styles['main-desc']}>{bannerDataProps?.desc}</div>
                 <div className={styles['slider']}>

@@ -17,6 +17,7 @@ import { GetCategoryProductListModel } from '@/domain/models/getCategoryProductL
 import Slider from "react-slick";
 import Image from 'next/image';
 import { useParams, useRouter } from 'next/navigation';
+import { useHasMounted } from '@/hook/useHasMounted';
 
 export default function Category() {
   const params = useParams();
@@ -27,6 +28,7 @@ export default function Category() {
   const [productListByCategory, setProductListByCategory] = useState<GetCategoryProductListModel[]>();
   const [, setError] = useState<string | null>(null);
   const isMobile = useIsMobile();
+  const hasMounted = useHasMounted();
   const [isOpen, setIsOpen] = useState(false);
 
   const fetchCategory = async () => {
@@ -64,7 +66,6 @@ export default function Category() {
   ];
 
   const handleSearchData = (data: GetProductByCategoryDto) => {
-      console.log(data);
       setQueryParamFilter(data);
   };
 
@@ -92,7 +93,6 @@ export default function Category() {
     fetchCategory();
     fetchCategoryTranding();
     fetchCategoryProductList();
-    console.log('productListByCategory', productListByCategory);
   }, [
     category,
     categoryData,
@@ -143,7 +143,9 @@ export default function Category() {
 
               <div className="product-end-filter">
                 <div className="dekstop-filter">
-                    {!isMobile ? <SearchCategoryComponent onDataReceived={handleSearchData}/> : ''}
+                  {hasMounted && !isMobile && (
+                    <SearchCategoryComponent onDataReceived={handleSearchData} />
+                  )}
                 </div>
                 <div className="product-list">
                   {productListByCategory?.map((item, index) => (
@@ -186,7 +188,9 @@ export default function Category() {
               </section>
 
               <section className='content'>
-                {isMobile ? <SearchCategoryComponent onDataReceived={handleSearchData}/> : ''}
+                {hasMounted && isMobile && (
+                  <SearchCategoryComponent onDataReceived={handleSearchData} />
+                )}
               </section>
             </div>
           </BottomSheet>

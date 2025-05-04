@@ -75,8 +75,7 @@ export class HeroBannerApi implements DigitalHubRepositoryInterface {
         return data;
     }
 
-    async GetCategoryProductList(payload: string): Promise<GetCategoryProductListModel[]> {
-        console.log('GetCategoryProductList', payload)
+    async GetCategoryProductList(): Promise<GetCategoryProductListModel[]> {
         const response = await fetch(`https://api.example.com/v1/category-merchant`);
         
         if (!response.ok) {

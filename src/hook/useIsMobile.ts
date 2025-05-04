@@ -1,18 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from "react";
 
-const useIsMobile = (): boolean => {
-  const [isMobile, setIsMobile] = useState<boolean>(false); // Jangan akses window di sini
+const useIsMobile = () => {
+  const isClient = typeof window !== "undefined";
+  const [isMobile, setIsMobile] = useState(() => isClient ? window.innerWidth < 1024 : false);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 1024);
-    };
+    if (!isClient) return;
 
-    handleResize(); // Update status pertama kali setelah mount
-    window.addEventListener('resize', handleResize);
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
 
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [isClient]);
 
   return isMobile;
 };

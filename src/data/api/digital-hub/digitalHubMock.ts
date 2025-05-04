@@ -352,8 +352,7 @@ export class HeroBannerMock implements DigitalHubRepositoryInterface {
     async GetMerchant(): Promise<GetMerchantDataModel[]> {
         return getMerchantDataMock;
     }
-    async GetCategoryProductList(payload: string): Promise<GetCategoryProductListModel[]> {
-        console.log('Mock GetCategoryProductList', payload)
+    async GetCategoryProductList(): Promise<GetCategoryProductListModel[]> {
         return GetCategoryProductList;
     }
 }
