@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { footerStaticData, socialStaticContent } from './Footer.data';
 import './Footer.scss';
-import { FooterMenu, SocialContent } from './Footer.type';
+import { SocialContent } from './Footer.type';
 import Image from 'next/image';
 
 const FooterComponent = () => {

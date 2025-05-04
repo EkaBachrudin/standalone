@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import './SearchCategoryComponent.scss';
 import CustomCheckbox from "@/components/lib/checkbox/checkbox";
 import { GetMerchantDataModel, CheckedState } from "@/domain/models/getMerchant.model";
@@ -6,6 +6,7 @@ import { digitalHubRepository } from "@/data/repositories/DigitalHubRepository";
 import useCurrencyInput, { cleanCurrency } from "@/hook/useCurrencyInput";
 import RadioButton from "@/components/lib/radiobutton/RadioButton";
 import { GetProductByCategoryDto } from "@/domain/models/getProductByCategiry";
+import Image from "next/image";
 
 type Props = {
     onDataReceived: (data: GetProductByCategoryDto) => void;
@@ -30,36 +31,30 @@ const SearchCategoryComponent: React.FC<Props> = ({ onDataReceived }) => {
     }, [inputSearch]);
 
     useEffect(() => {
-          featchMerchant();
-          setMerchatShow(getMerchant);
-    }, [getMerchant]);
-
-    useEffect(() => {
-        getChakedData(checkedState)  
-    }, [checkedState]);
-
-    useEffect(() => {
     }, [getChakedId]);
 
-    const featchMerchant = async () => {
+    const initiateCheckbox = useCallback(() => {
+        const initialState: CheckedState = {};
+        getMerchant.forEach((data, index) => {
+          initialState[index] = false;
+        });
+        setCheckedState(initialState);
+    }, [getMerchant]); 
+
+    const featchMerchant = useCallback(async () => {
         try {
           const items = await digitalHubRepository.GetMerchant();
           setGetmerchant(items);
           initiateCheckbox();
         } catch {
-    
+          
         }
-    }
+      }, [initiateCheckbox]);
 
-    const initiateCheckbox = () => {
-        const initialState: CheckedState = {};
-
-        getMerchant.forEach((data, index) => {
-          initialState[index] = false;
-        });
-
-        setCheckedState(initialState);
-    }
+    useEffect(() => {
+        featchMerchant();
+        setMerchatShow(getMerchant);
+    }, [featchMerchant, getMerchant]);
 
     const handleCheckboxChange = (index: number) => {
         setCheckedState(prevState => ({
@@ -68,14 +63,18 @@ const SearchCategoryComponent: React.FC<Props> = ({ onDataReceived }) => {
         }));
     };
 
-    const getChakedData = (checkedState: CheckedState) => {
-        let collection: string[] = [];
-        Object.entries(checkedState).forEach(([key, value], index) => {
-            if(value) collection.push(getMerchant[index].id);
+    const getChakedData = useCallback((checkedState: CheckedState) => {
+        const collection: string[] = [];
+        Object.entries(checkedState).forEach(([, value], index) => {
+            if (value) collection.push(getMerchant[index].id);
         });
-
+    
         setGetChakedId(collection);
-    }
+    }, [getMerchant]);
+
+    useEffect(() => {
+        getChakedData(checkedState)  
+    }, [getChakedData, checkedState]);
 
     const clearPriceFilter = () => {
         handleChange('price1', '');
@@ -115,7 +114,7 @@ const SearchCategoryComponent: React.FC<Props> = ({ onDataReceived }) => {
                     <label htmlFor="search-category">Cari Nama Merchant</label>
                     <input type="text" id='search-category' placeholder='Contoh: Maxtream' value={inputSearch}
                     onChange={(e) => setinputSearch(e.target.value)} />
-                    <img src="/assets/icons/search.svg" width={24} height={24} alt="search" />
+                    <Image src="/assets/icons/search.svg" width={24} height={24} alt="search" />
                 </div>
 
                 <div className="checkbox-filter">
@@ -135,7 +134,7 @@ const SearchCategoryComponent: React.FC<Props> = ({ onDataReceived }) => {
                     <button className="flex items-center mt-4" onClick={() => toggleView()}>
                         <span className="text-f-14 text-secondary-rzaBlue mr-2 font-poppins-bold">Lihat Lebih Sedikit</span>
                         
-                        <img src={`/assets/icons/${isExpanded ? 'chevron-up.svg' : 'chevron-down.svg'}`} width={24} height={24} alt="up" />
+                        <Image src={`/assets/icons/${isExpanded ? 'chevron-up.svg' : 'chevron-down.svg'}`} width={24} height={24} alt="up" />
                     </button>
                 </div>
 

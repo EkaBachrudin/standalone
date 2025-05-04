@@ -2,7 +2,6 @@ import { DigitalHubRepositoryInterface } from "@/domain/interfaces/digHubInterfa
 import { CategoryModel } from "@/domain/models/category";
 import type { GetCategoryProductListModel } from "@/domain/models/getCategoryProductList";
 import { GetMerchantDataModel } from "@/domain/models/getMerchant.model";
-import { GetProductByCategoryDto } from "@/domain/models/getProductByCategiry";
 import { GetTrandingCategoryModel } from "@/domain/models/getTrandingCategory";
 import { HeroBannerModel } from "@/domain/models/heroBanner";
 import { ManageServiceModel } from "@/domain/models/Manageservice";

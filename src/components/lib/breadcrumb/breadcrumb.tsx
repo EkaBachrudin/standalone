@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import './breadcrumb.scss';
+import { BreadcrumbsProps } from './breadcrumb.type';
 
 const Breadcrumb: React.FC<BreadcrumbsProps> = ({ items }) => {
     return (

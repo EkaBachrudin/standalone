@@ -2,7 +2,7 @@
 'use client'
 
 import './[category].scss';
-import { use, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState, type CSSProperties } from 'react'
 import { CategoryModel } from '@/domain/models/category';
 import { digitalHubRepository } from '@/data/repositories/DigitalHubRepository';
 import { GetTrandingCategoryModel } from '@/domain/models/getTrandingCategory';
@@ -16,27 +16,18 @@ import useIsMobile from '@/hook/useIsMobile';
 import { GetCategoryProductListModel } from '@/domain/models/getCategoryProductList';
 import Slider from "react-slick";
 import Image from 'next/image';
-import { useParams, useSearchParams, useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 
 export default function Category() {
   const params = useParams();
-  const searchParams = useSearchParams();
   const router = useRouter();
   const category = params?.category as string;
   const [categoryData, setCategoryData] = useState<CategoryModel[]>([]);
   const [categoryTrandingData, setCategoryTrandingData] = useState<GetTrandingCategoryModel>();
   const [productListByCategory, setProductListByCategory] = useState<GetCategoryProductListModel[]>();
-  const [error, setError] = useState<string | null>(null);
+  const [, setError] = useState<string | null>(null);
   const isMobile = useIsMobile();
   const [isOpen, setIsOpen] = useState(false);
-  
-
-  useEffect(() => {
-      fetchCategory();
-      fetchCategoryTranding();
-      fetchCategoryProductList();
-      console.log('productListByCategory', productListByCategory)
-  }, [category, categoryData, categoryTrandingData, productListByCategory]);
 
   const fetchCategory = async () => {
     try {
@@ -44,17 +35,18 @@ export default function Category() {
       setCategoryData(items);
     } catch (error) {
       setError("Failed to fetch category data");
+      return error;
     }
   };
 
-  const fetchCategoryTranding = async () => {
+  const fetchCategoryTranding = useCallback(async () => {
     try {
       const items = await digitalHubRepository.GetTrandingCategory(category);
       setCategoryTrandingData(items);
     } catch {
       setError("Failed to hero banner data");
     }
-  };
+  }, [category]);
 
   const fetchCategoryProductList = async (payload?: string) => {
     try {
@@ -96,7 +88,20 @@ export default function Category() {
     fetchCategoryProductList(params.toString());
   }
 
-  var settings = {
+  useEffect(() => {
+    fetchCategory();
+    fetchCategoryTranding();
+    fetchCategoryProductList();
+    console.log('productListByCategory', productListByCategory);
+  }, [
+    category,
+    categoryData,
+    categoryTrandingData,
+    productListByCategory,
+    fetchCategoryTranding
+  ]);
+
+  const settings = {
     infinite: false,
     speed: 500,
     slidesToShow: 1.2,
@@ -127,7 +132,7 @@ export default function Category() {
 
               <div className="mobile-filter">
                 <button onClick={() => setIsOpen(true)}>
-                  <img src="/assets/icons/filter.svg" width={16} height={16} alt="filter" />
+                  <Image src="/assets/icons/filter.svg" width={16} height={16} alt="filter" />
                   <div>Filter</div>
                 </button>
 
@@ -176,7 +181,7 @@ export default function Category() {
               <section className="head">
                 <div className="title">Filter</div>
                 <button onClick={() => setIsOpen(false)}>
-                  <img src="/assets/icons/x.svg" width={24} height={24} alt="close" />
+                  <Image src="/assets/icons/x.svg" width={24} height={24} alt="close" />
                 </button>
               </section>
 
@@ -189,7 +194,7 @@ export default function Category() {
       );
 }
 
-const NextArrow = (props: any) => {
+const NextArrow = (props: ArrowProps) => {
   const { onClick } = props;
 
  return (
@@ -202,9 +207,9 @@ const NextArrow = (props: any) => {
   );
 };
 
-const PrevArrow = (props: any) => {
+const PrevArrow = (props: ArrowProps2) => {
   const { onClick } = props;
-  if(props.currentSlide > 0) return (
+  if((props?.currentSlide ?? 0) > 0) return (
     <div
       style={{ ...arrowStyle, left: -10 }}
       onClick={onClick}
@@ -214,11 +219,22 @@ const PrevArrow = (props: any) => {
   );
 };
 
-const arrowStyle = {
+const arrowStyle: CSSProperties = {
   display: "block",
   zIndex: 2,
   position: "absolute",
   top: "53%",
   transform: "translateY(-50%)",
   cursor: "pointer",
-} as any;
+};
+
+interface ArrowProps {
+  className?: string;
+  style?: CSSProperties;
+  onClick?: () => void;
+}
+
+interface ArrowProps2 {
+  onClick?: () => void;
+  currentSlide?: number;
+}

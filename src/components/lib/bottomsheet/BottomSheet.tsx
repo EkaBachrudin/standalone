@@ -1,6 +1,6 @@
 // components/BottomSheet.tsx
 
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode } from 'react';
 
 interface BottomSheetProps {
   isOpen: boolean;
