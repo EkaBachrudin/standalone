@@ -4,7 +4,7 @@
         @apply pt-8 pb-6 rounded-t-[20px];
         @screen lg {@apply rounded-t-[64px] w-[95%]}
         .item{
-            @apply px-4 w-auto;
+            @apply px-4 w-auto cursor-pointer;
             display: flex !important;
             flex-direction: column;
             align-items: center;

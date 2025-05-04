@@ -40,13 +40,13 @@ const heroBannerData: HeroBannerModel = {
 
 const categoryData: CategoryModel[] = [
     {icon: '/assets/icons/move.svg', name: 'Nonton'},
-    {icon: '/assets/icons/move.svg', name: 'Sosmed'},
-    {icon: '/assets/icons/move.svg', name: 'Games'},
-    {icon: '/assets/icons/move.svg', name: 'Musik'},
+    {icon: '/assets/icons/chat.svg', name: 'Sosmed'},
+    {icon: '/assets/icons/games.svg', name: 'Games'},
+    {icon: '/assets/icons/music.svg', name: 'Musik'},
     {icon: '/assets/icons/move.svg', name: 'Nonton'},
-    {icon: '/assets/icons/move.svg', name: 'Sosmed'},
-    {icon: '/assets/icons/move.svg', name: 'Games'},
-    {icon: '/assets/icons/move.svg', name: 'Musik'}
+    {icon: '/assets/icons/chat.svg', name: 'Sosmed'},
+    {icon: '/assets/icons/games.svg', name: 'Games'},
+    {icon: '/assets/icons/music.svg', name: 'Musik'}
 ]
 
 const manageServiceData: ManageServiceModel = {

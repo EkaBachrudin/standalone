@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { ManageServiceModel } from '@/domain/models/Manageservice';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface ManageservicePorps {
     manageServiceData?: ManageServiceModel;
@@ -134,18 +135,24 @@ const ManageserviceComponent: React.FC<ManageservicePorps> = ({manageServiceData
                 <div className={styles.serviceItems}>
                     <div className={styles.serviceItemsGroup}>
                         <div className={styles.title}>{manageServiceData?.serviceItems.title}</div>
-                        <div className={styles.seeAll}>Lihat Semua</div>
+                        <Link href={`/landing/services`}> 
+                          <div className={styles.seeAll}>Lihat Semua</div>
+                        </Link>
                     </div>
 
                     <div className={styles.manageServiceItems}>
                         <Slider {...settings}>
                             {manageServiceData?.serviceItems.items.map((item) => (
                                 <div key={item.title} className={styles.item} >
+                                  
+                                  <Link href={`/landing/services`}> 
                                     <div className={styles.containImage} style={{ backgroundImage: `url(${item.imageUrl})`, backgroundSize: "cover" }}></div>
                                     <div className={styles.content}>
                                         <div className={styles.contentTitle}>{item.title}</div>
                                         <div className={styles.contentDesc}>{item.desc}</div>
                                     </div>
+                                  </Link>
+                                   
                                 </div>
                             ))}
                         </Slider>

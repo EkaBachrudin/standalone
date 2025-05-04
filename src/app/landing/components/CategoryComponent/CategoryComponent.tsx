@@ -8,6 +8,7 @@ import { CategoryModel } from '@/domain/models/category';
 import useIsMobile from '@/hook/useIsMobile';
 import Slider from 'react-slick';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface CategoryProps {
   categoryData: CategoryModel[];
@@ -48,13 +49,15 @@ const CategoryComponent: React.FC<CategoryProps > = ({categoryData}) => {
             <Slider ref={slider} {...settings}>
               {categoryData?.map((item) => {
                 return(
-                  <div key={item.name} className={style['item']}>
-                    <div className={style['item-icon']}>
-                      <Image src={item.icon} width={40} height={40} alt={item.name} />
-                    </div>
+                  <Link href={`/landing/${item.name.toLowerCase()}`} key={item.name}> 
+                      <div className={style['item']} style={{ cursor: 'pointer' }}>
+                        <div className={style['item-icon']}>
+                          <Image src={item.icon} width={40} height={40} alt={item.name} />
+                        </div>
                     
-                    <div className={style['item-name']}>{item.name}</div>
-                  </div>
+                        <div className={style['item-name']}>{item.name}</div>
+                      </div>
+                  </Link>
                 )
               })}
             </Slider>

@@ -38,7 +38,7 @@ const HeroBannerComponent: React.FC<HeroBannerProps> = ({ bannerDataProps }) => 
                                         <div className={styles['item-content']}>
                                             <div className={styles['banner-title']}> {item.title}</div>
                                             <div className={styles['banner-desc']}> {item.desc}</div>
-                                            <Link href={item.pageUrl} passHref>
+                                            <Link href={'landing/services'} passHref>
                                                 <button className={styles['banner-button']}>Cek Paket</button>
                                             </Link>
                                         </div>

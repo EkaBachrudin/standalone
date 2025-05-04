@@ -7,6 +7,7 @@ import { ProductListModel } from '@/domain/models/productList';
 import useIsMobile from '@/hook/useIsMobile';
 import { useRef, useState } from 'react';
 import { getSliderProductListSettings } from './ProductListConfig';
+import Link from 'next/link';
 
 interface PoductListProps {
     productListData?: ProductListModel;
@@ -41,11 +42,15 @@ const ProductListComponent: React.FC<PoductListProps> = ({productListData}) => {
                 <Slider {...settings}>
                     {productListData?.productList.map((item) => (
                         <div key={item.title} className='item' >
-                            <div className='containImage' style={{ backgroundImage: `url(${item.imageUrl})`, backgroundSize: "cover" }}></div>
-                            <div className='content'>
-                                <div className='contentTitle'>{item.title}</div>
-                                <div className='contentDesc'>{item.desc}</div>
-                            </div>
+                           
+                            <Link href={`/landing/services`}> 
+                                <div className='containImage' style={{ backgroundImage: `url(${item.imageUrl})`, backgroundSize: "cover" }}></div>
+                                <div className='content'>
+                                    <div className='contentTitle'>{item.title}</div>
+                                    <div className='contentDesc'>{item.desc}</div>
+                                </div>
+                            </Link>
+                            
                         </div>
                     ))}
                 </Slider>
