@@ -1,0 +1,9 @@
+.detail-container{
+     @apply mx-auto max-w-[1440px];
+
+     .mobile-image{
+        .mobile-image-item {
+            @apply h-8 bg-primary-darkBlue text-primary-rzaWhite;
+        }
+     }
+}
