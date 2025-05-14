@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+  touch-action: manipulation;
+  overscroll-behavior: contain;
+}
+
+button, a, .no-zoom {
+  touch-action: manipulation;
+}
+
 @font-face {
   font-family: 'poppins-bold';
   src: url('/assets/fonts/Poppins-Bold.ttf') format('truetype');
