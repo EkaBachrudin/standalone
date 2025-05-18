@@ -1,0 +1,39 @@
+.variant-section{
+        @apply mt-4 px-6;
+        .title{
+            @apply text-f-16 font-poppins-bold text-primary-darkBlue;
+        }
+
+        .variant-block{
+            @apply border border-primary-rzaGrey40 rounded-lg px-3 py-[10px] flex justify-between text-f-14 mt-2;
+            .selection {
+                @apply font-poppins-regular text-primary-darkBlue;
+            }
+            .see-all {
+                @apply font-poppins-bold text-secondary-rzaBlue;
+            }
+        }
+}
+
+.variant-selection-bottomsheet{
+      .head{
+            @apply flex justify-between items-center px-6 text-f-19 font-poppins-bold text-primary-darkBlue;
+      }
+
+      .selection-info{
+            @apply px-6 flex gap-3 mt-4;;
+            .selection-info-image{
+                  img{
+                        @apply size-16 rounded-t-lg rounded-bl-none rounded-br-lg;
+                  }
+            }
+
+            .selection-info-variant{
+                  .selection-info-variant-item{
+                        @apply bg-secondary-disabled text-f-12 px-2 py-1 rounded mb-3;
+                        .selection-info-variant-item-key{@apply mr-1 text-primary-rzaGrey100 font-poppins-regular}
+                        .selection-info-variant-item-value{@apply text-primary-rzaGrey100 font-poppins-bold}
+                  }
+            }
+      }
+}

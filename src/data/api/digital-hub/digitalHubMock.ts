@@ -1,6 +1,7 @@
 import { DigitalHubRepositoryInterface } from "@/domain/interfaces/digHubInterface";
 import { CategoryModel } from "@/domain/models/category";
 import { GetCategoryProductListModel } from "@/domain/models/getCategoryProductList";
+import { GetDetailproductModel } from "@/domain/models/GetDetailproduct";
 import { GetMerchantDataModel } from "@/domain/models/getMerchant.model";
 import { GetTrandingCategoryModel } from "@/domain/models/getTrandingCategory";
 import { HeroBannerModel } from "@/domain/models/heroBanner";
@@ -196,7 +197,7 @@ const getMerchantDataMock: GetMerchantDataModel[] = [
     { "id": "prime_video", "name": "Prime Video" },
     { "id": "prabayar", "name": "Prabayar" },
     { "id": "halo", "name": "Halo" }
-  ]
+]
 
 const GetCategoryProductList: GetCategoryProductListModel[] = [
     {
@@ -331,6 +332,66 @@ const GetCategoryProductList: GetCategoryProductListModel[] = [
     }
 ]
 
+const getDetailProduct: GetDetailproductModel = {
+    images: ['https://picsum.photos/1280/720', 'https://picsum.photos/1280/780'],
+    product_label: 'Promo',
+    product_label_bg: '#FDA22B',
+    product_label_txtclr: '#001A41',
+    product_name: 'Vidio Platinum',
+    product_price: 'Rp54.000',
+    product_strikeout_price: 'Rp 330.000',
+    product_discount: '10',
+    product_desctiption: '<p><strong>Paket Vidio dengan:</strong></p><ul><li><strong>Langganan Basic Vidio 1 bulan</strong></li><li>Langganan Basic Vidio dapat membuat profil dalam 1 akun hingga <strong>7 profile</strong>,<strong>1 concurrent stream</strong> (1 stream secara bersamaan), maksimum login di<strong>3 perangkat</strong>, dan kualitas video hingga <strong>Full HD (1080p)</strong></li></ul><p>Nikmati semua tayangan <strong>Global dan Lokal terbaik</strong> di aplikasi Vidio</p><p><strong>Paket Vidio dengan:</strong></p><ul><li><strong>Langganan Basic Vidio 1 bulan</strong></li><li>Langganan Basic Vidio dapat membuat profil dalam 1 akun hingga <strong>7 profile</strong>,<strong>1 concurrent stream</strong> (1 stream secara bersamaan), maksimum login di<strong>3 perangkat</strong>, dan kualitas video hingga <strong>Full HD (1080p)</strong></li></ul><p>Nikmati semua tayangan <strong>Global dan Lokal terbaik</strong> di aplikasi Vidio</p>',
+    product_tnc: '-',
+    merchant_image: 'https://picsum.photos/1280/726',
+    merchant_name: 'Vidio',
+    merchant_location: 'Jakarta Selatan',
+    variant_group: [
+        {
+        "name": "Jenis Paket",
+        "key": "jenisPaket",
+        "options": [
+            { "id": "platinum", "label": "Platinum" },
+            { "id": "diamond", "label": "Diamond" },
+            { "id": "fifa_u17", "label": "FIFA U-17" }
+        ]
+        },
+        {
+        "name": "Perangkat",
+        "key": "perangkat",
+        "options": [
+            { "id": "semua", "label": "Semua Perangkat" },
+            { "id": "mobile", "label": "Mobile" }
+        ]
+        },
+        {
+        "name": "Masa Aktif",
+        "key": "masaAktif",
+        "options": [
+            { "id": "7hari", "label": "7 Hari" },
+            { "id": "30hari", "label": "30 Hari" },
+            { "id": "90hari", "label": "90 Hari" },
+            { "id": "1tahun", "label": "1 Tahun" }
+        ]
+        }
+    ],
+    variants: [
+        {
+        "id": "v1",
+        "variantValues": {
+            "jenisPaket": "platinum",
+            "perangkat": "semua",
+            "masaAktif": "7hari"
+        },
+        "price": 54000,
+        "originalPrice": 60000,
+        "discountPercentage": 10
+        }
+    ]
+}
+
+
+
 
 export class HeroBannerMock implements DigitalHubRepositoryInterface {
     async getCategory(): Promise<CategoryModel[]> {
@@ -354,5 +415,8 @@ export class HeroBannerMock implements DigitalHubRepositoryInterface {
     }
     async GetCategoryProductList(): Promise<GetCategoryProductListModel[]> {
         return GetCategoryProductList;
+    }
+    async GetDetailProduct(productId: string): Promise<GetDetailproductModel> {
+        return getDetailProduct;
     }
 }

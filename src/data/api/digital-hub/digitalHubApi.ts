@@ -1,6 +1,7 @@
 import { DigitalHubRepositoryInterface } from "@/domain/interfaces/digHubInterface";
 import { CategoryModel } from "@/domain/models/category";
 import type { GetCategoryProductListModel } from "@/domain/models/getCategoryProductList";
+import { GetDetailproductModel } from "@/domain/models/GetDetailproduct";
 import { GetMerchantDataModel } from "@/domain/models/getMerchant.model";
 import { GetTrandingCategoryModel } from "@/domain/models/getTrandingCategory";
 import { HeroBannerModel } from "@/domain/models/heroBanner";
@@ -9,6 +10,16 @@ import { ProductListModel } from "@/domain/models/productList";
 
 
 export class HeroBannerApi implements DigitalHubRepositoryInterface {
+    async GetDetailProduct(productId: string): Promise<GetDetailproductModel> {
+        const response = await fetch(`https://api.example.com/detail${productId}`);
+        
+        if (!response.ok) {
+            throw new Error("Failed to fetch menu items");
+        }
+
+        const data = await response.json();
+        return data;
+    }
     async getHeroBanner(): Promise<HeroBannerModel> {
         const response = await fetch('https://api.example.com/getHeroBanner');
         

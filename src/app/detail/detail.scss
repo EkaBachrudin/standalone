@@ -2,8 +2,65 @@
      @apply mx-auto max-w-[1440px];
 
      .mobile-image{
+        @apply h-[375px] md:hidden relative;
         .mobile-image-item {
-            @apply h-8 bg-primary-darkBlue text-primary-rzaWhite;
+            @apply bg-primary-darkBlue text-primary-rzaWhite h-[375px] w-full;
+
+            img {
+                @apply h-full;
+            }
+        }
+
+        .image-count{
+            @apply text-f-10 font-poppins-regular bg-primary-rzaWhite rounded-lg right-6 bottom-6 px-2 text-center py-1 w-[49px] absolute;
+        }
+     }
+
+     .product-section{
+        @apply bg-secondary-rzaCard rounded-bl-[24px];
+
+        .ribbon{
+            @apply font-poppins-bold text-f-12 w-min px-4 py-1 rounded-br-[20px]; 
+        }
+
+        .product-name{
+            @apply text-f-18 font-poppins-bold text-primary-darkBlue mt-3 px-6;
+        }
+
+        .product-price{
+            @apply text-f-24 text-primary-rzaRed font-poppins-bold px-6 mt-1;
+        }
+
+        .product-strikeout{
+            @apply px-6 mt-1 border-b-2 border-secondary-rzaBrightGray pb-2;
+            .pri{
+                @apply text-f-12 text-primary-rzaGrey100 font-poppins-regular line-through;
+            }
+            .str{
+                @apply text-f-12 bg-primary-darkBlue text-primary-rzaWhite px-2 py-1 rounded-md ml-1;
+                text-decoration: none;
+            }
+        }
+
+        .merchant{
+            @apply px-6 mt-2 flex items-center pb-4;
+            .merchant-image{
+                img {
+                    @apply w-8 h-8 rounded-full object-cover;
+                }
+            }
+
+            .merchant-info{
+                @apply ml-2;
+
+                .merchant-name{
+                    @apply font-poppins-bold text-f-14 text-primary-rzaRed;
+                }
+
+                .merchant-location{
+                    @apply text-f-14 text-primary-rzaGrey100 font-poppins-regular;
+                }
+            }
         }
      }
 }
