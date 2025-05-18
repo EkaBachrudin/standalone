@@ -4,12 +4,13 @@ interface BottomSheetProps {
   isOpen: boolean;
   onClose: () => void;
   children: ReactNode;
+  fullHeight?: boolean;
 }
 
 const SWIPE_CLOSE_THRESHOLD = 100;
 const ANIMATION_DURATION = 300; // ms
 
-const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, children }) => {
+const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, children, fullHeight }) => {
   const [isMounted, setIsMounted] = useState(false);
   const [translateY, setTranslateY] = useState(100);
   const [, setIsClosing] = useState(false);
@@ -83,6 +84,8 @@ const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, children }) 
         style={{
           transform: `translateY(${translateY}%)`,
           transition: isDragging ? 'none' : `transform ${ANIMATION_DURATION}ms ease`,
+          height: fullHeight ? '100vh' : 'auto',
+          maxHeight: fullHeight ? '100vh' : '80vh',
         }}
       >
         <div
@@ -113,7 +116,6 @@ const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, children }) 
           position: relative;
           width: 100%;
           max-width: 500px;
-          max-height: 80vh;
           background: white;
           border-top-left-radius: 20px;
           border-top-right-radius: 20px;

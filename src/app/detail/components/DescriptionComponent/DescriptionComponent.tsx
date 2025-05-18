@@ -33,7 +33,7 @@ const DescriptionComponent: React.FC<descriptionComponentProps> = ({ content, ti
 
                     {shouldShowButton && (
                         <button
-                        className="text-blue-600 underline font-poppins-bold text-secondary-rzaBlue text-f-12"
+                        className="text-blue-600 font-poppins-bold text-secondary-rzaBlue text-f-12"
                         onClick={() => setIsExpanded((prev) => !prev)}
                         >
                         {isExpanded ? 'Sembunyikan' : 'Lihat Selengkapnya'}

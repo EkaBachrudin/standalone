@@ -16,7 +16,7 @@
 }
 
 .variant-bottomsheet{
-      @apply pb-28;
+      @apply pb-28 relative h-full;;
       .head{
             @apply flex justify-between items-center px-6 text-f-19 font-poppins-bold text-primary-darkBlue;
       }
@@ -50,6 +50,14 @@
                               background: linear-gradient(75.07deg, #001A41 17.5%, #0E336C 105.9%);
                         }
                   }
+            }
+      }
+
+      .bottom-section{
+            @apply p-4 absolute w-full bottom-0;
+            box-shadow: 0px -2px 4px 0px #9E9E9E33;
+            button {
+                  @apply bg-primary-rzaRed py-3 text-f-14 font-poppins-bold text-primary-rzaWhite w-full rounded-[56px];
             }
       }
 }
