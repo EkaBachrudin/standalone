@@ -12,7 +12,7 @@ const ANIMATION_DURATION = 300; // ms
 const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, children }) => {
   const [isMounted, setIsMounted] = useState(false);
   const [translateY, setTranslateY] = useState(100);
-  const [isClosing, setIsClosing] = useState(false);
+  const [, setIsClosing] = useState(false);
   const startY = useRef<number | null>(null);
   const [isDragging, setIsDragging] = useState(false);
 

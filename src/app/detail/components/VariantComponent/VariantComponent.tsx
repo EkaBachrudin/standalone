@@ -1,9 +1,16 @@
 import { useState } from 'react';
-import './VariantComponent.scss'
+import './VariantComponent.scss';
 import BottomSheet from '@/components/lib/bottomsheet/BottomSheet';
 import Image from 'next/image';
+import SelectionVariantComponent from '../SelectionVariantComponent/SelectionVariantComponent';
+import { ProductVariant, VariantGroup } from '@/domain/models/GetDetailproduct';
 
-const VariantComponent: React.FC = () => {
+
+interface  VariantComponentProps {
+      variant_group: VariantGroup[],
+      variants: ProductVariant[]
+}
+const VariantComponent: React.FC<VariantComponentProps> = ({variant_group}) => {
       const [isOpen, setIsOpen] = useState(false);
       
       return (
@@ -18,7 +25,8 @@ const VariantComponent: React.FC = () => {
             </section>
 
             <BottomSheet isOpen={isOpen} onClose={() => setIsOpen(false)}>
-                 <div className="variant-selection-bottomsheet">
+
+                 <div className="variant-bottomsheet">
                         <section className="head">
                               <div className="title">Ringkasan Pesanan Anda</div>
                               <button onClick={() => setIsOpen(false)}>
@@ -26,26 +34,40 @@ const VariantComponent: React.FC = () => {
                               </button>
                         </section>
 
-                        <section className='selection-info'>
-                              <div className="selection-info-image">
+                        <section className='bottomsheet-info'>
+                              <div className="bottomsheet-info-image">
                                     <Image src="https://picsum.photos/1280/720" width={64} height={64} alt="close" />
                               </div>
-                              <div className="selection-info-variant">
-                                    <div className="selection-info-variant-item">
-                                          <span className='selection-info-variant-item-key'>Jenis Paket</span>
-                                          <span className='selection-info-variant-item-value'>Platinum</span>
+                              <div className="bottomsheet-info-variant">
+                                    <div className="bottomsheet-info-variant-item">
+                                          <span className='bottomsheet-info-variant-item-key'>Jenis Paket</span>
+                                          <span className='bottomsheet-info-variant-item-value'>Platinum</span>
                                     </div>
-                                     <div className="selection-info-variant-item">
-                                          <span className='selection-info-variant-item-key'>Jenis Paket</span>
-                                          <span className='selection-info-variant-item-value'>Platinum</span>
+                                     <div className="bottomsheet-info-variant-item">
+                                          <span className='bottomsheet-info-variant-item-key'>Jenis Paket</span>
+                                          <span className='bottomsheet-info-variant-item-value'>Platinum</span>
                                     </div>
-                                     <div className="selection-info-variant-item">
-                                          <span className='selection-info-variant-item-key'>Jenis Paket</span>
-                                          <span className='selection-info-variant-item-value'>Platinum</span>
+                                     <div className="bottomsheet-info-variant-item">
+                                          <span className='bottomsheet-info-variant-item-key'>Jenis Paket</span>
+                                          <span className='bottomsheet-info-variant-item-value'>Platinum</span>
+                                    </div>
+
+                                    <div className="bottomsheet-info-variant-price">
+                                          Rp54.000 
+                                    </div>
+
+                                    <div className="bottomsheet-info-variant-strikeout">
+                                          <span className='bottomsheet-info-variant-strikeout-prc'>Rp 330.000</span>
+                                          <span className='bottomsheet-info-variant-strikeout-discount'>10%</span>  
                                     </div>
                               </div>
                         </section>
+
+                       <SelectionVariantComponent
+                              variant_group={variant_group}>
+                       </SelectionVariantComponent> 
                  </div>
+                 
             </BottomSheet>
             </>
       )

@@ -333,7 +333,10 @@ const GetCategoryProductList: GetCategoryProductListModel[] = [
 ]
 
 const getDetailProduct: GetDetailproductModel = {
-    images: ['https://picsum.photos/1280/720', 'https://picsum.photos/1280/780'],
+    images: [
+        'https://picsum.photos/1280/720',
+        'https://picsum.photos/1280/780',
+    ],
     product_label: 'Promo',
     product_label_bg: '#FDA22B',
     product_label_txtclr: '#001A41',
@@ -341,52 +344,354 @@ const getDetailProduct: GetDetailproductModel = {
     product_price: 'Rp54.000',
     product_strikeout_price: 'Rp 330.000',
     product_discount: '10',
-    product_desctiption: '<p><strong>Paket Vidio dengan:</strong></p><ul><li><strong>Langganan Basic Vidio 1 bulan</strong></li><li>Langganan Basic Vidio dapat membuat profil dalam 1 akun hingga <strong>7 profile</strong>,<strong>1 concurrent stream</strong> (1 stream secara bersamaan), maksimum login di<strong>3 perangkat</strong>, dan kualitas video hingga <strong>Full HD (1080p)</strong></li></ul><p>Nikmati semua tayangan <strong>Global dan Lokal terbaik</strong> di aplikasi Vidio</p><p><strong>Paket Vidio dengan:</strong></p><ul><li><strong>Langganan Basic Vidio 1 bulan</strong></li><li>Langganan Basic Vidio dapat membuat profil dalam 1 akun hingga <strong>7 profile</strong>,<strong>1 concurrent stream</strong> (1 stream secara bersamaan), maksimum login di<strong>3 perangkat</strong>, dan kualitas video hingga <strong>Full HD (1080p)</strong></li></ul><p>Nikmati semua tayangan <strong>Global dan Lokal terbaik</strong> di aplikasi Vidio</p>',
+    product_desctiption:
+        '<p><strong>Paket Vidio dengan:</strong></p><ul><li><strong>Langganan Basic Vidio 1 bulan</strong></li><li>Langganan Basic Vidio dapat membuat profil dalam 1 akun hingga <strong>7 profile</strong>,<strong>1 concurrent stream</strong> (1 stream secara bersamaan), maksimum login di<strong>3 perangkat</strong>, dan kualitas video hingga <strong>Full HD (1080p)</strong></li></ul><p>Nikmati semua tayangan <strong>Global dan Lokal terbaik</strong> di aplikasi Vidio</p><p><strong>Paket Vidio dengan:</strong></p><ul><li><strong>Langganan Basic Vidio 1 bulan</strong></li><li>Langganan Basic Vidio dapat membuat profil dalam 1 akun hingga <strong>7 profile</strong>,<strong>1 concurrent stream</strong> (1 stream secara bersamaan), maksimum login di<strong>3 perangkat</strong>, dan kualitas video hingga <strong>Full HD (1080p)</strong></li></ul><p>Nikmati semua tayangan <strong>Global dan Lokal terbaik</strong> di aplikasi Vidio</p>',
     product_tnc: '-',
     merchant_image: 'https://picsum.photos/1280/726',
     merchant_name: 'Vidio',
     merchant_location: 'Jakarta Selatan',
     variant_group: [
         {
-        "name": "Jenis Paket",
-        "key": "jenisPaket",
-        "options": [
-            { "id": "platinum", "label": "Platinum" },
-            { "id": "diamond", "label": "Diamond" },
-            { "id": "fifa_u17", "label": "FIFA U-17" }
-        ]
+            name: 'Jenis Paket',
+            key: 'jenisPaket',
+            options: [
+                { id: 'platinum', label: 'Platinum' },
+                { id: 'diamond', label: 'Diamond' },
+                { id: 'fifa_u17', label: 'FIFA U-17' },
+            ],
         },
         {
-        "name": "Perangkat",
-        "key": "perangkat",
-        "options": [
-            { "id": "semua", "label": "Semua Perangkat" },
-            { "id": "mobile", "label": "Mobile" }
-        ]
+            name: 'Perangkat',
+            key: 'perangkat',
+            options: [
+                { id: 'semua', label: 'Semua Perangkat' },
+                { id: 'mobile', label: 'Mobile' },
+            ],
         },
         {
-        "name": "Masa Aktif",
-        "key": "masaAktif",
-        "options": [
-            { "id": "7hari", "label": "7 Hari" },
-            { "id": "30hari", "label": "30 Hari" },
-            { "id": "90hari", "label": "90 Hari" },
-            { "id": "1tahun", "label": "1 Tahun" }
-        ]
-        }
+            name: 'Masa Aktif',
+            key: 'masaAktif',
+            options: [
+                { id: '7hari', label: '7 Hari' },
+                { id: '30hari', label: '30 Hari' },
+                { id: '90hari', label: '90 Hari' },
+                { id: '1tahun', label: '1 Tahun' },
+            ],
+        },
     ],
     variants: [
         {
-        "id": "v1",
-        "variantValues": {
-            "jenisPaket": "platinum",
-            "perangkat": "semua",
-            "masaAktif": "7hari"
+            id: 'v1',
+            image: 'https://picsum.photos/1280/726',
+            variantValues: {
+                jenisPaket: 'platinum',
+                perangkat: 'semua',
+                masaAktif: '7hari',
+            },
+            price: 54000,
+            originalPrice: 60000,
+            discountPercentage: 10,
+            available: true,
         },
-        "price": 54000,
-        "originalPrice": 60000,
-        "discountPercentage": 10
-        }
+        {
+            id: 'v2',
+            image: 'https://picsum.photos/1280/726',
+            variantValues: {
+                jenisPaket: 'platinum',
+                perangkat: 'semua',
+                masaAktif: '30hari',
+            },
+            price: 108000,
+            originalPrice: 120000,
+            discountPercentage: 10,
+            available: true,
+        },
+        {
+            id: 'v3',
+            image: 'https://picsum.photos/1280/726',
+            variantValues: {
+                jenisPaket: 'platinum',
+                perangkat: 'semua',
+                masaAktif: '90hari',
+            },
+            price: 162000,
+            originalPrice: 180000,
+            discountPercentage: 10,
+            available: true,
+        },
+        {
+            id: 'v4',
+            image: 'https://picsum.photos/1280/726',
+            variantValues: {
+                jenisPaket: 'platinum',
+                perangkat: 'semua',
+                masaAktif: '1tahun',
+            },
+            price: 216000,
+            originalPrice: 240000,
+            discountPercentage: 10,
+            available: true,
+        },
+        {
+            id: 'v5',
+            image: 'https://picsum.photos/1280/726',
+            variantValues: {
+                jenisPaket: 'platinum',
+                perangkat: 'mobile',
+                masaAktif: '7hari',
+            },
+            price: 49000,
+            originalPrice: 55000,
+            discountPercentage: 11,
+            available: true,
+        },
+        {
+            id: 'v6',
+            image: 'https://picsum.photos/1280/726',
+            variantValues: {
+                jenisPaket: 'platinum',
+                perangkat: 'mobile',
+                masaAktif: '30hari',
+            },
+            price: 98000,
+            originalPrice: 110000,
+            discountPercentage: 11,
+            available: true,
+        },
+        {
+            id: 'v7',
+            image: 'https://picsum.photos/1280/726',
+            variantValues: {
+                jenisPaket: 'platinum',
+                perangkat: 'mobile',
+                masaAktif: '90hari',
+            },
+            price: 147000,
+            originalPrice: 165000,
+            discountPercentage: 11,
+            available: true,
+        },
+        {
+            id: 'v8',
+            image: 'https://picsum.photos/1280/726',
+            variantValues: {
+                jenisPaket: 'platinum',
+                perangkat: 'mobile',
+                masaAktif: '1tahun',
+            },
+            price: 196000,
+            originalPrice: 220000,
+            discountPercentage: 11,
+            available: true,
+        },
+        {
+            id: 'v9',
+            image: 'https://picsum.photos/1280/726',
+            variantValues: {
+                jenisPaket: 'diamond',
+                perangkat: 'semua',
+                masaAktif: '7hari',
+            },
+            price: 64000,
+            originalPrice: 70000,
+            discountPercentage: 9,
+            available: true,
+        },
+        {
+            id: 'v10',
+            image: 'https://picsum.photos/1280/726',
+            variantValues: {
+                jenisPaket: 'diamond',
+                perangkat: 'semua',
+                masaAktif: '30hari',
+            },
+            price: 128000,
+            originalPrice: 140000,
+            discountPercentage: 9,
+            available: true,
+        },
+        {
+            id: 'v11',
+            image: 'https://picsum.photos/1280/726',
+            variantValues: {
+                jenisPaket: 'diamond',
+                perangkat: 'semua',
+                masaAktif: '90hari',
+            },
+            price: 192000,
+            originalPrice: 210000,
+            discountPercentage: 9,
+            available: true,
+        },
+        {
+            id: 'v12',
+            image: 'https://picsum.photos/1280/726',
+            variantValues: {
+                jenisPaket: 'diamond',
+                perangkat: 'semua',
+                masaAktif: '1tahun',
+            },
+            price: 256000,
+            originalPrice: 280000,
+            discountPercentage: 9,
+            available: true,
+        },
+        {
+            id: 'v13',
+            image: 'https://picsum.photos/1280/726',
+            variantValues: {
+                jenisPaket: 'diamond',
+                perangkat: 'mobile',
+                masaAktif: '7hari',
+            },
+            price: 59000,
+            originalPrice: 65000,
+            discountPercentage: 9,
+            available: true,
+        },
+        {
+            id: 'v14',
+            image: 'https://picsum.photos/1280/726',
+            variantValues: {
+                jenisPaket: 'diamond',
+                perangkat: 'mobile',
+                masaAktif: '30hari',
+            },
+            price: 118000,
+            originalPrice: 130000,
+            discountPercentage: 9,
+            available: true,
+        },
+        {
+            id: 'v15',
+            image: 'https://picsum.photos/1280/726',
+            variantValues: {
+                jenisPaket: 'diamond',
+                perangkat: 'mobile',
+                masaAktif: '90hari',
+            },
+            price: 177000,
+            originalPrice: 195000,
+            discountPercentage: 9,
+            available: true,
+        },
+        {
+            id: 'v16',
+            image: 'https://picsum.photos/1280/726',
+            variantValues: {
+                jenisPaket: 'diamond',
+                perangkat: 'mobile',
+                masaAktif: '1tahun',
+            },
+            price: 236000,
+            originalPrice: 260000,
+            discountPercentage: 9,
+            available: true,
+        },
+        {
+            id: 'v17',
+            image: 'https://picsum.photos/1280/726',
+            variantValues: {
+                jenisPaket: 'fifa_u17',
+                perangkat: 'semua',
+                masaAktif: '7hari',
+            },
+            price: 49000,
+            originalPrice: 55000,
+            discountPercentage: 11,
+            available: true,
+        },
+        {
+            id: 'v18',
+            image: 'https://picsum.photos/1280/726',
+            variantValues: {
+                jenisPaket: 'fifa_u17',
+                perangkat: 'semua',
+                masaAktif: '30hari',
+            },
+            price: 98000,
+            originalPrice: 110000,
+            discountPercentage: 11,
+            available: true,
+        },
+        {
+            id: 'v19',
+            image: 'https://picsum.photos/1280/726',
+            variantValues: {
+                jenisPaket: 'fifa_u17',
+                perangkat: 'semua',
+                masaAktif: '90hari',
+            },
+            price: 147000,
+            originalPrice: 165000,
+            discountPercentage: 11,
+            available: true,
+        },
+        {
+            id: 'v20',
+            image: 'https://picsum.photos/1280/726',
+            variantValues: {
+                jenisPaket: 'fifa_u17',
+                perangkat: 'semua',
+                masaAktif: '1tahun',
+            },
+            price: 196000,
+            originalPrice: 220000,
+            discountPercentage: 11,
+            available: true,
+        },
+        {
+            id: 'v21',
+            image: 'https://picsum.photos/1280/726',
+            variantValues: {
+                jenisPaket: 'fifa_u17',
+                perangkat: 'mobile',
+                masaAktif: '7hari',
+            },
+            price: 45000,
+            originalPrice: 50000,
+            discountPercentage: 10,
+            available: true,
+        },
+        {
+            id: 'v22',
+            image: 'https://picsum.photos/1280/726',
+            variantValues: {
+                jenisPaket: 'fifa_u17',
+                perangkat: 'mobile',
+                masaAktif: '30hari',
+            },
+            price: 90000,
+            originalPrice: 100000,
+            discountPercentage: 10,
+            available: true,
+        },
+        {
+            id: 'v23',
+            image: 'https://picsum.photos/1280/726',
+            variantValues: {
+                jenisPaket: 'fifa_u17',
+                perangkat: 'mobile',
+                masaAktif: '90hari',
+            },
+            price: 135000,
+            originalPrice: 150000,
+            discountPercentage: 10,
+            available: true,
+        },
+        {
+            id: 'v24',
+            image: 'https://picsum.photos/1280/726',
+            variantValues: {
+                jenisPaket: 'fifa_u17',
+                perangkat: 'mobile',
+                masaAktif: '1tahun',
+            },
+            price: 180000,
+            originalPrice: 200000,
+            discountPercentage: 10,
+            available: true,
+        },
     ]
 }
 
@@ -416,7 +721,7 @@ export class HeroBannerMock implements DigitalHubRepositoryInterface {
     async GetCategoryProductList(): Promise<GetCategoryProductListModel[]> {
         return GetCategoryProductList;
     }
-    async GetDetailProduct(productId: string): Promise<GetDetailproductModel> {
+    async GetDetailProduct(): Promise<GetDetailproductModel> {
         return getDetailProduct;
     }
 }

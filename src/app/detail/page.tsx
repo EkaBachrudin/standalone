@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './detail.scss'
 import Slider from "react-slick";
 import Image from 'next/image';
@@ -97,11 +97,20 @@ const Detail: React.FC = () => {
                         </div>
                 </section>
 
-                <VariantComponent></VariantComponent>
+                <VariantComponent 
+                    variant_group={product?.variant_group} 
+                    variants={product?.variants}>
+                </VariantComponent>
 
-                <DescriptionComponent title='Deskirpsi Produk' content={product?.product_desctiption}></DescriptionComponent>
+                <DescriptionComponent 
+                    title='Deskirpsi Produk' 
+                    content={product?.product_desctiption}>
+                </DescriptionComponent>
 
-                <DescriptionComponent title='Deskripsi Merchant' content={product?.product_desctiption}></DescriptionComponent>
+                <DescriptionComponent 
+                    title='Deskripsi Merchant' 
+                    content={product?.product_desctiption}>
+                </DescriptionComponent>
 
             </div>
         </>

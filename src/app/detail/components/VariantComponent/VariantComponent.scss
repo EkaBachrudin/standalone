@@ -15,24 +15,40 @@
         }
 }
 
-.variant-selection-bottomsheet{
+.variant-bottomsheet{
+      @apply pb-28;
       .head{
             @apply flex justify-between items-center px-6 text-f-19 font-poppins-bold text-primary-darkBlue;
       }
 
-      .selection-info{
-            @apply px-6 flex gap-3 mt-4;;
-            .selection-info-image{
+      .bottomsheet-info{
+            @apply px-6 flex gap-3 mt-4 border-b border-primary-rzaGrey40 pb-4;
+            .bottomsheet-info-image{
                   img{
                         @apply size-16 rounded-t-lg rounded-bl-none rounded-br-lg;
                   }
             }
 
-            .selection-info-variant{
-                  .selection-info-variant-item{
+            .bottomsheet-info-variant{
+                  .bottomsheet-info-variant-item{
                         @apply bg-secondary-disabled text-f-12 px-2 py-1 rounded mb-3;
-                        .selection-info-variant-item-key{@apply mr-1 text-primary-rzaGrey100 font-poppins-regular}
-                        .selection-info-variant-item-value{@apply text-primary-rzaGrey100 font-poppins-bold}
+                        .bottomsheet-info-variant-item-key{@apply mr-1 text-primary-rzaGrey100 font-poppins-regular}
+                        .bottomsheet-info-variant-item-value{@apply text-primary-rzaGrey100 font-poppins-bold}
+                  }
+
+                  .bottomsheet-info-variant-price{
+                        @apply text-f-18 text-primary-rzaRed font-poppins-bold;
+                  }
+
+                  .bottomsheet-info-variant-strikeout{
+                        @apply flex gap-2 items-center;
+                        .bottomsheet-info-variant-strikeout-prc{
+                              @apply text-f-12 text-primary-rzaGrey100 font-poppins-regular line-through;
+                        }
+                        .bottomsheet-info-variant-strikeout-discount{
+                              @apply text-f-10 text-primary-rzaWhite px-2 py-1 rounded-md font-poppins-bold ;
+                              background: linear-gradient(75.07deg, #001A41 17.5%, #0E336C 105.9%);
+                        }
                   }
             }
       }
