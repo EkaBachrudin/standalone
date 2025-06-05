@@ -13,11 +13,11 @@
                         @apply flex gap-2 flex-wrap;
 
                         .variant-selection-group-item-value{
-                              @apply bg-primary-rzaWhite text-f-14 font-poppins-regular border border-secondary-rzaLightGrey rounded-lg px-4 py-3;
+                              @apply bg-primary-rzaWhite text-f-14 font-poppins-medium border border-secondary-rzaLightGrey rounded-lg px-4 py-3;
                         }
 
                         .variant-selection-group-item-active{
-                              @apply bg-secondary-rzaOtherSoftBlue text-f-14 font-poppins-bold border border-secondary-rzaOtherSoftBlue rounded-lg px-4 py-3;
+                              @apply bg-secondary-rzaOtherSoftBlue text-f-14 font-poppins-medium border border-secondary-rzaOtherSoftBlue rounded-lg px-4 py-3;
                         }
                   }
             }

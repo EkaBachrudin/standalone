@@ -10,7 +10,7 @@ interface  VariantComponentProps {
       variant_group: VariantGroup[],
       variants: ProductVariant[]
 }
-const VariantComponent: React.FC<VariantComponentProps> = ({variant_group}) => {
+const VariantComponent: React.FC<VariantComponentProps> = ({variant_group, variants}) => {
       const [isOpen, setIsOpen] = useState(false);
       
       return (
@@ -64,7 +64,8 @@ const VariantComponent: React.FC<VariantComponentProps> = ({variant_group}) => {
                         </section>
 
                        <SelectionVariantComponent
-                              variant_group={variant_group}>
+                              variant_group={variant_group}
+                              varaint={variants}>
                        </SelectionVariantComponent> 
 
                        <div className="bottom-section">

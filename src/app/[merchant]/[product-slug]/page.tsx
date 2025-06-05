@@ -1,39 +1,39 @@
 'use client'
 
 import React, { useEffect, useState } from 'react';
-import './detail.scss'
 
-import Image from 'next/image';
-
-import { GetDetailproductModel } from '@/domain/models/GetDetailproduct';
 import { digitalHubRepository } from '@/data/repositories/DigitalHubRepository';
+import { GetDetailproductModel } from '@/domain/models/GetDetailproduct';
+
+import ProductImageComponent from './components/ProductImageComponent/ProductImageComponent';
 import DescriptionComponent from './components/DescriptionComponent/DescriptionComponent';
 import VariantComponent from './components/VariantComponent/VariantComponent';
-import ProductImageComponent from './components/ProductImageComponent/ProductImageComponent';
+import Image from 'next/image';
+import './productSlug.scss'
 
-const Detail: React.FC = () => {
+const ProductSlug: React.FC = () => {
 
     const [product, setProduct] = useState<GetDetailproductModel>();
-    
-    useEffect(() => {
-            const fetchDetail = async () => {
-                try {
-                    const items = await digitalHubRepository.GetDetailProduct('test');
-                    setProduct(items);
-                } catch (err) {
-                    console.error('Failed to fetch product', err);
-                }
-            };
-            fetchDetail();
-    }, []);
+        
+        useEffect(() => {
+                const fetchDetail = async () => {
+                    try {
+                        const items = await digitalHubRepository.GetDetailProduct('test');
+                        setProduct(items);
+                    } catch (err) {
+                        console.error('Failed to fetch product', err);
+                    }
+                };
+                fetchDetail();
+        }, []);
 
-    useEffect(() => {
-        if (product?.variant_group.length) {
-            console.log(product)
-        }
-    }, [product]);
+        useEffect(() => {
+            if (product?.variant_group.length) {
+                // console.log(product)
+            }
+        }, [product]);
 
-    if(product) return (
+     if(product) return (
         <>
             <div className="detail-container">
 
@@ -98,4 +98,4 @@ const Detail: React.FC = () => {
 
 };
 
-export default Detail;
+export default ProductSlug;

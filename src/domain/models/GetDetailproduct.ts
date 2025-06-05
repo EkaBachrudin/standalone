@@ -25,6 +25,7 @@ export type VariantGroup = {
 export type VariantOption = {
   id: string;
   label: string;
+  isActive?: boolean;
 };
 
 export type ProductVariant = {

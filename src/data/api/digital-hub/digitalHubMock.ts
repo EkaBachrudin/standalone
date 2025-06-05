@@ -361,14 +361,6 @@ const getDetailProduct: GetDetailproductModel = {
             ],
         },
         {
-            name: 'Perangkat',
-            key: 'perangkat',
-            options: [
-                { id: 'semua', label: 'Semua Perangkat' },
-                { id: 'mobile', label: 'Mobile' },
-            ],
-        },
-        {
             name: 'Masa Aktif',
             key: 'masaAktif',
             options: [
@@ -378,6 +370,14 @@ const getDetailProduct: GetDetailproductModel = {
                 { id: '1tahun', label: '1 Tahun' },
             ],
         },
+         {
+            name: 'Perangkat',
+            key: 'perangkat',
+            options: [
+                { id: 'semua', label: 'Semua Perangkat' },
+                { id: 'mobile', label: 'Mobile' },
+            ],
+        }
     ],
     variants: [
         {
@@ -443,7 +443,7 @@ const getDetailProduct: GetDetailproductModel = {
             price: 49000,
             originalPrice: 55000,
             discountPercentage: 11,
-            available: true,
+            available: false,
         },
         {
             id: 'v6',
