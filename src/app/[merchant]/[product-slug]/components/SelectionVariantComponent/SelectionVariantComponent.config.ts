@@ -4,25 +4,61 @@ export function selectFirstLoad(varaint: ProductVariant[]): ProductVariant | und
     return varaint.find(a => a.available);
 }
 
+export function selectChips(
+    varaint: ProductVariant[],
+    variant_group: VariantGroup[],
+    variantKey: string,
+    optionId: string): ProductVariant | undefined {
+    const vGroup = selectChipConfig(variant_group, variantKey, optionId);
+
+    const result = vGroup.reduce<{ [key: string]: string }>((acc, item) => {
+        const activeOption = item.options.find(option => option.isActive);
+        if (activeOption) {
+            acc[item.key] = activeOption.id;
+        }
+        return acc;
+    }, {});
+
+    const foundProduct = varaint.find(product =>
+        Object.keys(result).every(key =>
+            product.variantValues[key] === result[key]
+        )
+    );
+
+    return foundProduct;
+}
+
 export function activateChips(variant_group: VariantGroup[], selected: ProductVariant | undefined): VariantGroup[] {
     if (!selected) return variant_group;
 
-    for (const key in selected.variantValues) {
-        if (selected.variantValues.hasOwnProperty(key)) {
 
-            const matchVariant = variant_group.find(e => e.key === key);
-            
-            if (matchVariant) {
-                const matchOption = matchVariant.options.find(option => option.id === selected.variantValues[key]);
+    const updatedVariantGroup = variant_group.map(vg => {
+     
+        const updatedOptions = vg.options.map(o => ({
+            ...o,
+            isActive: false, 
+        }));
 
-                if (matchOption) {
-                    matchOption.isActive = true;
+      
+        for (const key in selected.variantValues) {
+            if (selected.variantValues.hasOwnProperty(key)) {
+                if (vg.key === key) {
+                   
+                    const updatedOption = updatedOptions.map(option => 
+                        option.id === selected.variantValues[key]
+                            ? { ...option, isActive: true }
+                            : option
+                    );
+
+                    return { ...vg, options: updatedOption }; 
                 }
             }
         }
-    }
 
-    return variant_group;
+        return { ...vg, options: updatedOptions };
+    });
+
+    return updatedVariantGroup;
 }
 
 export function selectChipConfig(variant_group: VariantGroup[], variantKey: string, optionId: string): VariantGroup[] {
@@ -49,3 +85,56 @@ export function selectChipConfig(variant_group: VariantGroup[], variantKey: stri
 
     return updatedVariantGroup;
 }
+
+export function handleProductPath(variantId?: string) {
+    if (typeof window !== 'undefined') {
+        const path = window.location.pathname;
+        const segments = path.split('/');
+
+        // Ensure we get the correct product name from the URL (position 2 is usually product name)
+        const productName = segments[2] || ''; 
+        
+        // Clean variantId by getting only the first segment (e.g., "v1", "v9", etc.)
+        const cleanedVariantId = variantId?.split('-')[0];
+
+        // Create a new URL path by combining product name and cleaned variantId
+        const newPath = `/merchant/${productName}-${cleanedVariantId}`;
+
+        // Remove any extra occurrences of variantId after the first one
+        const updatedPath = path.replace(/(-v\d+)+$/, ''); // This regex removes the repeated variantId (e.g., "-v1-v1-v1")
+
+        // Update the URL only if the new variantId path is different
+        window.history.pushState(null, '', updatedPath + `-${cleanedVariantId}`);
+
+        // Return product name (without extra repetitions)
+        return productName;
+    }
+}
+
+export function isVariantIdInUrl(): boolean {
+    if (typeof window !== 'undefined') {
+        const path = window.location.pathname;
+        const segments = path.split('/');
+
+        // Ensure we have the correct product name with the variant ID (position 2 is usually product name)
+        const productNameWithVariant = segments[2] || '';
+
+        // Extract the part of the productName after the first hyphen (this should be the variant ID)
+        const variantPart = productNameWithVariant.split('-')[1]; // Get the second part after '-'
+
+        console.log('Extracted Variant Part:', variantPart);
+
+        // Check if the variant ID exists (i.e., not undefined or empty)
+        return variantPart ? true : false;
+    }
+
+    return false;
+}
+
+
+
+
+
+
+
+

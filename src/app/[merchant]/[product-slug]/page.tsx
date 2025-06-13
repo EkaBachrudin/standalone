@@ -16,6 +16,7 @@ const ProductSlug: React.FC = () => {
     const [product, setProduct] = useState<GetDetailproductModel>();
         
         useEffect(() => {
+            console.log('ProductSlugProductSlugProductSlugProductSlugProductSlugProductSlug')
                 const fetchDetail = async () => {
                     try {
                         const items = await digitalHubRepository.GetDetailProduct('test');

@@ -404,7 +404,7 @@ const getDetailProduct: GetDetailproductModel = {
             price: 108000,
             originalPrice: 120000,
             discountPercentage: 10,
-            available: true,
+            available: false,
         },
         {
             id: 'v3',
@@ -547,7 +547,7 @@ const getDetailProduct: GetDetailproductModel = {
             price: 59000,
             originalPrice: 65000,
             discountPercentage: 9,
-            available: true,
+            available: false,
         },
         {
             id: 'v14',

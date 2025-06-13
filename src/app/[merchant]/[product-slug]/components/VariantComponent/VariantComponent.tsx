@@ -65,7 +65,7 @@ const VariantComponent: React.FC<VariantComponentProps> = ({variant_group, varia
 
                        <SelectionVariantComponent
                               variant_group={variant_group}
-                              varaint={variants}>
+                              variant={variants}>
                        </SelectionVariantComponent> 
 
                        <div className="bottom-section">
