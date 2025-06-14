@@ -122,13 +122,22 @@ export function isVariantIdInUrl(): boolean {
         // Extract the part of the productName after the first hyphen (this should be the variant ID)
         const variantPart = productNameWithVariant.split('-')[1]; // Get the second part after '-'
 
-        console.log('Extracted Variant Part:', variantPart);
-
         // Check if the variant ID exists (i.e., not undefined or empty)
         return variantPart ? true : false;
     }
 
     return false;
+}
+
+export function getVariantIdHasSet(): string {
+    const url = window.location.pathname;
+    // Extract the string after the last '/' to get 'productname-v1'
+    const productString = url.split('/').pop() || '';
+
+    // Split the string at the '-' to separate product name and variant id
+    const [productName, variantId] = productString.split('-');
+
+    return variantId;
 }
 
 

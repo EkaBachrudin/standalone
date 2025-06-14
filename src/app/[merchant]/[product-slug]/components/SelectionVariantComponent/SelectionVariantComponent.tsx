@@ -1,5 +1,5 @@
 import { VariantGroup, ProductVariant } from '@/domain/models/GetDetailproduct';
-import { activateChips, handleProductPath, isVariantIdInUrl, selectChips, selectFirstLoad } from './SelectionVariantComponent.config';
+import { activateChips, getVariantIdHasSet, handleProductPath, isVariantIdInUrl, selectChips, selectFirstLoad } from './SelectionVariantComponent.config';
 import { useEffect, useState } from 'react';
 import './SelectionVariantComponent.scss';
 
@@ -21,6 +21,18 @@ const SelectionVariantComponent: React.FC<SelectionVariantComponentProps> = ({va
                   setVariantGroup(updatedVariantGroup);
             
                   const getProductName = handleProductPath(firstSelection?.id);
+
+                  setProductName(getProductName);
+            } else {
+                  const variantId = getVariantIdHasSet();
+
+                  const activateVariant  = variant.find(a => a.id === variantId);
+
+                  const updatedVariantGroup = activateChips(variant_group, activateVariant);
+            
+                  setVariantGroup(updatedVariantGroup);
+            
+                  const getProductName = handleProductPath(variantId);
 
                   setProductName(getProductName);
             }
