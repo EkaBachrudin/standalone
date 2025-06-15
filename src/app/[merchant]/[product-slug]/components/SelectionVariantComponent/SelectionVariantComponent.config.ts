@@ -87,6 +87,7 @@ export function selectChipConfig(variant_group: VariantGroup[], variantKey: stri
 }
 
 export function handleProductPath(variantId?: string) {
+    console.log('variantId', variantId)
     if (typeof window !== 'undefined') {
         const path = window.location.pathname;
         const segments = path.split('/');
@@ -138,6 +139,26 @@ export function getVariantIdHasSet(): string {
     const [productName, variantId] = productString.split('-');
 
     return variantId;
+}
+
+export function removeLastValueAfterHyphen(input: string): string {
+    const lastIndex = input.lastIndexOf('-');
+    if (lastIndex === -1) return input;  // No hyphen found
+    return input.slice(0, lastIndex);
+}
+
+export function getOriginalProductPath() {
+    if (typeof window !== 'undefined') {
+        const url = window.location.pathname;
+
+        const result = removeLastValueAfterHyphen(url);
+
+        window.history.pushState(null, '', result);
+        
+        return result;
+    }
+
+   return '';
 }
 
 

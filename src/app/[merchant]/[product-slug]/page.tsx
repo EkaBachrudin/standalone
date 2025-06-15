@@ -10,17 +10,52 @@ import DescriptionComponent from './components/DescriptionComponent/DescriptionC
 import VariantComponent from './components/VariantComponent/VariantComponent';
 import Image from 'next/image';
 import './productSlug.scss'
+import { activateChips, getOriginalProductPath, getVariantIdHasSet, handleProductPath, isVariantIdInUrl, selectFirstLoad } from './components/SelectionVariantComponent/SelectionVariantComponent.config';
 
 const ProductSlug: React.FC = () => {
 
     const [product, setProduct] = useState<GetDetailproductModel>();
         
         useEffect(() => {
-            console.log('ProductSlugProductSlugProductSlugProductSlugProductSlugProductSlug')
                 const fetchDetail = async () => {
                     try {
                         const items = await digitalHubRepository.GetDetailProduct('test');
+
+                        if(!isVariantIdInUrl()) {
+                            const firstSelection = selectFirstLoad(items.variants);
+                        
+                            const updatedVariantGroup = activateChips(items.variant_group, firstSelection);
+
+                            items.variant_group = updatedVariantGroup;
+
+                            handleProductPath(firstSelection?.id);
+                        } else {
+                            const variantId = getVariantIdHasSet();
+                            
+                            const activateVariant  = items.variants.find(a => a.id === variantId);
+
+                            if(activateVariant) {
+                                const updatedVariantGroup = activateChips(items.variant_group, activateVariant);
+
+                                items.variant_group = updatedVariantGroup;
+
+                                handleProductPath(variantId);
+                            } else {
+                                getOriginalProductPath();
+
+                                const firstSelection = selectFirstLoad(items.variants);
+                        
+                                const updatedVariantGroup = activateChips(items.variant_group, firstSelection);
+
+                                items.variant_group = updatedVariantGroup;
+
+                                handleProductPath(firstSelection?.id);
+                            }
+                        }
+
                         setProduct(items);
+
+                        
                     } catch (err) {
                         console.error('Failed to fetch product', err);
                     }
