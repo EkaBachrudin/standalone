@@ -3,10 +3,10 @@ name: Deploy Next.js to Vercel
 on:
   push:
     branches:
-      - main  # Menjalankan workflow ketika ada push langsung ke branch main
+      - main
   pull_request:
     branches:
-      - main  # Menjalankan workflow ketika ada PR ke branch main (misalnya dari development)
+      - main
 
 jobs:
   build:
@@ -19,7 +19,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'  # Sesuaikan dengan versi Node.js yang Anda gunakan
+          node-version: '18'  # Menggunakan versi Node.js 18.x yang kompatibel dengan Next.js
 
       - name: Install dependencies
         run: npm install  # Jika Anda menggunakan yarn, ganti dengan `yarn install`
@@ -38,7 +38,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'  # Sesuaikan dengan versi Node.js yang Anda gunakan
+          node-version: '18'  # Sama seperti di job build, gunakan Node.js versi 18.x
 
       - name: Install dependencies
         run: npm install  # Jika Anda menggunakan yarn, ganti dengan `yarn install`

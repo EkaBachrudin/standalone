@@ -10,7 +10,7 @@ interface SelectionVariantComponentProps {
 
 const SelectionVariantComponent: React.FC<SelectionVariantComponentProps> = ({variant_group, variant}) => {
       const [variantGroup, setVariantGroup] = useState<VariantGroup[]>([]);
-      const [productName, setProductName] = useState<string | undefined>('');
+      const [, setProductName] = useState<string | undefined>('');
 
       useEffect(() => {
             if(!isVariantIdInUrl()) {
@@ -32,7 +32,7 @@ const SelectionVariantComponent: React.FC<SelectionVariantComponentProps> = ({va
 
                   let updatedVariantGroup = activateChips(variant_group, activateVariant);
 
-                  updatedVariantGroup = disabledChips(activateVariant as any, variant, updatedVariantGroup)
+                  if(activateVariant) updatedVariantGroup = disabledChips(activateVariant, variant, updatedVariantGroup)
             
                   setVariantGroup(updatedVariantGroup);
             
@@ -40,7 +40,7 @@ const SelectionVariantComponent: React.FC<SelectionVariantComponentProps> = ({va
 
                   setProductName(getProductName);
             }
-      }, []);
+      });
       
 
       function selectChip(variantKey: string, optionId: string) {
@@ -48,7 +48,7 @@ const SelectionVariantComponent: React.FC<SelectionVariantComponentProps> = ({va
             
             let updatedVariantGroup = activateChips(variant_group, select);
 
-            updatedVariantGroup = disabledChips(select as any, variant, updatedVariantGroup);
+            if(select) updatedVariantGroup = disabledChips(select, variant, updatedVariantGroup);
 
             setVariantGroup(updatedVariantGroup);
 

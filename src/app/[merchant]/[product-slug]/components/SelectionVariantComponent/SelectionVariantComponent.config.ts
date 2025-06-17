@@ -136,9 +136,6 @@ export function handleProductPath(variantId?: string) {
         // Clean variantId by getting only the first segment (e.g., "v1", "v9", etc.)
         const cleanedVariantId = variantId?.split('-')[0];
 
-        // Create a new URL path by combining product name and cleaned variantId
-        const newPath = `/merchant/${productName}-${cleanedVariantId}`;
-
         // Remove any extra occurrences of variantId after the first one
         const updatedPath = path.replace(/(-v\d+)+$/, ''); // This regex removes the repeated variantId (e.g., "-v1-v1-v1")
 
@@ -174,7 +171,7 @@ export function getVariantIdHasSet(): string {
     const productString = url.split('/').pop() || '';
 
     // Split the string at the '-' to separate product name and variant id
-    const [productName, variantId] = productString.split('-');
+    const [, variantId] = productString.split('-');
 
     return variantId;
 }
@@ -202,7 +199,7 @@ export function getOriginalProductPath() {
 function countMatchingVariants(selected: Record<string, string>, variantValues: Record<string, string>): number {
     let matchCount = 0;
 
-    for (let key in selected) {
+    for (const key in selected) {
         // Check if the key exists in variantValues and matches the value in selected
         if (variantValues.hasOwnProperty(key) && selected[key] === variantValues[key]) {
             matchCount++;
