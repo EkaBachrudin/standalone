@@ -87,7 +87,8 @@ export function selectChipConfig(variant_group: VariantGroup[], variantKey: stri
 }
 
 export function disabledChips(selected: ProductVariant, variant: ProductVariant[], variant_group: VariantGroup[]): VariantGroup[] {
-    console.log('variant_group', variant_group);
+
+    console.log('selected.variantValues', selected.variantValues, variant_group.length)
 
     let allUpdatedFilters = variant_group;
 
@@ -101,13 +102,14 @@ export function disabledChips(selected: ProductVariant, variant: ProductVariant[
             options: filter.options.map(option => {
                 const wasDisabled = option.isDisabled || false;
 
-                const isNowDisabled = filtered.some(f =>
-                    option.id === f.variantValues[filter.key] && !option.isActive
+                const isNowDisabled = filtered.some(f => 
+                    countMatchingVariants(selected.variantValues, f.variantValues) > (variant_group.length - 2) ?
+                    option.id === f.variantValues[filter.key] && !option.isActive : false
                 );
 
                 return {
                     ...option,
-                    isDisabled: wasDisabled || isNowDisabled
+                    isDisabled: isNowDisabled || wasDisabled
                 };
             })
         }));
@@ -195,4 +197,17 @@ export function getOriginalProductPath() {
     }
 
    return '';
+}
+
+function countMatchingVariants(selected: Record<string, string>, variantValues: Record<string, string>): number {
+    let matchCount = 0;
+
+    for (let key in selected) {
+        // Check if the key exists in variantValues and matches the value in selected
+        if (variantValues.hasOwnProperty(key) && selected[key] === variantValues[key]) {
+            matchCount++;
+        }
+    }
+
+    return matchCount;
 }

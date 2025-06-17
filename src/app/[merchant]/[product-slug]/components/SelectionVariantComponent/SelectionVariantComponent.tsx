@@ -1,5 +1,5 @@
 import { VariantGroup, ProductVariant } from '@/domain/models/GetDetailproduct';
-import { activateChips, getVariantIdHasSet, handleProductPath, isVariantIdInUrl, selectChips, selectFirstLoad } from './SelectionVariantComponent.config';
+import { activateChips, disabledChips, getVariantIdHasSet, handleProductPath, isVariantIdInUrl, selectChips, selectFirstLoad } from './SelectionVariantComponent.config';
 import { useEffect, useState } from 'react';
 import './SelectionVariantComponent.scss';
 
@@ -16,7 +16,9 @@ const SelectionVariantComponent: React.FC<SelectionVariantComponentProps> = ({va
             if(!isVariantIdInUrl()) {
                   const firstSelection = selectFirstLoad(variant);
 
-                  const updatedVariantGroup = activateChips(variant_group, firstSelection);
+                  let updatedVariantGroup = activateChips(variant_group, firstSelection);
+
+                  if(firstSelection) updatedVariantGroup = disabledChips(firstSelection, variant, updatedVariantGroup)
             
                   setVariantGroup(updatedVariantGroup);
             
@@ -28,7 +30,9 @@ const SelectionVariantComponent: React.FC<SelectionVariantComponentProps> = ({va
 
                   const activateVariant  = variant.find(a => a.id === variantId);
 
-                  const updatedVariantGroup = activateChips(variant_group, activateVariant);
+                  let updatedVariantGroup = activateChips(variant_group, activateVariant);
+
+                  updatedVariantGroup = disabledChips(activateVariant as any, variant, updatedVariantGroup)
             
                   setVariantGroup(updatedVariantGroup);
             
@@ -42,9 +46,11 @@ const SelectionVariantComponent: React.FC<SelectionVariantComponentProps> = ({va
       function selectChip(variantKey: string, optionId: string) {
             const select = selectChips(variant, variantGroup, variantKey, optionId);
             
-            const a = activateChips(variantGroup, select);
+            let updatedVariantGroup = activateChips(variant_group, select);
 
-            setVariantGroup(a);
+            updatedVariantGroup = disabledChips(select as any, variant, updatedVariantGroup);
+
+            setVariantGroup(updatedVariantGroup);
 
             const getProductName = handleProductPath(select?.id);
 
