@@ -68,7 +68,7 @@ const SelectionVariantComponent: React.FC<SelectionVariantComponentProps> = ({va
 
                                     {data.options.map((dataOption, keyIndex) => (
                                           <div
-                                                className={`${dataOption.isActive ? 'variant-selection-group-item-active' : 'variant-selection-group-item-value'}`}
+                                                className={`${dataOption.isActive ? 'variant-selection-group-item-active' : dataOption.isDisabled ? `variant-selection-group-item-disabled` : `variant-selection-group-item-value`}`}
                                                 key={keyIndex}
                                                 onClick={() => selectChip(data.key, dataOption.id)}
                                                 >

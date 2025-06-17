@@ -86,8 +86,44 @@ export function selectChipConfig(variant_group: VariantGroup[], variantKey: stri
     return updatedVariantGroup;
 }
 
+export function disabledChips(selected: ProductVariant, variant: ProductVariant[], variant_group: VariantGroup[]): VariantGroup[] {
+    console.log('variant_group', variant_group);
+
+    let allUpdatedFilters = variant_group;
+
+    for (const [key, value] of Object.entries(selected.variantValues)) {
+        const filtered = variant.filter(item =>
+            item.variantValues[key] === value && item.available === false
+        );
+
+        const updatedFilters = allUpdatedFilters.map(filter => ({
+            ...filter,
+            options: filter.options.map(option => {
+                const wasDisabled = option.isDisabled || false;
+
+                const isNowDisabled = filtered.some(f =>
+                    option.id === f.variantValues[filter.key] && !option.isActive
+                );
+
+                return {
+                    ...option,
+                    isDisabled: wasDisabled || isNowDisabled
+                };
+            })
+        }));
+
+        allUpdatedFilters = updatedFilters;
+
+        console.log('filteredfiltered---->', key, value,filtered);
+        console.log('allUpdatedFilters ITERATION', allUpdatedFilters);
+    }
+
+    console.log('allUpdatedFilters OUTSIDE', allUpdatedFilters)
+
+    return allUpdatedFilters;
+}
+
 export function handleProductPath(variantId?: string) {
-    console.log('variantId', variantId)
     if (typeof window !== 'undefined') {
         const path = window.location.pathname;
         const segments = path.split('/');
@@ -160,11 +196,3 @@ export function getOriginalProductPath() {
 
    return '';
 }
-
-
-
-
-
-
-
-

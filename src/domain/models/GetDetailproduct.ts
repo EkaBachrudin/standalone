@@ -26,6 +26,7 @@ export type VariantOption = {
   id: string;
   label: string;
   isActive?: boolean;
+  isDisabled?: boolean;
 };
 
 export type ProductVariant = {

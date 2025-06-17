@@ -10,7 +10,7 @@ import DescriptionComponent from './components/DescriptionComponent/DescriptionC
 import VariantComponent from './components/VariantComponent/VariantComponent';
 import Image from 'next/image';
 import './productSlug.scss'
-import { activateChips, getOriginalProductPath, getVariantIdHasSet, handleProductPath, isVariantIdInUrl, selectFirstLoad } from './components/SelectionVariantComponent/SelectionVariantComponent.config';
+import { activateChips, disabledChips, getOriginalProductPath, getVariantIdHasSet, handleProductPath, isVariantIdInUrl, selectFirstLoad } from './components/SelectionVariantComponent/SelectionVariantComponent.config';
 
 const ProductSlug: React.FC = () => {
 
@@ -24,7 +24,9 @@ const ProductSlug: React.FC = () => {
                         if(!isVariantIdInUrl()) {
                             const firstSelection = selectFirstLoad(items.variants);
                         
-                            const updatedVariantGroup = activateChips(items.variant_group, firstSelection);
+                            let updatedVariantGroup = activateChips(items.variant_group, firstSelection);
+
+                            if(firstSelection) updatedVariantGroup = disabledChips(firstSelection, items.variants, updatedVariantGroup)
 
                             items.variant_group = updatedVariantGroup;
 
@@ -35,7 +37,9 @@ const ProductSlug: React.FC = () => {
                             const activateVariant  = items.variants.find(a => a.id === variantId);
 
                             if(activateVariant) {
-                                const updatedVariantGroup = activateChips(items.variant_group, activateVariant);
+                                let updatedVariantGroup = activateChips(items.variant_group, activateVariant);
+
+                                updatedVariantGroup = disabledChips(activateVariant, items.variants, updatedVariantGroup)
 
                                 items.variant_group = updatedVariantGroup;
 
@@ -45,7 +49,9 @@ const ProductSlug: React.FC = () => {
 
                                 const firstSelection = selectFirstLoad(items.variants);
                         
-                                const updatedVariantGroup = activateChips(items.variant_group, firstSelection);
+                                let updatedVariantGroup = activateChips(items.variant_group, firstSelection);
+
+                                if(firstSelection) updatedVariantGroup = disabledChips(firstSelection, items.variants, updatedVariantGroup);
 
                                 items.variant_group = updatedVariantGroup;
 

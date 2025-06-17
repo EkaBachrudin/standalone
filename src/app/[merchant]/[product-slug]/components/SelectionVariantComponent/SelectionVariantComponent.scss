@@ -19,6 +19,10 @@
                         .variant-selection-group-item-active{
                               @apply bg-secondary-rzaOtherSoftBlue text-f-14 font-poppins-medium border border-secondary-rzaOtherSoftBlue rounded-lg px-4 py-3;
                         }
+
+                        .variant-selection-group-item-disabled{
+                              @apply bg-secondary-disabled02 text-f-14 font-poppins-medium border border-secondary-rzaOtherSoftBlue rounded-lg px-4 py-3;
+                        }
                   }
             }
       }
