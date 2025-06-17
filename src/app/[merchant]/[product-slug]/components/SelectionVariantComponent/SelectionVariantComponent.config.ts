@@ -87,9 +87,6 @@ export function selectChipConfig(variant_group: VariantGroup[], variantKey: stri
 }
 
 export function disabledChips(selected: ProductVariant, variant: ProductVariant[], variant_group: VariantGroup[]): VariantGroup[] {
-
-    console.log('selected.variantValues', selected.variantValues, variant_group.length)
-
     let allUpdatedFilters = variant_group;
 
     for (const [key, value] of Object.entries(selected.variantValues)) {
@@ -100,11 +97,11 @@ export function disabledChips(selected: ProductVariant, variant: ProductVariant[
         const updatedFilters = allUpdatedFilters.map(filter => ({
             ...filter,
             options: filter.options.map(option => {
-                const wasDisabled = option.isDisabled || false;
+                const wasDisabled = option.isDisabled;
 
                 const isNowDisabled = filtered.some(f => 
-                    countMatchingVariants(selected.variantValues, f.variantValues) > (variant_group.length - 2) ?
-                    option.id === f.variantValues[filter.key] && !option.isActive : false
+                    countMatchingVariants(selected.variantValues, f.variantValues) > (variant_group.length - 2) &&
+                    option.id === f.variantValues[filter.key] && !option.isActive
                 );
 
                 return {
@@ -115,12 +112,7 @@ export function disabledChips(selected: ProductVariant, variant: ProductVariant[
         }));
 
         allUpdatedFilters = updatedFilters;
-
-        console.log('filteredfiltered---->', key, value,filtered);
-        console.log('allUpdatedFilters ITERATION', allUpdatedFilters);
     }
-
-    console.log('allUpdatedFilters OUTSIDE', allUpdatedFilters)
 
     return allUpdatedFilters;
 }

@@ -36,7 +36,7 @@ const VariantComponent: React.FC<VariantComponentProps> = ({variant_group, varia
 
                         <section className='bottomsheet-info'>
                               <div className="bottomsheet-info-image">
-                                    <Image src="https://picsum.photos/1280/720" width={64} height={64} alt="close" />
+                                    <Image src="https://picsum.photos/1280/720" width={64} height={64} alt="close" priority={false} />
                               </div>
                               <div className="bottomsheet-info-variant">
                                     <div className="bottomsheet-info-variant-item">

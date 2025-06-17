@@ -76,7 +76,7 @@ const SelectionVariantComponent: React.FC<SelectionVariantComponentProps> = ({va
                                           <div
                                                 className={`${dataOption.isActive ? 'variant-selection-group-item-active' : dataOption.isDisabled ? `variant-selection-group-item-disabled` : `variant-selection-group-item-value`}`}
                                                 key={keyIndex}
-                                                onClick={() => selectChip(data.key, dataOption.id)}
+                                                onClick={() => {if(!dataOption.isDisabled) selectChip(data.key, dataOption.id)}}
                                                 >
                               
                                                 {dataOption.label} 

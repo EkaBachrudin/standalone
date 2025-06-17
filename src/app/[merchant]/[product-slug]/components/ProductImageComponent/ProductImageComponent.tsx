@@ -28,7 +28,7 @@ const ProductImageComponent: React.FC<ProductImageComponentProps> = ({product}) 
                               <Slider {...mobileSettings}>
                                     {product?.images?.map((data, index) => (
                                     <div className="mobile-image-item" key={index}>
-                                          <Image src={data} width={1000} height={1000} alt="filter" />
+                                          <Image src={data} width={1000} height={1000} alt="filter" priority={true} />
                                     </div>
                                     ))}
                               </Slider>

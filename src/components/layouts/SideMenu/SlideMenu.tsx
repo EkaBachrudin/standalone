@@ -31,7 +31,7 @@ const SlideMenu: React.FC<SideMenuProps> = ({ isOpen, onClose, menuItems }) => {
               className={`${styles['side-menu']} ${isOpen ? styles.open : ''}`}
           >
               <div className="flex justify-between pt-4 px-4">
-                  <Image src="/logoipsum.svg" width={60} height={40} className="w-28" alt="logo" />
+                  <Image src="/logoipsum.svg" width={60} height={40} className="w-28" alt="logo" priority={true} />
 
                   <button onClick={onClose} className="">
                       <Image src="/assets/icons/x.svg" width={30} height={30} alt="close"/>
