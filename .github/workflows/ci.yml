@@ -43,10 +43,5 @@ jobs:
       - name: Install dependencies
         run: npm install  # Jika Anda menggunakan yarn, ganti dengan `yarn install`
 
-      - name: Login to Vercel using token
-        run: echo ${{ secrets.VERCEL_TOKEN }} | npx vercel login --token
-
       - name: Deploy to Vercel
-        run: npx vercel deploy --prod --yes  # Menambahkan --prod untuk deploy ke production dan --yes untuk konfirmasi otomatis
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}  # Menggunakan token yang disimpan di GitHub Secrets
+        run: npx vercel deploy --prod --yes --token ${{ secrets.VERCEL_TOKEN }}  # Menambahkan --prod untuk deploy ke production dan --yes untuk konfirmasi otomatis
