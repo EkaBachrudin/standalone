@@ -38,14 +38,12 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'  # Sama seperti di job build, gunakan Node.js versi 18.x
+          node-version: '18'  # Gunakan Node.js versi 18.x
 
       - name: Install dependencies
         run: npm install  # Jika Anda menggunakan yarn, ganti dengan `yarn install`
 
       - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v20
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+        run: npx vercel deploy --yes  # Menambahkan --yes untuk konfirmasi otomatis
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
