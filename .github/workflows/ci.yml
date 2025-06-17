@@ -1,0 +1,51 @@
+name: Deploy Next.js to Vercel
+
+on:
+  push:
+    branches:
+      - main  # Menjalankan workflow ketika ada push langsung ke branch main
+  pull_request:
+    branches:
+      - main  # Menjalankan workflow ketika ada PR ke branch main (misalnya dari development)
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Sesuaikan dengan versi Node.js yang Anda gunakan
+
+      - name: Install dependencies
+        run: npm install  # Jika Anda menggunakan yarn, ganti dengan `yarn install`
+
+      - name: Build Next.js project
+        run: npm run build  # Pastikan perintah build sesuai dengan konfigurasi Next.js Anda
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build  # Menunjukkan bahwa job deploy hanya akan dijalankan setelah job build selesai
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Sesuaikan dengan versi Node.js yang Anda gunakan
+
+      - name: Install dependencies
+        run: npm install  # Jika Anda menggunakan yarn, ganti dengan `yarn install`
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v20
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
