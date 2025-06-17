@@ -44,6 +44,6 @@ jobs:
         run: npm install  # Jika Anda menggunakan yarn, ganti dengan `yarn install`
 
       - name: Deploy to Vercel
-        run: npx vercel deploy --yes  # Menambahkan --yes untuk konfirmasi otomatis
+        run: npx vercel deploy --prod --yes  # Menambahkan --prod untuk deploy ke production dan --yes untuk konfirmasi otomatis
         env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}  # Menggunakan token yang disimpan di GitHub Secrets
