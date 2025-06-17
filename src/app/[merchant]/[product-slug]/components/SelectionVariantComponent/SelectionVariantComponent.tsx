@@ -40,7 +40,7 @@ const SelectionVariantComponent: React.FC<SelectionVariantComponentProps> = ({va
 
                   setProductName(getProductName);
             }
-      });
+      }, []);
       
 
       function selectChip(variantKey: string, optionId: string) {
