@@ -7,8 +7,12 @@
         .variant-block{
             @apply border border-primary-rzaGrey40 rounded-lg px-3 py-[10px] flex justify-between text-f-14 mt-2;
             .selection {
-                @apply font-poppins-regular text-primary-darkBlue;
-            }
+                  @apply font-poppins-regular text-primary-darkBlue;
+                  width: 200px;    
+                  white-space: nowrap; 
+                  overflow: hidden;  
+                  text-overflow: ellipsis; 
+                  }
             .see-all {
                 @apply font-poppins-bold text-secondary-rzaBlue;
             }

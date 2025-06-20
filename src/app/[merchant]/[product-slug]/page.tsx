@@ -11,10 +11,12 @@ import VariantComponent from './components/VariantComponent/VariantComponent';
 import Image from 'next/image';
 import './productSlug.scss'
 import {getOriginalProductPath, getVariantIdHasSet, handleProductPath, isVariantIdInUrl, selectFirstLoad } from './components/SelectionVariantComponent/SelectionVariantComponent.config';
+import { useProductStore } from '@/store/useProductStore';
 
 const ProductSlug: React.FC = () => {
 
     const [product, setProduct] = useState<GetDetailproductModel>();
+    const { setSelectedProduct } = useProductStore();
         
     useEffect(() => {
             const fetchDetail = async () => {
@@ -24,11 +26,17 @@ const ProductSlug: React.FC = () => {
                     if(!isVariantIdInUrl()) {
                         const firstSelection = selectFirstLoad(items.variants);
 
+                        console.log(firstSelection)
+
+                        if(firstSelection) setSelectedProduct(firstSelection?.id)
+
                         handleProductPath(firstSelection?.id);
                     } else {
                         const variantId = getVariantIdHasSet();
                         
                         const activateVariant  = items.variants.find(a => a.id === variantId);
+                        
+                        if(activateVariant) setSelectedProduct(activateVariant?.id);
 
                         if(activateVariant) {
 
@@ -51,6 +59,10 @@ const ProductSlug: React.FC = () => {
             };
             fetchDetail();
     }, []);
+
+    useEffect(() => {
+
+    }, [])
 
     if(!product) return (
         <>
