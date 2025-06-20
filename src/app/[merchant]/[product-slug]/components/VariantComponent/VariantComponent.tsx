@@ -5,7 +5,6 @@ import Image from 'next/image';
 import SelectionVariantComponent from '../SelectionVariantComponent/SelectionVariantComponent';
 import { ProductVariant, VariantGroup } from '@/domain/models/GetDetailproduct';
 import { useProductStore } from '@/store/useProductStore';
-import useCurrencyInput from '@/hook/useCurrencyInput';
 import useCurrency from '@/hook/useOriginalCurrency';
 
 

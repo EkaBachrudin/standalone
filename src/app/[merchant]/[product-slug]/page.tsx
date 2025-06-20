@@ -58,7 +58,7 @@ const ProductSlug: React.FC = () => {
                 }
             };
             fetchDetail();
-    }, []);
+    }, [setSelectedProduct]);
 
     useEffect(() => {
 
