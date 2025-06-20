@@ -38,7 +38,7 @@ const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, children, fu
     return () => {
       document.body.style.overflow = '';
     };
-  }, [isOpen]);
+  }, [isOpen, isMounted]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     startY.current = e.touches[0].clientY;

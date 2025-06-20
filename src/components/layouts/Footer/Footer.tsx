@@ -46,7 +46,7 @@ const FooterComponent = () => {
                       <div>
                           <div className="title">Gain more with MyTelkomsel App</div>
                           <div className='lg:flex lg:gap-12 lg:items-start'>
-                              <Image src="/logoipsumnoword.svg" width={70} height={70} alt="tselapp" className='mt-4' />
+                              <Image src="/logoipsumnoword.svg" width={70} height={70} alt="tselapp" className='mt-4 size-auto' />
                               <div>
                                   <div className='flex gap-2 mt-4'>
                                       <Image src="/assets/images/download-playstore.svg" width={144} height={40} alt="Google Play" />
@@ -68,7 +68,7 @@ const FooterComponent = () => {
                       <div className="title">{socialData.title}</div>
                       <div className='items'>
                           {socialData.items.map((item, index) => (
-                              <Image key={index} src={item.imageUrl} width={30} height={30} alt="Google Play" />
+                              <Image key={index} src={item.imageUrl} width={30} height={30} alt="Google Play" priority={true} />
                           ))}
                       </div>
                   </section>

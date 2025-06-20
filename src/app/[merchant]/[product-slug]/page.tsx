@@ -10,70 +10,65 @@ import DescriptionComponent from './components/DescriptionComponent/DescriptionC
 import VariantComponent from './components/VariantComponent/VariantComponent';
 import Image from 'next/image';
 import './productSlug.scss'
-import { activateChips, disabledChips, getOriginalProductPath, getVariantIdHasSet, handleProductPath, isVariantIdInUrl, selectFirstLoad } from './components/SelectionVariantComponent/SelectionVariantComponent.config';
+import {getOriginalProductPath, getVariantIdHasSet, handleProductPath, isVariantIdInUrl, selectFirstLoad } from './components/SelectionVariantComponent/SelectionVariantComponent.config';
+import { useProductStore } from '@/store/useProductStore';
 
 const ProductSlug: React.FC = () => {
 
     const [product, setProduct] = useState<GetDetailproductModel>();
+    const { setSelectedProduct } = useProductStore();
         
-        useEffect(() => {
-                const fetchDetail = async () => {
-                    try {
-                        const items = await digitalHubRepository.GetDetailProduct('test');
+    useEffect(() => {
+            const fetchDetail = async () => {
+                try {
+                    const items = await digitalHubRepository.GetDetailProduct('test');
 
-                        if(!isVariantIdInUrl()) {
-                            const firstSelection = selectFirstLoad(items.variants);
+                    if(!isVariantIdInUrl()) {
+                        const firstSelection = selectFirstLoad(items.variants);
+
+                        console.log(firstSelection)
+
+                        if(firstSelection) setSelectedProduct(firstSelection?.id)
+
+                        handleProductPath(firstSelection?.id);
+                    } else {
+                        const variantId = getVariantIdHasSet();
                         
-                            let updatedVariantGroup = activateChips(items.variant_group, firstSelection);
+                        const activateVariant  = items.variants.find(a => a.id === variantId);
+                        
+                        if(activateVariant) setSelectedProduct(activateVariant?.id);
 
-                            if(firstSelection) updatedVariantGroup = disabledChips(firstSelection, items.variants, updatedVariantGroup)
+                        if(activateVariant) {
 
-                            items.variant_group = updatedVariantGroup;
+                            handleProductPath(variantId);
+                        } else {
+                            getOriginalProductPath();
+
+                            const firstSelection = selectFirstLoad(items.variants);
 
                             handleProductPath(firstSelection?.id);
-                        } else {
-                            const variantId = getVariantIdHasSet();
-                            
-                            const activateVariant  = items.variants.find(a => a.id === variantId);
-
-                            if(activateVariant) {
-                                let updatedVariantGroup = activateChips(items.variant_group, activateVariant);
-
-                                updatedVariantGroup = disabledChips(activateVariant, items.variants, updatedVariantGroup)
-
-                                items.variant_group = updatedVariantGroup;
-
-                                handleProductPath(variantId);
-                            } else {
-                                getOriginalProductPath();
-
-                                const firstSelection = selectFirstLoad(items.variants);
-                        
-                                let updatedVariantGroup = activateChips(items.variant_group, firstSelection);
-
-                                if(firstSelection) updatedVariantGroup = disabledChips(firstSelection, items.variants, updatedVariantGroup);
-
-                                items.variant_group = updatedVariantGroup;
-
-                                handleProductPath(firstSelection?.id);
-                            }
                         }
-
-                        setProduct(items);
-
-                        
-                    } catch (err) {
-                        console.error('Failed to fetch product', err);
                     }
-                };
-                fetchDetail();
-        }, []);
 
-        useEffect(() => {
-            if (product?.variant_group.length) {
-                // console.log(product)
-            }
-        }, [product]);
+                    setProduct(items);
+
+                    
+                } catch (err) {
+                    console.error('Failed to fetch product', err);
+                }
+            };
+            fetchDetail();
+    }, [setSelectedProduct]);
+
+    useEffect(() => {
+
+    }, [])
+
+    if(!product) return (
+        <>
+            <div className='h-screen bg-white'></div>
+        </>
+    )
 
      if(product) return (
         <>

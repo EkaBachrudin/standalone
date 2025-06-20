@@ -2,6 +2,7 @@ import { VariantGroup, ProductVariant } from '@/domain/models/GetDetailproduct';
 import { activateChips, disabledChips, getVariantIdHasSet, handleProductPath, isVariantIdInUrl, selectChips, selectFirstLoad } from './SelectionVariantComponent.config';
 import { useEffect, useState } from 'react';
 import './SelectionVariantComponent.scss';
+import { useProductStore } from '@/store/useProductStore';
 
 interface SelectionVariantComponentProps {
       variant_group: VariantGroup[],
@@ -11,6 +12,7 @@ interface SelectionVariantComponentProps {
 const SelectionVariantComponent: React.FC<SelectionVariantComponentProps> = ({variant_group, variant}) => {
       const [variantGroup, setVariantGroup] = useState<VariantGroup[]>([]);
       const [, setProductName] = useState<string | undefined>('');
+      const { setSelectedProduct } = useProductStore();
 
       useEffect(() => {
             if(!isVariantIdInUrl()) {
@@ -40,11 +42,13 @@ const SelectionVariantComponent: React.FC<SelectionVariantComponentProps> = ({va
 
                   setProductName(getProductName);
             }
-      }, []);
+      }, [variant, variant_group]);
       
 
       function selectChip(variantKey: string, optionId: string) {
             const select = selectChips(variant, variantGroup, variantKey, optionId);
+
+            if(select) setSelectedProduct(select?.id);
             
             let updatedVariantGroup = activateChips(variant_group, select);
 
@@ -76,7 +80,7 @@ const SelectionVariantComponent: React.FC<SelectionVariantComponentProps> = ({va
                                           <div
                                                 className={`${dataOption.isActive ? 'variant-selection-group-item-active' : dataOption.isDisabled ? `variant-selection-group-item-disabled` : `variant-selection-group-item-value`}`}
                                                 key={keyIndex}
-                                                onClick={() => selectChip(data.key, dataOption.id)}
+                                                onClick={() => {if(!dataOption.isDisabled) selectChip(data.key, dataOption.id)}}
                                                 >
                               
                                                 {dataOption.label} 
