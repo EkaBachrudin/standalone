@@ -2,16 +2,14 @@ import { useMemo } from 'react';
 
 const useCurrency = (amount: number | string): string => {
   const formattedCurrency = useMemo(() => {
-    if (typeof amount === 'string') {
-      amount = parseFloat(amount);
-    }
+    const numericAmount = typeof amount === 'string' ? parseFloat(amount) : amount;
 
     return new Intl.NumberFormat('id-ID', {
       style: 'currency',
       currency: 'IDR',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
-    }).format(amount);
+    }).format(numericAmount);
   }, [amount]);
 
   return formattedCurrency;
