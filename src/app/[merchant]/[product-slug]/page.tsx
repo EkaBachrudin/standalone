@@ -25,6 +25,8 @@ const ProductSlug: React.FC = () => {
                 try {
                     const items = await digitalHubRepository.GetDetailProduct('test');
 
+                    console.log(items)
+
                     if(!isVariantIdInUrl()) {
                         const firstSelection = selectFirstLoad(items.variants);
 
@@ -86,10 +88,11 @@ const ProductSlug: React.FC = () => {
         <>
             <div className="detail-container">
 
-                <div className="image-info">
+                <div className="product-content">
                     <ProductImageComponent product={product}></ProductImageComponent>
 
-                    <section className='product-section'>   
+                    <div className="product-info">
+                        <section className='product-section'>   
                             <div className="ribbon" style={{
                                 color: product?.product_label_txtclr,
                                 backgroundColor: product?.product_label_bg
@@ -123,23 +126,24 @@ const ProductSlug: React.FC = () => {
                                     </div>
                                 </div>
                             </div>
-                    </section>
+                        </section>
+
+                        <VariantComponent
+                            variant_group={product?.variant_group}
+                            variants={product?.variants}>
+                        </VariantComponent>
+
+                        <DescriptionComponent
+                            title='Deskirpsi Produk'
+                            content={product?.product_desctiption}>
+                        </DescriptionComponent>
+
+                        <DescriptionComponent
+                            title='Deskripsi Merchant'
+                            content={product?.product_desctiption}>
+                        </DescriptionComponent>
+                    </div>
                 </div>
-
-                <VariantComponent 
-                    variant_group={product?.variant_group} 
-                    variants={product?.variants}>
-                </VariantComponent>
-
-                <DescriptionComponent 
-                    title='Deskirpsi Produk' 
-                    content={product?.product_desctiption}>
-                </DescriptionComponent>
-
-                <DescriptionComponent 
-                    title='Deskripsi Merchant' 
-                    content={product?.product_desctiption}>
-                </DescriptionComponent>
 
             </div>
         </>

@@ -1,28 +1,36 @@
 .detail-container{
-     @apply mx-auto max-w-[1440px];
+     @apply mx-auto max-w-[1440px] mb-7;
+
+     .product-content{
+        @apply md:flex md:justify-between gap-6;
+     }
+
+     .product-info{
+        @apply md:w-full;
+     }
 
      .product-section{
-        @apply bg-secondary-rzaCard rounded-bl-[24px];
+        @apply bg-secondary-rzaCard rounded-bl-[24px] md:rounded-br-[72px] md:rounded-bl-none;
 
         .ribbon{
             @apply font-poppins-bold text-f-12 w-min px-4 py-1 rounded-br-[20px]; 
         }
 
         .product-name{
-            @apply text-f-18 font-poppins-bold text-primary-darkBlue mt-3 px-6;
+            @apply text-f-18 font-poppins-bold text-primary-darkBlue mt-3 px-6 md:text-f-24;
         }
 
         .product-price{
-            @apply text-f-24 text-primary-rzaRed font-poppins-bold px-6 mt-1;
+            @apply text-f-24 text-primary-rzaRed font-poppins-bold px-6 mt-1 md:text-f-28;
         }
 
         .product-strikeout{
             @apply px-6 mt-1 border-b-2 border-secondary-rzaBrightGray pb-2;
             .pri{
-                @apply text-f-12 text-primary-rzaGrey100 font-poppins-regular line-through;
+                @apply text-f-12 md:text-f-16 text-primary-rzaGrey100 font-poppins-regular line-through;
             }
             .str{
-                @apply text-f-12 bg-primary-darkBlue text-primary-rzaWhite px-2 py-1 rounded-md ml-1;
+                @apply text-f-12 md:text-f-12 bg-primary-darkBlue text-primary-rzaWhite px-2 py-1 rounded-md ml-2 md:inline-block;
                 text-decoration: none;
             }
         }
