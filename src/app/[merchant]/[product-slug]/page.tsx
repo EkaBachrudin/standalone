@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { digitalHubRepository } from '@/data/repositories/DigitalHubRepository';
-import { GetDetailproductModel } from '@/domain/models/GetDetailproduct';
+import { GetDetailproductModel, ProductVariant } from '@/domain/models/GetDetailproduct';
 
 import ProductImageComponent from './components/ProductImageComponent/ProductImageComponent';
 import DescriptionComponent from './components/DescriptionComponent/DescriptionComponent';
@@ -12,11 +12,13 @@ import Image from 'next/image';
 import './productSlug.scss'
 import {getOriginalProductPath, getVariantIdHasSet, handleProductPath, isVariantIdInUrl, selectFirstLoad } from './components/SelectionVariantComponent/SelectionVariantComponent.config';
 import { useProductStore } from '@/store/useProductStore';
+import {formatCurrency} from '@/hook/useOriginalCurrency';
 
 const ProductSlug: React.FC = () => {
 
     const [product, setProduct] = useState<GetDetailproductModel>();
-    const { setSelectedProduct } = useProductStore();
+    const { selectedProduct, setSelectedProduct } = useProductStore();
+    const [selectedVariant, setSelectedVariant] = useState<ProductVariant>();
         
     useEffect(() => {
             const fetchDetail = async () => {
@@ -26,9 +28,9 @@ const ProductSlug: React.FC = () => {
                     if(!isVariantIdInUrl()) {
                         const firstSelection = selectFirstLoad(items.variants);
 
-                        console.log(firstSelection)
-
-                        if(firstSelection) setSelectedProduct(firstSelection?.id)
+                        if(firstSelection) {
+                            setSelectedProduct(firstSelection?.id);
+                        } 
 
                         handleProductPath(firstSelection?.id);
                     } else {
@@ -36,7 +38,9 @@ const ProductSlug: React.FC = () => {
                         
                         const activateVariant  = items.variants.find(a => a.id === variantId);
                         
-                        if(activateVariant) setSelectedProduct(activateVariant?.id);
+                        if(activateVariant) {
+                            setSelectedProduct(activateVariant?.id);
+                        } 
 
                         if(activateVariant) {
 
@@ -60,9 +64,14 @@ const ProductSlug: React.FC = () => {
             fetchDetail();
     }, [setSelectedProduct]);
 
-    useEffect(() => {
-
-    }, [])
+    useEffect(() => {  
+            if(product) getVariantSelected(selectedProduct, product?.variants);
+    }, [selectedProduct, product]);
+    
+    const getVariantSelected = (variantId: string, variant: ProductVariant[]) => {
+        const a = variant.find(v => v.id === variantId);
+        setSelectedVariant(a);
+    }   
 
     if(!product) return (
         <>
@@ -70,7 +79,10 @@ const ProductSlug: React.FC = () => {
         </>
     )
 
-     if(product) return (
+    const price = formatCurrency(selectedVariant?.price || 100);
+    const originalPrice = formatCurrency(selectedVariant?.originalPrice || 100);
+
+    return (
         <>
             <div className="detail-container">
 
@@ -90,11 +102,11 @@ const ProductSlug: React.FC = () => {
                             </div>
 
                             <div className="product-price">
-                                {product?.product_price}
+                                {price }
                             </div>
 
                             <div className="product-strikeout">
-                                <span className='pri'>{product?.product_strikeout_price} </span>
+                                <span className='pri'>{originalPrice }</span>
                                 <span className='str'>{product?.product_discount}%</span>
                             </div>
 
