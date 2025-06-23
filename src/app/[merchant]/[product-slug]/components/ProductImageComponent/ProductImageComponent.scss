@@ -13,4 +13,28 @@
             @apply text-f-10 font-poppins-regular bg-primary-rzaWhite rounded-lg right-6 bottom-6 px-2 text-center py-1 w-[49px] absolute;
         }
      }
+
+     .dekstop-image{
+        @apply hidden md:block relative;
+        .main{
+            @apply object-cover size-[375px] min-w-[375px] rounded-[26px] rounded-bl-none;
+        }
+
+        .slick-list{
+            @apply w-[375px];
+        }
+
+        .img-slide{
+            @apply mt-4;
+            .dekstop-image-item {
+                @apply bg-primary-rzaWhite text-primary-rzaWhite size-[80px] max-w-[80px] object-contain rounded-[6px] rounded-bl-none;
+
+                img {
+                    @apply size-[80px] rounded-[6px] rounded-bl-none;
+                }
+            }
+        }
+
+         
+     }
 }

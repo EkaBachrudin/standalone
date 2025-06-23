@@ -5,7 +5,7 @@ import Image from 'next/image';
 import SelectionVariantComponent from '../SelectionVariantComponent/SelectionVariantComponent';
 import { ProductVariant, VariantGroup } from '@/domain/models/GetDetailproduct';
 import { useProductStore } from '@/store/useProductStore';
-import useCurrency from '@/hook/useOriginalCurrency';
+import {formatCurrency as useCurrency} from '@/hook/useOriginalCurrency';
 
 
 interface  VariantComponentProps {
@@ -19,16 +19,10 @@ const VariantComponent: React.FC<VariantComponentProps> = ({variant_group, varia
       const [selectedVariant, setSelectedVariant] = useState<ProductVariant>();
 
       useEffect(() => {
-            selectedVariantAndLabel();
-      }, [selectedProduct]);
-
-      const selectedVariantAndLabel = () => {
             const a = variants.find(v => v.id === selectedProduct);
-
-            setSelectedVariant(a)
+            setSelectedVariant(a);
 
             const result: Record<string, string> = {};
-
             variant_group.forEach(field => {
                   const selectedOption = field.options.find(option => option.id === a?.variantValues[field.key]);
                   if (selectedOption) {
@@ -37,8 +31,7 @@ const VariantComponent: React.FC<VariantComponentProps> = ({variant_group, varia
             });
 
             setSelectedLabel(result);
-      };
-
+      }, [selectedProduct, variants, variant_group]);
 
       return (
             <>
@@ -52,6 +45,13 @@ const VariantComponent: React.FC<VariantComponentProps> = ({variant_group, varia
                               ))}
                         </span>
                         <button onClick={() => setIsOpen(true)} className='see-all'>Lihat Semua</button>
+                  </div>
+
+                  <div className="dekstop-variant">
+                        <SelectionVariantComponent
+                                    variant_group={variant_group}
+                                    variant={variants}>
+                        </SelectionVariantComponent> 
                   </div>
             </section>
 
@@ -90,10 +90,12 @@ const VariantComponent: React.FC<VariantComponentProps> = ({variant_group, varia
                               </div>
                         </section>
 
-                       <SelectionVariantComponent
-                              variant_group={variant_group}
-                              variant={variants}>
-                       </SelectionVariantComponent> 
+                       <div className='bottomsheet-content'>
+                              <SelectionVariantComponent
+                                          variant_group={variant_group}
+                                          variant={variants}>
+                              </SelectionVariantComponent> 
+                       </div>
 
                        <div className="bottom-section">
                               <button>Beli Sekarang</button>

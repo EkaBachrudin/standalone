@@ -18,6 +18,7 @@ import Slider from "react-slick";
 import Image from 'next/image';
 import { useParams, useRouter } from 'next/navigation';
 import { useHasMounted } from '@/hook/useHasMounted';
+import Link from 'next/link';
 
 export default function Category() {
   const params = useParams();
@@ -150,11 +151,12 @@ export default function Category() {
                 <div className="product-list">
                   {productListByCategory?.map((item, index) => (
                     <div className="product-list-items" key={index}>
-                      <div className="product-list-items-image" 
-                        style={{ backgroundImage: `url(${item.image})`, backgroundSize: "cover" }}>
-                      </div>
-                      <div className="product-list-items-content">
-                        <div className="product-list-items-content-title">{item.title}</div>
+                      <Link href={`/merchant/productname-v1`}>
+                        <div className="product-list-items-image"
+                          style={{ backgroundImage: `url(${item.image})`, backgroundSize: "cover" }}>
+                        </div>
+                        <div className="product-list-items-content">
+                          <div className="product-list-items-content-title">{item.title}</div>
                           <Slider {...settings}>
                             {item.optionLabel?.map((optionLabel, index) => (
                               <div className="product-list-items-content-optionLabel" key={index}>
@@ -162,13 +164,14 @@ export default function Category() {
                               </div>
                             ))}
                           </Slider>
-                        <div className="product-list-items-content-price">
+                          <div className="product-list-items-content-price">
                             Rp.{item.price}
+                          </div>
+                          <div className="product-list-items-content-pricestrikeout">
+                            <span className='line-through'> Rp.{item.strikeOutPrice}</span> <span className="discount">{item.discount}%</span>
+                          </div>
                         </div>
-                        <div className="product-list-items-content-pricestrikeout">
-                          <span className='line-through'> Rp.{item.strikeOutPrice}</span> <span className="discount">{item.discount}%</span>
-                        </div>
-                      </div>
+                      </Link>
                     </div>
                   ))}
                 </div>

@@ -25,7 +25,7 @@ const DescriptionComponent: React.FC<descriptionComponentProps> = ({ content, ti
                     <div className="title">{title}</div>
                     <div
                         ref={contentRef}
-                        className={`prose transition-all duration-300 overflow-hidden text-f-12 ${
+                        className={`prose transition-all duration-300 overflow-hidden text-f-12 md:text-f-14 ${
                             isExpanded ? 'max-h-[2000px]' : 'max-h-[150px]'
                         }`}
                         dangerouslySetInnerHTML={{ __html: content }}

@@ -335,7 +335,15 @@ const GetCategoryProductList: GetCategoryProductListModel[] = [
 const getDetailProduct: GetDetailproductModel = {
     images: [
         'https://picsum.photos/1280/720',
-        'https://picsum.photos/1280/780',
+        'https://picsum.photos/1280/781',
+        'https://picsum.photos/1280/722',
+        'https://picsum.photos/1280/782',
+        'https://picsum.photos/1280/723',
+        'https://picsum.photos/1280/724',
+        'https://picsum.photos/1280/785',
+        'https://picsum.photos/1280/726',
+        'https://picsum.photos/1280/787',
+        'https://picsum.photos/1280/728',
     ],
     product_label: 'Promo',
     product_label_bg: '#FDA22B',
