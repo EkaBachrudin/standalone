@@ -5,6 +5,7 @@ import { useState, useRef } from "react";
 import Slider from "react-slick";
 import { GetTrandingCategoryModel } from "@/domain/models/getTrandingCategory";
 import { TrandingSliderConfig } from './TrandingCategoryComponent.config';
+import Link from 'next/link';
 
 
 interface TrandingListProps {
@@ -42,11 +43,13 @@ const TrandingCategoryComponent: React.FC<TrandingListProps> = ({trandingList}) 
                 <Slider {...settings}>
                     {trandingList?.productList.map((item) => (
                         <div key={item.title} className='item'>
-                            <div className='containImage' style={{ backgroundImage: `url(${item.imageUrl})`, backgroundSize: "cover" }}></div>
-                            <div className='content'>
-                                <div className='contentTitle'>{item.title}</div>
-                                <div className='contentDesc'>{item.desc}</div>
-                            </div>
+                           <Link href={`/merchant/productname-v1`}>
+                                <div className='containImage' style={{ backgroundImage: `url(${item.imageUrl})`, backgroundSize: "cover" }}></div>
+                                <div className='content'>
+                                    <div className='contentTitle'>{item.title}</div>
+                                    <div className='contentDesc'>{item.desc}</div>
+                                </div>
+                           </Link>
                         </div>
                     ))}
                 </Slider>

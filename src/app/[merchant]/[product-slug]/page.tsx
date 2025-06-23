@@ -13,8 +13,16 @@ import './productSlug.scss'
 import {getOriginalProductPath, getVariantIdHasSet, handleProductPath, isVariantIdInUrl, selectFirstLoad } from './components/SelectionVariantComponent/SelectionVariantComponent.config';
 import { useProductStore } from '@/store/useProductStore';
 import {formatCurrency} from '@/hook/useOriginalCurrency';
+import Breadcrumb from '@/components/lib/breadcrumb/breadcrumb';
 
 const ProductSlug: React.FC = () => {
+
+    const breadcrumbItems = [
+      { label: 'Landing', href: '/' },
+      { label: 'Digital Hub', href: '/landing' },
+      { label: 'Services', href: '/landing/services' },
+      { label: 'Video Plaatinum', href: `/merchant/productname-v1` }
+    ];
 
     const [product, setProduct] = useState<GetDetailproductModel>();
     const { selectedProduct, setSelectedProduct } = useProductStore();
@@ -87,6 +95,10 @@ const ProductSlug: React.FC = () => {
     return (
         <>
             <div className="detail-container">
+
+                  <div className="breadcrumb my-8 hidden md:block">
+                        <Breadcrumb items={breadcrumbItems} />
+                  </div>
 
                 <div className="product-content">
                     <ProductImageComponent product={product}></ProductImageComponent>
