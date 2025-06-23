@@ -3,7 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./ProductImageComponent.scss";
 import Image from 'next/image';
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { GetDetailproductModel } from "@/domain/models/GetDetailproduct";
 import { NextArrow, PrevArrow } from "@/app/landing/components/CustomArrowComponent/customArrowComponent";
 
@@ -12,7 +12,6 @@ interface  ProductImageComponentProps {
 }
 const ProductImageComponent: React.FC<ProductImageComponentProps> = ({product}) => {
       const [activeIndex, setActiveIndex] = useState(0);
-      const sliderRef = useRef<Slider>(null);
       const mobileSettings = {
             infinite: false,
             speed: 500,
