@@ -1,5 +1,5 @@
 .detail-container{
-     @apply mx-auto max-w-[1440px] mb-7;
+     @apply mx-auto max-w-[1440px] mb-7 md:px-5;
 
      .product-content{
         @apply md:flex md:justify-between gap-6;

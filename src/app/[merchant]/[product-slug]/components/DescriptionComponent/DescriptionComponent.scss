@@ -1,7 +1,7 @@
  .description-section{
         @apply px-6 mt-5 text-f-12;
         .title{
-            @apply text-f-16 font-poppins-bold text-primary-darkBlue mb-2;
+            @apply text-f-16 font-poppins-bold text-primary-darkBlue mb-2 md:text-f-18;
         }    
 
         ul{

@@ -46,6 +46,13 @@ const VariantComponent: React.FC<VariantComponentProps> = ({variant_group, varia
                         </span>
                         <button onClick={() => setIsOpen(true)} className='see-all'>Lihat Semua</button>
                   </div>
+
+                  <div className="dekstop-variant">
+                        <SelectionVariantComponent
+                                    variant_group={variant_group}
+                                    variant={variants}>
+                        </SelectionVariantComponent> 
+                  </div>
             </section>
 
             <BottomSheet isOpen={isOpen} onClose={() => setIsOpen(false)} fullHeight={true}>
@@ -83,10 +90,12 @@ const VariantComponent: React.FC<VariantComponentProps> = ({variant_group, varia
                               </div>
                         </section>
 
-                       <SelectionVariantComponent
-                              variant_group={variant_group}
-                              variant={variants}>
-                       </SelectionVariantComponent> 
+                       <div className='bottomsheet-content'>
+                              <SelectionVariantComponent
+                                          variant_group={variant_group}
+                                          variant={variants}>
+                              </SelectionVariantComponent> 
+                       </div>
 
                        <div className="bottom-section">
                               <button>Beli Sekarang</button>

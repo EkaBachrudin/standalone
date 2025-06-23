@@ -1,11 +1,11 @@
 .variant-section{
         @apply mt-4 px-6;
         .title{
-            @apply text-f-16 font-poppins-bold text-primary-darkBlue;
+            @apply text-f-16 md:text-f-18 font-poppins-bold text-primary-darkBlue;
         }
 
         .variant-block{
-            @apply border border-primary-rzaGrey40 rounded-lg px-3 py-[10px] flex justify-between text-f-14 mt-2;
+            @apply border border-primary-rzaGrey40 rounded-lg px-3 py-[10px] flex justify-between text-f-14 mt-2 md:hidden;
             .selection {
                   @apply font-poppins-regular text-primary-darkBlue;
                   width: 200px;    
@@ -16,6 +16,10 @@
             .see-all {
                 @apply font-poppins-bold text-secondary-rzaBlue;
             }
+        }
+
+        .dekstop-variant{
+            @apply md:block hidden;
         }
 }
 
@@ -55,6 +59,10 @@
                         }
                   }
             }
+      }
+
+      .bottomsheet-content{
+            @apply px-6;
       }
 
       .bottom-section{
