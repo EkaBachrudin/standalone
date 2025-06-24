@@ -132,7 +132,7 @@ export function handleProductPath(variantId?: string) {
         const updatedPath = path.replace(/(-v\d+)+$/, ''); // This regex removes the repeated variantId (e.g., "-v1-v1-v1")
 
         // Update the URL only if the new variantId path is different
-        window.history.pushState(null, '', updatedPath + `-${cleanedVariantId}`);
+        window.history.replaceState(null, '', updatedPath + `-${cleanedVariantId}`);
 
         // Return product name (without extra repetitions)
         return productName;
@@ -180,7 +180,7 @@ export function getOriginalProductPath() {
 
         const result = removeLastValueAfterHyphen(url);
 
-        window.history.pushState(null, '', result);
+        window.history.replaceState(null, '', result);
         
         return result;
     }
