@@ -85,15 +85,17 @@ const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, children, fu
           transform: `translateY(${translateY}%)`,
           transition: isDragging ? 'none' : `transform ${ANIMATION_DURATION}ms ease`,
           height: fullHeight ? '100vh' : 'auto',
-          maxHeight: fullHeight ? '100vh' : '80vh',
+          maxHeight: fullHeight ? '90vh' : '80vh',
         }}
       >
-        <div
-          className="drag-handle"
+       <div className='drag-area' 
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-        />
+          onTouchEnd={handleTouchEnd}>
+          <div
+            className="drag-handle"
+          />
+       </div>
         <div className="sheet-inner">{children}</div>
       </div>
       <style jsx>{`
@@ -123,12 +125,19 @@ const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, children, fu
           will-change: transform;
         }
 
+        .drag-area{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 40px;
+        }
+
         .drag-handle {
           width: 40px;
           height: 5px;
           background-color: #ccc;
           border-radius: 999px;
-          margin: 12px auto 8px auto;
+          // margin: 12px auto 8px auto;
           touch-action: pan-y;
         }
 

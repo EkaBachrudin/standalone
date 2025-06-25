@@ -99,7 +99,7 @@
     }
 
     .mobile-filter-bottomsheet{
-        @apply p-7 lg:hidden;
+        @apply px-7 pb-7 lg:hidden;
         .head{
             @apply flex justify-between items-center text-f-19 font-poppins-bold text-primary-darkBlue;
         }
