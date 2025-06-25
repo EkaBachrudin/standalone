@@ -24,7 +24,7 @@
 }
 
 .variant-bottomsheet{
-      @apply pb-28 relative h-full;;
+      @apply pb-28 h-full;;
       .head{
             @apply flex justify-between items-center px-6 text-f-19 font-poppins-bold text-primary-darkBlue;
       }
