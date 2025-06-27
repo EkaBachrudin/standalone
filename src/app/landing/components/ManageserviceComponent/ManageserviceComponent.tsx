@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { ManageServiceModel } from '@/domain/models/Manageservice';
 import Image from 'next/image';
 import Link from 'next/link';
+import FullPageLoader from '@/components/lib/fullPageLoader/fullPageLoader';
 
 interface ManageservicePorps {
     manageServiceData?: ManageServiceModel;
@@ -111,7 +112,7 @@ const ManageserviceComponent: React.FC<ManageservicePorps> = ({manageServiceData
     };
 
     if (!manageServiceData || !manageServiceData.serviceItems.items.length) {
-        return <div>Loading...</div>;
+        return <FullPageLoader isLoading={true} />;
     }
 
     return (
@@ -146,7 +147,8 @@ const ManageserviceComponent: React.FC<ManageservicePorps> = ({manageServiceData
                                 <div key={item.title} className={styles.item} >
                                   
                                   <Link href={`/landing/services`}> 
-                                    <div className={styles.containImage} style={{ backgroundImage: `url(${item.imageUrl})`, backgroundSize: "cover" }}></div>
+                                    {/* <div className={styles.containImage} style={{ backgroundImage: `url(${item.imageUrl})`, backgroundSize: "cover" }}></div> */}
+                                    <Image className={styles.containImage} src={item.imageUrl} width={500} height={500} alt={item.title} />
                                     <div className={styles.content}>
                                         <div className={styles.contentTitle}>{item.title}</div>
                                         <div className={styles.contentDesc}>{item.desc}</div>

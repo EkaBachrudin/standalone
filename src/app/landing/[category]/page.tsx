@@ -152,9 +152,7 @@ export default function Category() {
                   {productListByCategory?.map((item, index) => (
                     <div className="product-list-items" key={index}>
                       <Link href={`/merchant/productname-v1`}>
-                        <div className="product-list-items-image"
-                          style={{ backgroundImage: `url(${item.image})`, backgroundSize: "cover" }}>
-                        </div>
+                        <Image className='product-list-items-image object-cover' src={item.image} alt={'bg-image'} width={5000} height={5000} priority={true}/>
                         <div className="product-list-items-content">
                           <div className="product-list-items-content-title">{item.title}</div>
                           <Slider {...settings}>

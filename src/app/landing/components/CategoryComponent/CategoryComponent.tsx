@@ -9,6 +9,7 @@ import useIsMobile from '@/hook/useIsMobile';
 import Slider from 'react-slick';
 import Image from 'next/image';
 import Link from 'next/link';
+import FullPageLoader from '@/components/lib/fullPageLoader/fullPageLoader';
 
 interface CategoryProps {
   categoryData: CategoryModel[];
@@ -39,6 +40,9 @@ const CategoryComponent: React.FC<CategoryProps > = ({categoryData}) => {
     afterChange: (current: number) => setCurrentSlide(current)
   };
 
+  if (!categoryData || !categoryData .length) {
+        return <FullPageLoader isLoading={true} />;
+  }
 
     return (
       <>

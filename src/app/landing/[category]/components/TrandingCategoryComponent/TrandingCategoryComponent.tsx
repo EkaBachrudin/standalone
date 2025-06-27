@@ -6,6 +6,7 @@ import Slider from "react-slick";
 import { GetTrandingCategoryModel } from "@/domain/models/getTrandingCategory";
 import { TrandingSliderConfig } from './TrandingCategoryComponent.config';
 import Link from 'next/link';
+import Image from 'next/image';
 
 
 interface TrandingListProps {
@@ -44,7 +45,7 @@ const TrandingCategoryComponent: React.FC<TrandingListProps> = ({trandingList}) 
                     {trandingList?.productList.map((item) => (
                         <div key={item.title} className='item'>
                            <Link href={`/merchant/productname-v1`}>
-                                <div className='containImage' style={{ backgroundImage: `url(${item.imageUrl})`, backgroundSize: "cover" }}></div>
+                                <Image className='containImage' src={item.imageUrl} alt={'bg-image'} width={1000} height={1000} priority={true}/>
                                 <div className='content'>
                                     <div className='contentTitle'>{item.title}</div>
                                     <div className='contentDesc'>{item.desc}</div>

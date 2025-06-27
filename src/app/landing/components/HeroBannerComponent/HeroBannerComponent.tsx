@@ -8,6 +8,7 @@ import { HeroBannerModel } from '@/domain/models/heroBanner';
 import useIsMobile from '@/hook/useIsMobile';
 import Link from 'next/link';
 import { getSliderSettings } from './HeroBannerComponentConfig';
+import Image from 'next/image';
 
 interface HeroBannerProps {
     bannerDataProps: HeroBannerModel | undefined;
@@ -33,7 +34,9 @@ const HeroBannerComponent: React.FC<HeroBannerProps> = ({ bannerDataProps }) => 
                     <Slider ref={slider} {...settings}>
                         {bannerDataProps?.items.map((item) => (
                             <div key={item.title}>
-                                <div className={styles['banner-items']} style={{ backgroundImage: `url(${item.imageUrl})`, backgroundSize: "cover" }}>
+
+                                <div className={styles['banner-items']}>
+                                    <Image src={item.imageUrl} alt={'bg-image'} width={5000} height={5000} priority={false}/>
                                     <div className={styles['banner-items-inner']}>
                                         <div className={styles['item-content']}>
                                             <div className={styles['banner-title']}> {item.title}</div>
@@ -44,6 +47,7 @@ const HeroBannerComponent: React.FC<HeroBannerProps> = ({ bannerDataProps }) => 
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         ))}
                     </Slider>

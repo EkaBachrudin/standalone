@@ -8,6 +8,8 @@ import useIsMobile from '@/hook/useIsMobile';
 import { useRef, useState } from 'react';
 import { getSliderProductListSettings } from './ProductListConfig';
 import Link from 'next/link';
+import Image from 'next/image';
+import FullPageLoader from '@/components/lib/fullPageLoader/fullPageLoader';
 
 interface PoductListProps {
     productListData?: ProductListModel;
@@ -24,7 +26,7 @@ const ProductListComponent: React.FC<PoductListProps> = ({productListData}) => {
     const settings = getSliderProductListSettings(isMobile, currentSlide, datalength, setActiveSlide, setCurrentSlide, sliderRef);
 
     if (!productListData || !productListData.productList.length) {
-        return <div>Loading...</div>;
+        return <FullPageLoader isLoading={true} />;
     }
 
     return (
@@ -44,7 +46,8 @@ const ProductListComponent: React.FC<PoductListProps> = ({productListData}) => {
                         <div key={item.title} className='item' >
                            
                             <Link href={`/landing/services`}> 
-                                <div className='containImage' style={{ backgroundImage: `url(${item.imageUrl})`, backgroundSize: "cover" }}></div>
+                                {/* <div className='containImage' style={{ backgroundImage: `url(${item.imageUrl})`, backgroundSize: "cover" }}></div> */}
+                                <Image className='containImage' src={item.imageUrl} alt={'bg-image'} width={5000} height={5000} priority={false}/>
                                 <div className='content'>
                                     <div className='contentTitle'>{item.title}</div>
                                     <div className='contentDesc'>{item.desc}</div>

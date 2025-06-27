@@ -45,7 +45,7 @@
           .item{
               @apply pl-6;
               .containImage{
-                  @apply h-[228.8px] rounded-t-[20px];
+                  @apply h-[228.8px] rounded-t-[20px] object-cover;
               }
               .content{
                   @apply bg-primary-rzaWhite px-4 pt-4 pb-5 rounded-b-[20px] h-[114px] text-center;

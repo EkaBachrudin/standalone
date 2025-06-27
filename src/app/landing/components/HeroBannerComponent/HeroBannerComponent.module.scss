@@ -20,14 +20,18 @@
             @apply mx-[70px];
         }
         .banner-items{
-            @apply h-[236px] rounded-[20px] mt-4 mb-10 mx-6 shadow-lg;
+            @apply h-[236px] rounded-[20px] mt-4 mb-10 mx-6 shadow-lg relative;
             @screen lg {
                 @apply mt-8 h-[360px] mb-6;
+            }
+
+            img{
+                @apply absolute size-full rounded-[20px] object-cover;
             }
         }
     
         .banner-items-inner{
-            @apply h-[237px] rounded-[20px];
+            @apply h-[237px] rounded-[20px] z-[1000] relative;
             
            
             background: linear-gradient(98.85deg, #001A41 0.2%, rgba(0, 0, 0, 0) 69.4%),
