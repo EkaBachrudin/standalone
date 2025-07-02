@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "analyze": "ANALYZE=true npm run build"
+    "analyze": "ANALYZE=true npm run build",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:run:ci": "cypress run --headless --browser chrome"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.16",
@@ -17,13 +20,14 @@
     "sass": "^1.84.0",
     "zustand": "^5.0.5"
   },
-  "devDependencies": {
+  "devDependencies": {  
     "@eslint/eslintrc": "^3",
     "@next/bundle-analyzer": "^15.3.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/react-slick": "^0.23.13",
+    "cypress": "^14.5.1",
     "eslint": "^9",
     "eslint-config-next": "15.1.7",
     "postcss": "^8",
