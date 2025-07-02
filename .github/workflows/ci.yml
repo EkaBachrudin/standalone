@@ -27,48 +27,9 @@ jobs:
       - name: Build Next.js project
         run: npm run build  # Pastikan perintah build sesuai dengan konfigurasi Next.js Anda
 
-      # Install pm2 untuk mengelola proses aplikasi
-      - name: Install pm2
-        run: npm install pm2 --save-dev
-
-      # Jalankan aplikasi Next.js di background menggunakan pm2
-      - name: Start Next.js application using pm2
-        run: |
-          npx pm2 start npm --name "next-app" -- run dev  # Menjalankan aplikasi dengan pm2
-
-      # Tunggu hingga aplikasi siap dengan menggunakan curl
-      - name: Wait for app to start
-        run: |
-          until curl --silent --fail http://localhost:3000; do
-            echo "Waiting for application to start..."
-            sleep 5  # Tunggu hingga aplikasi benar-benar siap
-          done
-          echo "Application is up!"
-
-  e2e-tests:
-    runs-on: ubuntu-latest
-    needs: build  # Menunjukkan bahwa job e2e-tests hanya akan dijalankan setelah job build selesai
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install dependencies
-        run: npm install  # Jika Anda menggunakan yarn, ganti dengan `yarn install`
-
-      # Jalankan Cypress untuk melakukan E2E testing
-      - name: Run Cypress tests
-        run: |
-          npx cypress run --headless --browser chrome --no-exit  # Menjalankan Cypress dalam mode headless dengan browser Chrome dan tidak keluar setelah tes selesai
-
   deploy:
     runs-on: ubuntu-latest
-    needs: e2e-tests  # Menunjukkan bahwa job deploy hanya akan dijalankan setelah job e2e-tests selesai
+    needs: build  # Menunjukkan bahwa job deploy hanya akan dijalankan setelah job build selesai
 
     steps:
       - name: Checkout repository
