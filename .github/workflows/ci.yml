@@ -27,10 +27,10 @@ jobs:
       - name: Build Next.js project
         run: npm run build  # Pastikan perintah build sesuai dengan konfigurasi Next.js Anda
 
-      # Jalankan aplikasi Next.js di background
-      - name: Start Next.js application
+      # Jalankan aplikasi Next.js di background dengan perintah dev (development mode)
+      - name: Start Next.js application in development mode
         run: |
-          npm run start &  # Menjalankan aplikasi di background tanpa nohup
+          npm run dev &  # Menjalankan aplikasi di background dalam mode dev (development)
 
       # Tunggu hingga aplikasi siap dengan menggunakan curl
       - name: Wait for app to start
