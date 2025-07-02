@@ -30,8 +30,16 @@ jobs:
       # Jalankan aplikasi Next.js di background
       - name: Start Next.js application
         run: |
-          nohup npm run start &
-          sleep 10
+          nohup npm run start &  # Menjalankan aplikasi di background
+
+      # Tunggu hingga aplikasi siap dengan menggunakan curl
+      - name: Wait for app to start
+        run: |
+          until curl --silent --fail http://localhost:3000; do
+            echo "Waiting for application to start..."
+            sleep 5
+          done
+          echo "Application is up!"
 
   e2e-tests:
     runs-on: ubuntu-latest
