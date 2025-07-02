@@ -27,10 +27,14 @@ jobs:
       - name: Build Next.js project
         run: npm run build  # Pastikan perintah build sesuai dengan konfigurasi Next.js Anda
 
-      # Jalankan aplikasi Next.js di background dengan perintah dev (development mode)
-      - name: Start Next.js application in development mode
+      # Install pm2 untuk mengelola proses aplikasi
+      - name: Install pm2
+        run: npm install pm2 --save-dev
+
+      # Jalankan aplikasi Next.js di background menggunakan pm2
+      - name: Start Next.js application using pm2
         run: |
-          npm run dev &  # Menjalankan aplikasi di background dalam mode dev (development)
+          npx pm2 start npm --name "next-app" -- run dev  # Menjalankan aplikasi dengan pm2
 
       # Tunggu hingga aplikasi siap dengan menggunakan curl
       - name: Wait for app to start
@@ -60,7 +64,7 @@ jobs:
       # Jalankan Cypress untuk melakukan E2E testing
       - name: Run Cypress tests
         run: |
-          npx cypress run --headless --browser chrome  # Menjalankan Cypress dalam mode headless dengan browser Chrome
+          npx cypress run --headless --browser chrome --no-exit  # Menjalankan Cypress dalam mode headless dengan browser Chrome dan tidak keluar setelah tes selesai
 
   deploy:
     runs-on: ubuntu-latest
