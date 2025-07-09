@@ -22,7 +22,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20.x'  # Changed from '20-lts' to '20.x' which is the correct syntax
+          node-version: '20.x'
 
       - name: Install dependencies
         run: npm ci
@@ -30,18 +30,17 @@ jobs:
       - name: Build Next.js
         run: npm run build
 
-      # Workaround for .next upload - create a tar.gz file first
-      - name: Create .next.tar.gz
-        run: |
-          mkdir -p build-artifact
-          tar -czvf build-artifact/.next.tar.gz -C . .next
-
-      # Upload the .next.tar.gz as artifact
-      - name: Upload .next.tar.gz as artifact
+      # Pastikan file .next ada, lihat ls jika perlu
+      - name: List .next directory
+        run: ls -la ./.next
+        if: stepsnpm install is needed?        
+          
+      # Upload direktori .next secara langsung
+      - name: Upload .next directory
         uses: actions/upload-artifact@v4
         with:
           name: next-build
-          path: build-artifact/.next.tar.gz
+          path: ./.next
 
   test:
     runs-on: ubuntu-latest
@@ -66,25 +65,18 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # Download the .next.tar.gz artifact
-      - name: Download build artifact
+      # Download direktori .next dari artifacts
+      - name: Download .next directory
         uses: actions/download-artifact@v4
         with:
           name: next-build
-          path: .
+          path: ./
 
-      # Extract the .next.tar.gz
-      - name: Extract .next
-        run: |
-          mkdir -p build-artifact
-          tar -xzvf .next.tar.gz -C build-artifact
-          mv build-artifact/.next .
-
-      # Run Cypress tests
       - name: Run Cypress tests
         run: |
-          # We need to create a virtual Next.js environment
-          npm install # Reinstall dependencies to ensure all packages are present
+          # Tampilkan informasi test directory
+          ls -la ./.next/cypress
+          # Jalankan test
           npx cypress run --headless
         env:
           CI: true
