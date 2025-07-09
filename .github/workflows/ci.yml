@@ -30,16 +30,20 @@ jobs:
       - name: Build Next.js
         run: npm run build
 
-      # Pastikan file .next ada, lihat ls jika perlu
-      - name: List .next directory
-        run: ls -la ./.next
-      
-      # Upload direktori .next secara langsung
-      - name: Upload .next directory
+      # Debug: Show build information
+      - name: Show build logs
+        run: |
+          echo "Build directory contents:"
+          ls -la .next
+          echo "Number of files in .next:"
+          find .next | wc -l
+
+      # Try uploading all files in the directory
+      - name: Upload .next directory with glob pattern
         uses: actions/upload-artifact@v4
         with:
           name: next-build
-          path: ./.next
+          path: ./.next/**
 
   test:
     runs-on: ubuntu-latest
@@ -64,19 +68,26 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # Download direktori .next dari artifacts
-      - name: Download .next directory
+      # Download and handle all artifacts
+      - name: Download .next artifact
         uses: actions/download-artifact@v4
         with:
           name: next-build
-          path: ./
+          path: .
 
-      - name: Run Cypress tests
+      # Debug: Check if the artifact was downloaded correctly
+      - name: Check artifact contents
         run: |
-          # Tampilkan informasi test directory
-          ls -la ./.next/cypress
-          # Jalankan test
-          npx cypress run --headless
+          ls -la
+          ls -la .next || echo ".next directory not found"
+
+      # Reinstall dependencies (test environment may be different)
+      - name: Reinstall dependencies
+        run: npm ci
+
+      # Run Cypress tests
+      - name: Run Cypress tests
+        run: npx cypress run --headless
         env:
           CI: true
           BASE_URL: ${{ secrets.NEXT_BASE_URL }}
