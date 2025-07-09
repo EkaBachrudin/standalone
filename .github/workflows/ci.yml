@@ -9,36 +9,35 @@ on:
       - main
 
 jobs:
-  build-and-setup:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4  # Diperbarui ke versi v4
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
-          registry-url: 'https://registry.npmjs.org'
+          node-version: '20-lts'  # SonarCloud rekomendasikan nodejs 20 LTS
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci  # Gunakan npm ci untuk kecepatan dan keandalan
 
       - name: Build Next.js project
         run: npm run build
 
-      - name: Save build output as artifact
-        uses: actions/upload-artifact@v3
+      - name: Save build output as artifact (v4)
+        uses: actions/upload-artifact@v4
         with:
           name: next-build
-          path: ./.next
+          path: ./.next  # Simpan direktori .next sebagai artifact
 
   test:
     runs-on: ubuntu-latest
-    needs: build-and-setup
+    needs: build
     services:
       chrome:
-        image: docker://harbs/cypress-chrome:12
+        image: docker://brightsec/chrome-cypress:latest
         options: --headless
 
     steps:
@@ -51,19 +50,19 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4  # Diperbarui ke versi v4
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Install Cypress
-        run: npm install cypress --save-dev
-
-      - name: Download build artifact
-        uses: actions/download-artifact@v3
+      - name: Download build artifact (v4)
+        uses: actions/download-artifact@v4
         with:
           name: next-build
           path: .
+
+      - name: Install Cypress dependencies
+        run: npm install cypress --save-dev
 
       - name: Run Cypress tests
         run: npx cypress run --headless
@@ -73,21 +72,17 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: test
-    environment: production
     steps:
-      - name: Cache Node modules
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4  # Diperbarui ke versi v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20-lts'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Deploy to Vercel
         run: npx vercel deploy --prod --yes --token ${{ secrets.VERCEL_TOKEN }}
