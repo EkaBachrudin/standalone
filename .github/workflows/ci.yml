@@ -33,8 +33,7 @@ jobs:
       # Pastikan file .next ada, lihat ls jika perlu
       - name: List .next directory
         run: ls -la ./.next
-        if: stepsnpm install is needed?        
-          
+      
       # Upload direktori .next secara langsung
       - name: Upload .next directory
         uses: actions/upload-artifact@v4
