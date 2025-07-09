@@ -9,8 +9,8 @@ on:
       - main
 
 env:
-  CYPRESS_SLOW_MO: 0  # Tambahkan jika perlu slow motion
-  CYPRESS_BASE_URL: ${{ secrets.NEXT_BASE_URL }}  # Pastikan secret ini diatur
+  CYPRESS_SLOW_MO: 0
+  CYPRESS_BASE_URL: ${{ secrets.NEXT_BASE_URL }}
 
 jobs:
   build:
@@ -22,7 +22,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20-lts'
+          node-version: '20.x'  # Changed from '20-lts' to '20.x' which is the correct syntax
 
       - name: Install dependencies
         run: npm ci
@@ -30,12 +30,18 @@ jobs:
       - name: Build Next.js
         run: npm run build
 
-      # Upload the entire build output as artifact
-      - name: Upload build output as artifact
+      # Workaround for .next upload - create a tar.gz file first
+      - name: Create .next.tar.gz
+        run: |
+          mkdir -p build-artifact
+          tar -czvf build-artifact/.next.tar.gz -C . .next
+
+      # Upload the .next.tar.gz as artifact
+      - name: Upload .next.tar.gz as artifact
         uses: actions/upload-artifact@v4
         with:
           name: next-build
-          path: ./.next  # Pastikan direktori .next dihasilkan oleh build
+          path: build-artifact/.next.tar.gz
 
   test:
     runs-on: ubuntu-latest
@@ -54,28 +60,35 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Install dependencies
         run: npm ci
 
-      # Download the build artifact directly instead of copying
+      # Download the .next.tar.gz artifact
       - name: Download build artifact
         uses: actions/download-artifact@v4
         with:
           name: next-build
-          # This will extract the .next directory to the workspace
           path: .
 
+      # Extract the .next.tar.gz
+      - name: Extract .next
+        run: |
+          mkdir -p build-artifact
+          tar -xzvf .next.tar.gz -C build-artifact
+          mv build-artifact/.next .
+
+      # Run Cypress tests
       - name: Run Cypress tests
         run: |
-          # Pastikan yakin untuk menggunakan node_modules dari direktori workspace
-          npm install # Karena build artifacts hanya menyertakan build, bukan dependencies
+          # We need to create a virtual Next.js environment
+          npm install # Reinstall dependencies to ensure all packages are present
           npx cypress run --headless
         env:
           CI: true
-          BASE_URL: ${{ secrets.NEXT_BASE_URL }}  # Jika website menggunakan base url
+          BASE_URL: ${{ secrets.NEXT_BASE_URL }}
 
   deploy:
     runs-on: ubuntu-latest
@@ -87,7 +100,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20-lts'
+          node-version: '20.x'
 
       - name: Install dependencies
         run: npm ci
