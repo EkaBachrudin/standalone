@@ -9,9 +9,8 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-setup:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -19,29 +18,76 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'  # Menggunakan versi Node.js 18.x yang kompatibel dengan Next.js
+          node-version: '18'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
-        run: npm install  # Jika Anda menggunakan yarn, ganti dengan `yarn install`
+        run: npm install
 
       - name: Build Next.js project
-        run: npm run build  # Pastikan perintah build sesuai dengan konfigurasi Next.js Anda
+        run: npm run build
+
+      - name: Save build output as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: next-build
+          path: ./.next
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build-and-setup
+    services:
+      chrome:
+        image: docker://harbs/cypress-chrome:12
+        options: --headless
+
+    steps:
+      - name: Cache Node modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Cypress
+        run: npm install cypress --save-dev
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: next-build
+          path: .
+
+      - name: Run Cypress tests
+        run: npx cypress run --headless
+        env:
+          CI: true
 
   deploy:
     runs-on: ubuntu-latest
-    needs: build  # Menunjukkan bahwa job deploy hanya akan dijalankan setelah job build selesai
-
+    needs: test
+    environment: production
     steps:
+      - name: Cache Node modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'  # Gunakan Node.js versi 18.x
-
       - name: Install dependencies
-        run: npm install  # Jika Anda menggunakan yarn, ganti dengan `yarn install`
+        run: npm install
 
       - name: Deploy to Vercel
-        run: npx vercel deploy --prod --yes --token ${{ secrets.VERCEL_TOKEN }}  # Menambahkan --prod untuk deploy ke production dan --yes untuk konfirmasi otomatis
+        run: npx vercel deploy --prod --yes --token ${{ secrets.VERCEL_TOKEN }}
