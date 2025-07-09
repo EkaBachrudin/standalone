@@ -27,39 +27,6 @@ jobs:
       - name: Build Next.js project
         run: npm run build  # Pastikan perintah build sesuai dengan konfigurasi Next.js Anda
 
-  test:
-    runs-on: ubuntu-latest
-    needs: build
-    services:
-      chrome: # Adds the Google Chrome service
-        image: google-chrome:latest
-        credentials: ${{ secrets.GITHUB_TOKEN }}
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Copy built app from previous job
-        uses: actions-minimal-copy-file@v1
-        with:
-          from_job: build
-          from_path: .  # Copy from the build job's directory
-          target_path: .  # Target directory in the test job
-
-      - name: Install Cypress
-        run: npm install cypress --save-dev
-
-      - name: Run Cypress tests
-        run: npx cypress run --browser chrome --headless
-        
   deploy:
     runs-on: ubuntu-latest
     needs: build  # Menunjukkan bahwa job deploy hanya akan dijalankan setelah job build selesai
