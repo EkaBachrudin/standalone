@@ -1,4 +1,4 @@
-name: Deploy Next.js to Vercel
+name: Next.js with Cypress
 
 on:
   push:
@@ -8,29 +8,34 @@ on:
     branches:
       - main
 
+env:
+  CYPRESS_SLOW_MO: 0  # Tambahkan jika perlu slow motion
+  CYPRESS_BASE_URL: ${{ secrets.NEXT_BASE_URL }}  # Pastikan secret ini diatur
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4  # Diperbarui ke versi v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '20-lts'
 
       - name: Install dependencies
-        run: npm ci  # Gunakan npm ci untuk kecepatan dan keandalan
+        run: npm ci
 
-      - name: Build Next.js project
+      - name: Build Next.js
         run: npm run build
 
-      - name: Save build output as artifact (v4)
+      # Upload the entire build output as artifact
+      - name: Upload build output as artifact
         uses: actions/upload-artifact@v4
         with:
           name: next-build
-          path: ./.next  # Simpan direktori .next sebagai artifact
+          path: ./.next  # Pastikan direktori .next dihasilkan oleh build
 
   test:
     runs-on: ubuntu-latest
@@ -50,36 +55,39 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Checkout repository
-        uses: actions/checkout@v4  # Diperbarui ke versi v4
+        uses: actions/checkout@v4
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Download build artifact (v4)
+      # Download the build artifact directly instead of copying
+      - name: Download build artifact
         uses: actions/download-artifact@v4
         with:
           name: next-build
+          # This will extract the .next directory to the workspace
           path: .
 
-      - name: Install Cypress dependencies
-        run: npm install cypress --save-dev
-
       - name: Run Cypress tests
-        run: npx cypress run --headless
+        run: |
+          # Pastikan yakin untuk menggunakan node_modules dari direktori workspace
+          npm install # Karena build artifacts hanya menyertakan build, bukan dependencies
+          npx cypress run --headless
         env:
           CI: true
+          BASE_URL: ${{ secrets.NEXT_BASE_URL }}  # Jika website menggunakan base url
 
   deploy:
     runs-on: ubuntu-latest
     needs: test
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4  # Diperbarui ke versi v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '20-lts'
 
       - name: Install dependencies
         run: npm ci
