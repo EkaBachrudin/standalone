@@ -9,13 +9,13 @@ const mockMenuItems: MenuItem[] = [
   { name: "Jelajah", 
     url: "#",
     childs: [
-      {childName: 'Telkomsel One', url: ''},
-      {childName: 'Telkomsel Prabayar', url: ''},
-      {childName: 'Telkomsel Lite', url: ''},
-      {childName: 'Telkomsel Halo', url: ''},
+      {childName: 'Foundation One', url: ''},
+      {childName: 'Foundation Prabayar', url: ''},
+      {childName: 'Foundation Lite', url: ''},
+      {childName: 'Foundation Halo', url: ''},
       {childName: 'By.u', url: ''},
       {childName: 'Roaming & Sli', url: ''},
-      {childName: 'Telkomsel Orbit', url: ''},
+      {childName: 'Foundation Orbit', url: ''},
       {childName: 'EzNet', url: ''},
       {childName: 'EzNet Wireless', url: ''},
       {childName: 'Bundling', url: ''},
@@ -28,7 +28,7 @@ const mockMenuItems: MenuItem[] = [
     childs: [
       {childName: 'Pusat Bantuan', url: ''},
       {childName: 'Pelanggan Bantuan', url: ''},
-      {childName: 'Telkomsel Grapari', url: ''}
+      {childName: 'Foundation Grapari', url: ''}
     ]
   }
 ];

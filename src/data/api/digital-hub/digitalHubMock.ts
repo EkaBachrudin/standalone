@@ -9,8 +9,8 @@ import { ManageServiceModel } from "@/domain/models/Manageservice";
 import { ProductListModel } from "@/domain/models/productList";
 
 const heroBannerData: HeroBannerModel = {
-    title: 'Telkomsel Digital Hub',
-    desc: 'Beli, atur dan nikmati beragam produk langganan di Telkomsel',
+    title: 'Foundation Digital Hub',
+    desc: 'Beli, atur dan nikmati beragam produk langganan di Foundation',
     items: [
         {
             title: 'Netflix',
@@ -100,9 +100,9 @@ const manageServiceData: ManageServiceModel = {
 }
 
 const productDetailData: ProductListModel = {
-    title: 'Pilihan Telkomsel',
+    title: 'Pilihan Foundation',
     seeAllUrl: '/doc',
-    desc: 'Produk-produk unggulan Telkomsel yang cocok untuk Anda',
+    desc: 'Produk-produk unggulan Foundation yang cocok untuk Anda',
     productList: [
         {
             imageUrl: 'https://picsum.photos/1280/720',
@@ -144,7 +144,7 @@ const productDetailData: ProductListModel = {
 
 const trandingCategoryMock: GetTrandingCategoryModel = {
     title: 'Kumpulan Film yang lagi Trending!',
-    desc: 'Yuk berlangganan dengan Telkomsel dan jangan lewatkan film-film trending berikut',
+    desc: 'Yuk berlangganan dengan Foundation dan jangan lewatkan film-film trending berikut',
     productList: [
         {
             imageUrl: 'https://picsum.photos/1280/720',
