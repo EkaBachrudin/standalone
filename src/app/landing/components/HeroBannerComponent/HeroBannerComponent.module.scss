@@ -1,7 +1,7 @@
 .hero-baner-container{
-    @apply h-[437px] min-h-[437px] lg:h-[700px] lg:min-h-[700px];
+    @apply h-[437px] min-h-[437px] lg:h-[700px] lg:min-h-[700px] relative overflow-hidden;
     @screen lg {
-        @apply bg-cover pb-28;
+        @apply pb-28;
     }
     .main-title{
         @apply text-f-24 text-primary-rzaWhite font-poppins-bold pt-[54px] text-left mx-6;
