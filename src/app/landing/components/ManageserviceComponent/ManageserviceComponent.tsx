@@ -111,9 +111,9 @@ const ManageserviceComponent: React.FC<ManageservicePorps> = ({manageServiceData
           ],
     };
 
-    if (!manageServiceData || !manageServiceData.serviceItems.items.length) {
-        return <FullPageLoader isLoading={true} />;
-    }
+    // if (!manageServiceData || !manageServiceData.serviceItems.items.length) {
+    //     return null
+    // }
 
     return (
         <>
@@ -123,7 +123,7 @@ const ManageserviceComponent: React.FC<ManageservicePorps> = ({manageServiceData
                 </div>
 
                 <div className={styles.top}>
-                    {manageServiceData?.top.map((item) => (
+                    {manageServiceData?.serviceItems.items && manageServiceData?.top.map((item) => (
                         <div key={item.name} className={styles.topItem}>
                             <div>
                                 <Image src={item.icon} width={40} height={40} alt={item.name} />

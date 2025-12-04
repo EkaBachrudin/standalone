@@ -25,9 +25,9 @@ const ProductListComponent: React.FC<PoductListProps> = ({productListData}) => {
 
     const settings = getSliderProductListSettings(isMobile, currentSlide, datalength, setActiveSlide, setCurrentSlide, sliderRef);
 
-    if (!productListData || !productListData.productList.length) {
-        return <FullPageLoader isLoading={true} />;
-    }
+    // if (!productListData || !productListData.productList.length) {
+    //     return <FullPageLoader isLoading={true} />;
+    // }
 
     return (
         <>
@@ -42,6 +42,7 @@ const ProductListComponent: React.FC<PoductListProps> = ({productListData}) => {
 
             <div className='productListItem'>
                 <Slider {...settings}>
+
                     {productListData?.productList.map((item) => (
                         <div key={item.title} className='item' >
                            

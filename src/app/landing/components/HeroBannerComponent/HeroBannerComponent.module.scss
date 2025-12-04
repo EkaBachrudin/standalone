@@ -10,7 +10,7 @@
         }
     }
     .main-desc{
-        @apply text-f-13 font-poppins-regular text-primary-rzaWhite mt-4 text-left mx-6;
+        @apply text-f-13 font-poppins-regular text-primary-rzaWhite mt-4 text-left mx-6 min-h-[39px];
         @screen lg {
             @apply mx-[100px] mt-2;
         }
@@ -21,9 +21,9 @@
             @apply mx-[70px];
         }
         .banner-items{
-            @apply h-[236px] rounded-[20px] mt-4 mb-10 mx-6 shadow-lg relative;
+            @apply h-[236px] min-h-[236px] rounded-[20px] mt-4 mb-10 mx-6 shadow-lg relative;
             @screen lg {
-                @apply mt-8 h-[360px] mb-6;
+                @apply mt-8 h-[360px] min-h-[360px] mb-6;
             }
 
             img{
