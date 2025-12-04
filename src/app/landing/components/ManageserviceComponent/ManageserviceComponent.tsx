@@ -6,7 +6,6 @@ import "slick-carousel/slick/slick-theme.css";
 import { ManageServiceModel } from '@/domain/models/Manageservice';
 import Image from 'next/image';
 import Link from 'next/link';
-import FullPageLoader from '@/components/lib/fullPageLoader/fullPageLoader';
 
 interface ManageservicePorps {
     manageServiceData?: ManageServiceModel;
@@ -111,9 +110,16 @@ const ManageserviceComponent: React.FC<ManageservicePorps> = ({manageServiceData
           ],
     };
 
-    // if (!manageServiceData || !manageServiceData.serviceItems.items.length) {
-    //     return null
-    // }
+    if (!manageServiceData || !manageServiceData.serviceItems.items.length) {
+        return (
+            <div className={`${styles.manageServiceContainer}`}>
+                <div className={styles.spinnerContainer}>
+                    <div className={styles.spinner}></div>
+                    <div className={styles.loadingText}>Memuat layanan...</div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <>

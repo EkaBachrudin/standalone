@@ -40,3 +40,22 @@
         }
     }
 }
+
+// Loading spinner styles for ProductListComponent
+.loading-product-list {
+    @apply flex items-center justify-center;
+}
+
+.spinnerContainer {
+    @apply flex flex-col items-center justify-center gap-4;
+}
+
+.spinner {
+    @apply w-12 h-12 border-4 rounded-full animate-spin;
+    border-color: rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+}
+
+.loadingText {
+    @apply text-f-16 font-poppins-regular text-primary-rzaWhite;
+}

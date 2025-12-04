@@ -9,7 +9,6 @@ import { useRef, useState } from 'react';
 import { getSliderProductListSettings } from './ProductListConfig';
 import Link from 'next/link';
 import Image from 'next/image';
-import FullPageLoader from '@/components/lib/fullPageLoader/fullPageLoader';
 
 interface PoductListProps {
     productListData?: ProductListModel;
@@ -25,9 +24,16 @@ const ProductListComponent: React.FC<PoductListProps> = ({productListData}) => {
 
     const settings = getSliderProductListSettings(isMobile, currentSlide, datalength, setActiveSlide, setCurrentSlide, sliderRef);
 
-    // if (!productListData || !productListData.productList.length) {
-    //     return <FullPageLoader isLoading={true} />;
-    // }
+    if (!productListData || !productListData.productList.length) {
+        return (
+            <div className='productListContainer' style={{backgroundImage: `url('/assets/images/bg-product.svg')`}}>
+                <div className='spinnerContainer'>
+                    <div className='spinner'></div>
+                    <div className='loadingText'>Memuat produk...</div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <>

@@ -50,3 +50,21 @@
         }
     }
 }
+
+// Loading spinner styles
+.loadingContainer {
+    @apply flex items-center justify-center;
+}
+
+.spinnerContainer {
+    @apply flex flex-col items-center justify-center gap-4;
+}
+
+.spinner {
+    @apply w-12 h-12 border-4 border-secondary-rzaLightGrey rounded-full animate-spin;
+    border-top-color: #1e40af; // primary-rzaBlue color
+}
+
+.loadingText {
+    @apply text-f-16 font-poppins-regular text-secondary-rzaShades600;
+}
