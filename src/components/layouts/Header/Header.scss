@@ -1,19 +1,23 @@
 .header-container {
   @apply bg-primary-rzaWhite px-6 max-w-[1440px] mx-auto;
+  // contain: layout style;
   .header{
     @apply flex justify-between items-center h-[64px] lg:h-[84px];
+    // contain: layout;
     .App-logo{
-      @apply w-36 h-16;
+      @apply w-[144px] h-[64px] object-contain flex-shrink-0;
     }
     .deksMenu{
-      @apply hidden lg:flex mr-10 gap-10 items-baseline;
+      @apply hidden lg:flex mr-10 gap-10 items-baseline min-h-[40px];
+      // contain: layout;
 
       .items{
         @apply text-f-15 font-poppins-bold flex gap-2;
+        // line-height: 1.4;
       }
     }
     .hamburger{
-      @apply w-6 h-6;
+      @apply w-[24px] h-[24px] object-contain flex-shrink-0;
     }
   }
 }

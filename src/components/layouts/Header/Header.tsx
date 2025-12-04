@@ -43,20 +43,44 @@ const Header: React.FC = () => {
       <header className="header-container">
 
         <div className="header">
-          <Image src='/logoipsum.svg' className="App-logo" width={40} height={40} alt="logo" priority={true} />
+          <div className="w-36 h-16 flex items-center justify-center">
+            <Image
+  src='/logoipsum.svg'
+  width={144}
+  height={64}
+  alt="logo"
+  className='w-[144px] h-[64px] object-contain'
+  priority={true}
+  sizes="144px"
+/>
+          </div>
           <div className='deksMenu'>
-            {menuItems?.map((item, index) => (
-              <div className='items' key={index}>
-                <DropdownMenu
-                  options={item}
-                />
-
+            {menuItems.length > 0 ? (
+              menuItems?.map((item, index) => (
+                <div className='items' key={index}>
+                  <DropdownMenu
+                    options={item}
+                  />
+                </div>
+              ))
+            ) : (
+              <div className="flex gap-10 items-baseline">
+                {[1, 2, 3, 4].map((i) => (
+                  <div key={i} className="h-6 w-20 bg-gray-200 rounded animate-pulse"></div>
+                ))}
               </div>
-            ))}
+            )}
           </div>
 
           <button onClick={toggleMenu} className='lg:hidden'>
-            <Image src='/assets/icons/hamburger-dark.svg' width={40} height={40} className="hamburger" alt="hamd" />
+            <Image
+  src='/assets/icons/hamburger-dark.svg'
+  width={40}
+  height={40}
+  alt="Menu"
+  className='w-[24px] h-[24px] object-contain'
+  sizes="24px"
+/>
           </button>
         </div>
 

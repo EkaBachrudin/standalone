@@ -40,9 +40,9 @@ const CategoryComponent: React.FC<CategoryProps > = ({categoryData}) => {
     afterChange: (current: number) => setCurrentSlide(current)
   };
 
-  if (!categoryData || !categoryData .length) {
-        return <FullPageLoader isLoading={true} />;
-  }
+  // if (!categoryData || !categoryData .length) {
+  //       return <FullPageLoader isLoading={true} />;
+  // }
 
     return (
       <>

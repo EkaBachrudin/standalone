@@ -1,4 +1,5 @@
 .hero-baner-container{
+    @apply h-[437px] min-h-[437px] lg:h-[700px] lg:min-h-[700px];
     @screen lg {
         @apply bg-cover pb-28;
     }

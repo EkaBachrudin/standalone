@@ -1,5 +1,5 @@
 .productListContainer{
-    @apply py-6 mt-6 bg-cover;
+    @apply py-6 mt-6 bg-cover lg:h-[557px] lg:min-h-[557px];
 
     .productListContainerTop{
         @apply flex justify-between items-center flex-wrap px-6;

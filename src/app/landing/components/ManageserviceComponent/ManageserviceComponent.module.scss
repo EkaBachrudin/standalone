@@ -1,11 +1,12 @@
 .manageServiceContainer{
+    @apply lg:h-[635px] lg:min-h-[635px];
     .title{
-        @apply text-f-24 font-poppins-bold text-primary-darkBlue text-left px-6;
+        @apply text-f-24 font-poppins-bold text-primary-darkBlue text-left px-6 h-[48px] min-h-[48px];
         @screen lg {@apply px-[100px] text-f-32 mt-4}
     }
 
     .top{
-        @apply flex justify-between mt-4 gap-4 pb-6 px-6;
+        @apply flex justify-between mt-4 gap-4 pb-6 px-6 h-[114px] min-h-[114px];
         @screen lg {@apply px-[100px] mt-6}
         .topItem{
             @apply items-center w-full flex justify-center gap-2 rounded-lg border border-secondary-rzaLightGrey p-4 shadow-sm text-f-12 font-poppins-bold;

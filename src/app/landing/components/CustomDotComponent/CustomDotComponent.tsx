@@ -20,6 +20,7 @@ const CustomDotComponent: React.FC<CustomDotProps> = ({ isActive, onClick }) => 
         transition: 'all 0.5s ease',
         content: 'none'
       }}
+      aria-label="custom dot"
     />
   );
 };

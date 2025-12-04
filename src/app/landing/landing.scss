@@ -4,5 +4,6 @@
       .section-category{
             @apply bg-primary-rzaGrey10 rounded-t-[20px] relative top-[-20px];
             @screen lg {@apply rounded-t-[64px] top-[-60px]}
+            contain: layout;
       }
 }

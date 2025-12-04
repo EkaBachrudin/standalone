@@ -1,4 +1,5 @@
 .category-container{
+    @apply lg:h-[132px] lg:min-h-[132px];
     @screen lg {@apply flex justify-center}
     .group{
         @apply pt-8 pb-6 rounded-t-[20px];
