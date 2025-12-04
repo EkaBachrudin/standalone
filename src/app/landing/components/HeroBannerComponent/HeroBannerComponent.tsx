@@ -36,7 +36,7 @@ const HeroBannerComponent: React.FC<HeroBannerProps> = ({ bannerDataProps }) => 
                             <div key={item.title}>
 
                                 <div className={styles['banner-items']}>
-                                    <Image src={item.imageUrl} alt={'bg-image'} width={5000} height={5000} priority={false}/>
+                                    <Image src={item.imageUrl} alt={'bg-image'} width={5000} height={5000} priority={true}/>
                                     <div className={styles['banner-items-inner']}>
                                         <div className={styles['item-content']}>
                                             <div className={styles['banner-title']}> {item.title}</div>
