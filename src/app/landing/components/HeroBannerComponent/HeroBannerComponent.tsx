@@ -36,7 +36,7 @@ const HeroBannerComponent: React.FC<HeroBannerProps> = ({ bannerDataProps }) => 
                     priority={true}
                     fetchPriority="high"
                 />
-                <div className={styles['main-title']}>{bannerDataProps?.title}</div>
+                <h1 className={styles['main-title']}>{bannerDataProps?.title}</h1>
                 <div className={styles['main-desc']}>{bannerDataProps?.desc}</div>
                 <div className={styles['slider']}>
                     <Slider ref={slider} {...settings}>
@@ -47,7 +47,7 @@ const HeroBannerComponent: React.FC<HeroBannerProps> = ({ bannerDataProps }) => 
                                     <Image src={item.imageUrl} alt={'bg-image'} width={5000} height={5000} priority={true}/>
                                     <div className={styles['banner-items-inner']}>
                                         <div className={styles['item-content']}>
-                                            <div className={styles['banner-title']}> {item.title}</div>
+                                            <h2 className={styles['banner-title']}> {item.title}</h2>
                                             <div className={styles['banner-desc']}> {item.desc}</div>
                                             <Link href={'landing/services'} passHref>
                                                 <button className={styles['banner-button']}>Cek Paket</button>
