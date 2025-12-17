@@ -1,5 +1,5 @@
 .manageServiceContainer{
-    @apply h-[602px] min-h-[602px] lg:h-[635px] lg:min-h-[635px];
+    @apply h-[602px] min-h-[602px] lg:h-[635px] lg:min-h-[635px]  mx-auto max-w-[1440px];
     .title{
         @apply text-f-24 font-poppins-bold text-primary-darkBlue text-left px-6 h-[48px] min-h-[48px];
         @screen lg {@apply px-[100px] text-f-32 mt-4}

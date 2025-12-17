@@ -2,7 +2,7 @@
     @apply py-6 mt-6 bg-cover h-[591px] min-h-[591px] lg:h-[557px] lg:min-h-[557px];
 
     .productListContainerTop{
-        @apply flex justify-between items-center flex-wrap px-6;
+        @apply flex justify-between items-center flex-wrap px-6  mx-auto max-w-[1440px];
         @screen lg {@apply px-[100px]}
 
         .productListContainerTopTitle{
@@ -16,12 +16,12 @@
 
     .productListContainerDesc{
         @apply text-f-14 font-poppins-regular text-primary-rzaWhite w-[234px] text-left mt-1 px-6;
-        @screen lg {@apply px-[100px] w-full}
+        @screen lg {@apply px-[100px] w-full  mx-auto max-w-[1440px]}
             
     }
 
     .productListItem{
-        @apply mt-4;
+        @apply mt-4  mx-auto max-w-[1440px];
         @screen lg {@apply px-[75px] mt-6}
         .item{
             @apply pl-6;

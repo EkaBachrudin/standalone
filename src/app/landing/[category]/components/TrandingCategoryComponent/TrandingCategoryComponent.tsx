@@ -30,7 +30,8 @@ const TrandingCategoryComponent: React.FC<TrandingListProps> = ({trandingList}) 
     return (
         <>
         <div className='category-tranding-Container' style={{backgroundImage: `url('/assets/images/bg-tranding.svg')`}}>
-           <div className={`responsive-title ${currentSlide !== 0 ? 'blur-effect' : ''}`}>
+            <div className='mx-auto max-w-[1440px]'>
+                     <div className={`responsive-title ${currentSlide !== 0 ? 'blur-effect' : ''}`}>
             <div className='category-tranding-ContainerTop'>
                     <div className='category-tranding-ContainerTopTitle'>{trandingList?.title}</div>
                 </div>
@@ -55,6 +56,8 @@ const TrandingCategoryComponent: React.FC<TrandingListProps> = ({trandingList}) 
                     ))}
                 </Slider>
             </div>
+            </div>
+          
         </div>
         </>
     )

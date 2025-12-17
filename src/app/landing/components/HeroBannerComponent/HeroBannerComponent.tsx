@@ -36,29 +36,31 @@ const HeroBannerComponent: React.FC<HeroBannerProps> = ({ bannerDataProps }) => 
                     priority={true}
                     fetchPriority="high"
                 />
-                <h1 className={styles['main-title']}>{bannerDataProps?.title}</h1>
-                <div className={styles['main-desc']}>{bannerDataProps?.desc}</div>
-                <div className={styles['slider']}>
-                    <Slider ref={slider} {...settings}>
-                        {bannerDataProps?.items.map((item) => (
-                            <div key={item.title}>
+                <div className='mx-auto max-w-[1440px]'>
+                    <h1 className={styles['main-title']}>{bannerDataProps?.title}</h1>
+                    <div className={styles['main-desc']}>{bannerDataProps?.desc}</div>
+                    <div className={styles['slider']}>
+                        <Slider ref={slider} {...settings}>
+                            {bannerDataProps?.items.map((item) => (
+                                <div key={item.title}>
 
-                                <div className={styles['banner-items']}>
-                                    <Image src={item.imageUrl} alt={'bg-image'} width={5000} height={5000} priority={true}/>
-                                    <div className={styles['banner-items-inner']}>
-                                        <div className={styles['item-content']}>
-                                            <h2 className={styles['banner-title']}> {item.title}</h2>
-                                            <div className={styles['banner-desc']}> {item.desc}</div>
-                                            <Link href={'landing/services'} passHref>
-                                                <button className={styles['banner-button']}>Cek Paket</button>
-                                            </Link>
+                                    <div className={styles['banner-items']}>
+                                        <Image src={item.imageUrl} alt={'bg-image'} width={5000} height={5000} priority={true} />
+                                        <div className={styles['banner-items-inner']}>
+                                            <div className={styles['item-content']}>
+                                                <h2 className={styles['banner-title']}> {item.title}</h2>
+                                                <div className={styles['banner-desc']}> {item.desc}</div>
+                                                <Link href={'landing/services'} passHref>
+                                                    <button className={styles['banner-button']}>Cek Paket</button>
+                                                </Link>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                            </div>
-                        ))}
-                    </Slider>
+                                </div>
+                            ))}
+                        </Slider>
+                    </div>
                 </div>
             </div>
         </>

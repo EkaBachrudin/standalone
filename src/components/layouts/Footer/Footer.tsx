@@ -41,7 +41,8 @@ const FooterComponent = () => {
   return (
       <>
         <div className='footer-wrapper pb-36'>
-              <div className='w-full xl:w-[60%]'>
+            <div className='md:flex md:justify-between md:gap-10 max-w-[1440px] mx-auto md:px-[100px] md:py-16'>
+                 <div className='w-full xl:w-[60%]'>
                   <section className='section-app'>
                       <div>
                           <div className="title">Gain more with MyTelkomsel App</div>
@@ -91,6 +92,8 @@ const FooterComponent = () => {
                     </div>
                 ))}
             </section>
+            </div>
+             
         </div>
       </>
   )

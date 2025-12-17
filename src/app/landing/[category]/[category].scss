@@ -1,17 +1,15 @@
 .category-page-container{
-    @apply mx-auto max-w-[1440px];
 
     .breadcrumb{
-        @apply px-6 py-8;
+        @apply px-6 py-8 mx-auto max-w-[1440px];
     }
 
     .section-title{
         @apply text-f-24 font-poppins-bold text-center;
     }
 
-    .section-category{}
-
     .section-filter{
+        @apply mx-auto max-w-[1440px] mb-10;
         .filter-category{
             @apply px-6 lg:px-24 lg:mt-8;
             .mobile-filter{
