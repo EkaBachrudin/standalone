@@ -4,9 +4,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 
 const nextConfig: NextConfig = {
-  specPattern: '**/*.spec.js',
   images: {
-    domains: ['picsum.photos'],
+    remotePatterns: [{hostname: 'picsum.photos'}]
   },
   async redirects() {
     return [
